@@ -1,6 +1,60 @@
 
 # Projeto de Interface
 
-<span style="color:red">Pré-requisitos: <a href="02-Especificação do Projeto.md"> Especificação do Projeto</a></span>
+# Tela Home
 
-Visão geral da interação do usuário com as funcionalidades que fazem parte do sistema sociotécnico (protótipo de telas).
+Nessa Tela mostrará um video disponibilizado pelo dentista e especificações de tratamentos dentarios.
+
+![Template 1](img/1.png)
+
+# tela antes e depois
+
+O conteudo dessa tela será fotos de antes e depois 
+
+![Template 1](img/2.png)
+
+# Historia
+
+Já nessa pagina será abordado o percurso profissional do dentista.
+
+![Template 1](img/3.png)
+
+# Depoimentos
+
+Nessa parte terá depoimentos de pacientes do medico dentista.
+![Template 1](img/4.png)
+
+# Localização 
+
+Essa pagina mostrará a localizaçao da clinica
+
+![Template 1](img/5.png)
+
+# Cadastro
+
+Essá pagina esta destinada para o cadastro dos pacientes.
+
+![Template 1](img/6.png)
+
+# Login
+
+  Essá pagina esta destinada para o Login dos pacientes e do Dr.Jose Rodriguez.
+
+![Template 1](img/7.png)
+
+# Agenda
+Já nessa pagina o paciente poderá agendar suas consultas, alterar ou cancelar. 
+![Template 1](img/8.png)
+
+# Gerenciamento da agenda
+
+nessa parte o Dentista poderá ver sua agenda, alterar , adcionar e cancelar suas consultas.
+
+![Template 1](img/9.png)
+
+# Alterar dados Cadastrais
+
+O Paciente poderá alterar os seus dados cadastrais 
+  
+![Template 1](img/10.png)
+
