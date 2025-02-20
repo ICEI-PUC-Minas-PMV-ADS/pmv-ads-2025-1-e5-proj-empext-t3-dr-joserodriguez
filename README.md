@@ -7,6 +7,8 @@
 
 Será criado uma aplicação de uma agenda odontologica para o consultorio Dr. Jose Rodriguez
 
+![Template 1](img/drjose.jpg)
+
 ## Integrantes
 
 * Arthur Oliveira
