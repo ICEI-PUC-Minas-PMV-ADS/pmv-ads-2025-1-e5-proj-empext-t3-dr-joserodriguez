@@ -5,56 +5,56 @@
 
 Nessa Tela mostrará um video disponibilizado pelo dentista e especificações de tratamentos dentarios.
 
-![Template 1](img/1.png)
+![Home](img/1.png)
 
 # tela antes e depois
 
 O conteudo dessa tela será fotos de antes e depois 
 
-![Template 1](img/2.png)
+![Antes e Depois ](img/2.png)
 
 # Historia
 
 Já nessa pagina será abordado o percurso profissional do dentista.
 
-![Template 1](img/3.png)
+![Historia](img/3.png)
 
 # Depoimentos
 
 Nessa parte terá depoimentos de pacientes do medico dentista.
-![Template 1](img/4.png)
+![Depoimentos](img/4.png)
 
 # Localização 
 
 Essa pagina mostrará a localizaçao da clinica
 
-![Template 1](img/5.png)
+![Localização](img/5.png)
 
 # Cadastro
 
 Essá pagina esta destinada para o cadastro dos pacientes.
 
-![Template 1](img/6.png)
+![Cadastro](img/6.png)
 
 # Login
 
   Essá pagina esta destinada para o Login dos pacientes e do Dr.Jose Rodriguez.
 
-![Template 1](img/7.png)
+![Login](img/7.png)
 
 # Agenda
 Já nessa pagina o paciente poderá agendar suas consultas, alterar ou cancelar. 
-![Template 1](img/8.png)
+![Agenda](img/8.png)
 
 # Gerenciamento da agenda
 
 nessa parte o Dentista poderá ver sua agenda, alterar , adcionar e cancelar suas consultas.
 
-![Template 1](img/9.png)
+![Gerenciamento da agenda](img/9.png)
 
 # Alterar dados Cadastrais
 
 O Paciente poderá alterar os seus dados cadastrais 
   
-![Template 1](img/10.png)
+![Alterar dados](img/10.png)
 
