@@ -1,25 +1,23 @@
-# TÍTULO DO PROJETO
+# Projeto 5 periodo - Aplicação de Agenda odontologica
 
-`CURSO`
+`Analise e desencolvimento de sitemas`
 
-`DISCIPLINA`
 
-`SEMESTRE`
+`5 periodo`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Será criado uma aplicação de uma agenda odontologica para o consultorio Dr. Jose Rodriguez
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Arthur Oliveira
+* Bianca Cristina Sousa Santana
+* Geovanne do Monte Ribeiro
+* Mayra Gabriella vitoriana machado Rodriguez
+* Peterson Alves Gervazio
 
 ## Orientador
 
-* Nome completo do professor orientador
+* José Wilson da Costa
 
 ## Instruções de utilização
 
