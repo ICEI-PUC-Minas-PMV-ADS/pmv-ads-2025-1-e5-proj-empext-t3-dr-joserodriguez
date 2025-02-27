@@ -31,53 +31,40 @@ Colocar a imagem do modelo construído apresentando a proposta de solução.
 
 ## Requisitos
 
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade de requisitos, aplicar uma técnica de priorização de requisitos e detalhar como a técnica foi aplicada.
+| **ID** | **Requisito Funcionais**                      | **Prioridade** | **Descrição**                                                                                     |
+|--------|-----------------------------------|----------------|-------------------------------------------------------------------------------------------------|
+| RF-01 | Acesso rápido às informações de contato da clínica.| ALTA | Telefone, Endereço. |
+| RF-02 | Consultar informações sobre a clínica e os profissionais.| ALTA| história, serviços oferecidos e casos clínicos. |
+| RF-03 | Automação do agendamento de consultas online, permitindo que o cliente escolha horários disponíveis sem a necessidade de intervenção da recepção. | ALTA |   |
+| RF-04 | Geração de relatório de agenda quinzenal com consultas agendadas e canceladas. | ALTA |  |
+| RF-05 | Um painel administrativo simples para gerenciar os agendamentos. | ALTA |  |
+| RF-06 | Envio de e-mail de confirmação para o cliente um ou dois dias antes de uma consulta. | ALTA | |
+| RF-07 | Envio de e-mail para a recepção caso o cliente cancele a consulta. | ALTA | |
+| RF-08 | Sistema de recuperação e alteração de senha. | MÉDIA | |
+| RF-09 | Níveis de acesso e permissões| MÉDIA |  |
+| RF-10 | Cadastro de pacientes| ALTA |  |
+| RF-11 | Cadastro de dentistas / recepcionistas| BAIXA |  |
 
-Para mais informações, consulte os microfundamentos Fundamentos de Engenharia de Software e Engenharia de Requisitos de Software. 
 
-### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
 
-### Requisitos não Funcionais
+| **ID** | **Requisito Não Funcionais**                      | **Prioridade** | **Descrição**                                                                                     |
+|--------|-----------------------------------|----------------|-------------------------------------------------------------------------------------------------|
+| RF-01 | Lançamento de dados na agenda para garantir que o agendamento ocorra sem erros. | ALTA | |
+| RF-02 | Conformidade com a LGPD para garantir a proteção de dados dos clientes.| ALTA | |
+| RF-03 | Responsividade, para garantir acesso em dispositivos móveis e computadores.| ALTA | |
+| RF-04 | O sistema deve estar disponível em horário comercial com um tempo de resposta inferior a 4 segundos.| ALTA | |
+| RF-05 | O site deve estar disponível em Português e Inglês. | ALTA | |
+| RF-06 | Usuários: Acesso somente ao site para visualizar informações. | MÉDIA |     |
+| RF-06.1 | Clientes: Acesso somente ao site para visualizar informações e realizar agendamentos. | MÉDIA | |
+| RF-06.2 | Administrador (Dono da Clínica): Acesso total ao painel administrativo, podendo visualizar, editar e cancelar agendamentos, além de gerenciar conteúdos do site. | ALTA | |
+| RF-06.3 | Recepcionistas: Acesso ao painel administrativo para visualizar e gerenciar a agenda, sem permissão para editar conteúdos do site. | ALTA | |
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
 
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
-
-## Restrições
-
-O projeto está restrito pelos itens apresentados na tabela a seguir.
-
-|ID| Restrição                                             |
-|--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+| ID  | Restrição                                             |
+|-----|-------------------------------------------------------|
+| 01  | O projeto deverá ser entregue em Setembro |
 
 ## Diagrama de Caso de Uso
 
