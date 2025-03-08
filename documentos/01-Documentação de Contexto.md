@@ -1,31 +1,29 @@
 # Introdução
 
-Texto descritivo apresentando a compreensão sobre extensão universitária discutido no microfundamento de nivelamento, relacionando a situação-problema da organização e ao sistema sociotécnico que será desenvolvido e implantado.
+A extensão universitária integra academia e sociedade, formando alunos como agentes de transformação. No contexto da clínica odontológica, a demanda por um sistema digital que facilite agendamentos e informações online justifica o desenvolvimento de uma aplicação backend funcional. Além de resolver problemas operacionais, como a dificuldade de agendamento, o sistema irá melhorar a experiência do paciente. O projeto permitirá que nós, alunos, apliquemos na prática, os conhecimentos adquiridos no Curso, promovendo crescimento acadêmico e profissional, enquanto fortalecemos o vínculo entre universidade e comunidade.
 
 ## Problema
-Nesse momento o grupo deve apresentar a situação-problema (dor/oportunidade) do parceiro onde será desenvolvido sistema sociotécnico.
 
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+A clínica odontológica enfrenta desafios na adaptação à era digital, especialmente na oferta de agendamentos online e acesso a informações. A falta de uma solução tecnológica impacta a experiência dos pacientes que buscam praticidade. Essa lacuna representa uma oportunidade para desenvolver um sistema sociotécnico que otimize processos e melhore o atendimento.  
 
 ## Objetivos
 
-Aqui o grupo deve descrever os objetivos do trabalho indicando que o objetivo é aplicar os conceitos de extensão universitária no desenvolvimento de um sistema sociotécnico que impacte positivamente a comunidade.
+Este projeto visa aplicar a extensão universitária no desenvolvimento de um sistema sociotécnico para a clínica odontológica, nossa cliente, criando uma aplicação backend que facilite agendamentos online e melhore a experiência do paciente. Integrando teoria e prática, promovemos nosso crescimento acadêmico e profissional enquanto fortalecemos o vínculo entre universidade e sociedade, impactando positivamente a comunidade.  
 
 ## Justificativa
 
-Descreva as dores/dificuldades do parceiro que motivam trabalhar na construção da solução.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Dores/dificuldades do parceiro que motivam o desenvolvimento da solução: 
+1. Falta de um sistema digital para agendamentos online.  
+2. Processos manuais lentos e propensos a erros.  
+3. Dificuldade de acesso a informações claras e atualizadas.  
+4. Perda de oportunidades de captação e fidelização de clientes. 
+5. Ausência de uma plataforma intuitiva e acessível.  
 
 ## Relação com a Extensão Universitária
 
-Relacionar a situação-problema da organização com o impacto social esperado com a implantação do sistema sociotécnico.
-Apresentar aqui como este projeto extensionista transforma a realidade do parceiro e dos alunos.
+A falta de um sistema digital na clínica odontológica gera agendamentos manuais e insatisfação dos pacientes. A implantação do sistema sociotécnico resolverá essas dores, melhorando a experiência do público, especialmente aposentados de alto poder aquisitivo. Para os alunos, o projeto promove a aplicação prática de conhecimentos, impulsionando o crescimento acadêmico e profissional. Assim, transforma a realidade do parceiro, modernizando processos, e dos alunos, integrando-os na solução de problemas reais e fortalecendo o vínculo entre universidade e sociedade.  
 
 ## Descrição do Parceiro
 
-Apresente uma descrição resumida sobre a organização onde o projeto será desenvolvido para que possa ser compreendido o cenário do sistema sociotécnico.
+A Clínica Dr. José Rodriguez, no Algarve, é uma clínica odontológica moderna e humanizada, especializada em Perio-Implantologia e Reabilitação Oral. Fundada pelo Dr. José Michell Rodriguez Fernandez, dentista com experiência internacional e formação em instituições renomadas, a clínica utiliza tecnologia avançada e equipe qualificada para atender residentes e turistas. O sistema sociotécnico em desenvolvimento, como a agenda online, visa modernizar processos e melhorar a experiência do paciente, alinhando-se à proposta inovadora da clínica.  
+
