@@ -25,6 +25,7 @@ Definição do problema e ideia de solução a partir da perspectiva do usuário
 | **Funcionário** | Usa a aplicação para suas tarefas principais. | Criar e editar registros, visualizar consultas. |
 
 
+
 ## Arquitetura e Tecnologias
 
 A aplicação será desenvolvida utilizando as seguintes tecnologias:
@@ -40,6 +41,14 @@ Hospedagem: Azure ou Banco de dados uol.
 Autenticação: Identity Server / JWT
 
 Segurança: Criptografia de dados sensíveis e conformidade com a LGPD
+
+Abaixo podemos visualizar o diagram de classe e um diagrama como será estruturado o site:
+
+https://lucid.app/lucidchart/18d10723-7cfd-43ba-920d-3d321289639b/edit?viewport_loc=-1156%2C35%2C3279%2C1617%2C0_0&invitationId=inv_c01cf5f4-5710-44b1-ba23-af6431ad866e
+
+![Diagrama de Classe ](img/classe1.png)
+
+![Estrutura do site](img/classe2.png)
 
 ## Project Model Canvas
 
