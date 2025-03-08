@@ -92,7 +92,51 @@ https://www.canva.com/design/DAGf2pQd5S0/E1quqrSFAMirmc2RtQ2mAg/view?utm_content
 
 ## Projeto da Base de Dados
 
-O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
- 
-Para mais informações, consulte o microfundamento "Modelagem de Dados".
+![DataBase](img/db_modelo_er.png)
+
+## Modelo Físico
+```
+CREATE TABLE Pacientes (
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    endereco TEXT
+);
+
+CREATE TABLE Consultas (
+    id_consulta INT AUTO_INCREMENT PRIMARY KEY,
+    id_paciente INT NOT NULL,
+    data_hora DATETIME NOT NULL,
+    status ENUM('AGENDADA', 'CONCLUIDA', 'CANCELADA') DEFAULT 'AGENDADA',
+    observacoes TEXT,
+    FOREIGN KEY (id_paciente) REFERENCES Pacientes(id_paciente)
+);
+
+CREATE TABLE Procedimentos (
+    id_procedimento INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    valor DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE Consulta_Procedimento (
+    id_consulta INT NOT NULL,
+    id_procedimento INT NOT NULL,
+    quantidade INT DEFAULT 1,
+    PRIMARY KEY (id_consulta, id_procedimento),
+    FOREIGN KEY (id_consulta) REFERENCES Consultas(id_consulta),
+    FOREIGN KEY (id_procedimento) REFERENCES Procedimentos(id_procedimento)
+);
+
+CREATE TABLE Pagamentos (
+    id_pagamento INT AUTO_INCREMENT PRIMARY KEY,
+    id_consulta INT NOT NULL,
+    valor_pago DECIMAL(10,2) NOT NULL,
+    data_pagamento DATE NOT NULL,
+    forma_pagamento ENUM('Dinheiro', 'Cartão', 'Pix'),
+    FOREIGN KEY (id_consulta) REFERENCES Consultas(id_consulta)
+);
+```
 
