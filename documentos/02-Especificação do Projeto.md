@@ -2,24 +2,44 @@
 
 <span style="color:red">Pré-requisitos: <a href="01-Documentação de Contexto.md"> Documentação de Contexto</a></span>
 
+1. Visão Geral
+
+O projeto consiste no desenvolvimento de uma aplicação web para gestão de agendamentos odontológicos, proporcionando automação no processo de marcação de consultas, envio de lembretes e organização da agenda do dentista.
+
+2. Objetivos
+
+Criar uma plataforma intuitiva para gerenciamento de consultas odontológicas.
+
+Otimizar o tempo do dentista e sua equipe por meio da automação dos agendamentos.
+
+Minimizar faltas de pacientes com envio automático de lembretes.
+
+Proporcionar um sistema seguro e responsivo.
+
 Definição do problema e ideia de solução a partir da perspectiva do usuário. 
 
-## Usuários
-| Tipo de Usuário   | Descrição | Responsabilidades |
-|------------------|-----------|------------------|
-| **xxx** | xxxxx | xxxxx |
-
-### Exemplo
 
 | Tipo de Usuário   | Descrição | Responsabilidades |
 |------------------|-----------|------------------|
-| **Administrador** | Gerencia a aplicação e os usuários. | Gerenciar usuários, configurar o sistema, acessar todos os relatórios. |
-| **Funcionário** | Usa a aplicação para suas tarefas principais. | Criar e editar registros, visualizar relatórios. |
+| **Administrador** | Gerencia a aplicação e os usuários. | Gerenciar usuários, configurar o sistema, acessar todos as consultas. |
+| **Funcionário** | Usa a aplicação para suas tarefas principais. | Criar e editar registros, visualizar consultas. |
 
 
 ## Arquitetura e Tecnologias
 
-Descreva brevemente a arquitetura definida para o projeto e as tecnologias a serem utilizadas. Sugere-se a criação de um diagrama de componentes da solução.
+A aplicação será desenvolvida utilizando as seguintes tecnologias:
+
+Back-end: C# com .NET Core
+
+Front-end: React.js
+
+Banco de Dados: SQL Server
+
+Hospedagem: Azure ou Banco de dados uol.
+
+Autenticação: Identity Server / JWT
+
+Segurança: Criptografia de dados sensíveis e conformidade com a LGPD
 
 ## Project Model Canvas
 
