@@ -2,11 +2,11 @@
 
 <span style="color:red">Pré-requisitos: <a href="01-Documentação de Contexto.md"> Documentação de Contexto</a></span>
 
-1. Visão Geral
+**1. Visão Geral**
 
 O projeto consiste no desenvolvimento de uma aplicação web para gestão de agendamentos odontológicos, proporcionando automação no processo de marcação de consultas, envio de lembretes e organização da agenda do dentista.
 
-2. Objetivos
+**2. Objetivos**
 
 Criar uma plataforma intuitiva para gerenciamento de consultas odontológicas.
 
@@ -22,7 +22,7 @@ Definição do problema e ideia de solução a partir da perspectiva do usuário
 | Tipo de Usuário   | Descrição | Responsabilidades |
 |------------------|-----------|------------------|
 | **Administrador** | Gerencia a aplicação e os usuários. | Gerenciar usuários, configurar o sistema, acessar todos as consultas. |
-| **Funcionário** | Usa a aplicação para suas tarefas principais. | Criar e editar registros, visualizar consultas. |
+| **Paciente** | Usa a aplicação para suas tarefas principais. | Criar e editar registros, visualizar consultas. |
 
 
 
