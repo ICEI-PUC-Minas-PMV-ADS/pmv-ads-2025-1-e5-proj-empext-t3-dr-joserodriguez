@@ -48,7 +48,7 @@ https://lucid.app/lucidchart/18d10723-7cfd-43ba-920d-3d321289639b/edit?viewport_
 
 ![Diagrama de Classe ](img/classe1.png)
 
-![Estrutura do site](img/classe2.png)
+![Estrutura do site](img/diagrama_componentes.jpeg)
 
 ## Project Model Canvas
 
