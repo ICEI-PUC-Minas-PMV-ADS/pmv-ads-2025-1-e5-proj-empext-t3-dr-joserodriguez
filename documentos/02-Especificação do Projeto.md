@@ -59,35 +59,29 @@ https://www.canva.com/design/DAGf2pQd5S0/E1quqrSFAMirmc2RtQ2mAg/view?utm_content
 
 ## Requisitos
 
-| **ID** | **Requisito Funcionais**                      | **Prioridade** | **Descrição**                                                                                     |
+| **ID** | **Requisitos Funcionais**                      | **Prioridade** | **Descrição**                                                                                     |
 |--------|-----------------------------------|----------------|-------------------------------------------------------------------------------------------------|
-| RF-01 | Acesso rápido às informações de contato da clínica.| ALTA | Telefone, Endereço. |
-| RF-02 | Consultar informações sobre a clínica e os profissionais.| ALTA| história, serviços oferecidos e casos clínicos. |
-| RF-03 | Automação do agendamento de consultas online, permitindo que o cliente escolha horários disponíveis sem a necessidade de intervenção da recepção. | ALTA |   |
-| RF-04 | Geração de relatório de agenda quinzenal com consultas agendadas e canceladas. | ALTA |  |
-| RF-05 | Um painel administrativo simples para gerenciar os agendamentos. | ALTA |  |
-| RF-06 | Envio de e-mail de confirmação para o cliente um ou dois dias antes de uma consulta. | ALTA | |
-| RF-07 | Envio de e-mail para a recepção caso o cliente cancele a consulta. | ALTA | |
-| RF-08 | Sistema de recuperação e alteração de senha. | MÉDIA | |
-| RF-09 | Níveis de acesso e permissões| MÉDIA |  |
-| RF-10 | Cadastro de pacientes| ALTA |  |
-| RF-11 | Cadastro de dentistas / recepcionistas| BAIXA |  |
+| RF-01 | Permitir que o usuário consulte informações sobre a clínica e os profissionais.| ALTA| história, serviços oferecidos e casos clínicos. |
+| RF-02 | O cliente pode preencher o formulário de agendamento de consulta. | ALTA|  |
+| RF-03 | Automatizar o agendamento de consultas online, permitindo que o cliente escolha horários disponíveis sem a necessidade de intervenção da recepção. | ALTA |   |
+| RF-04 | Gerar relatórios quinzenais com consultas agendadas e canceladas. | ALTA |  |
+| RF-05 | Enviar e-mail de confirmação para o cliente um ou dois dias antes de uma consulta. | ALTA | |
+| RF-06 | O cliente pode enviar email de cancelamento da consulta para a recepção. | ALTA | |
+| RF-07 | Enviar e-mail de confirmação de cancelamento para o cliente. | ALTA | |
+| RF-08 | O administrador e o recepcionista pode realizar a recuperação e alteração de senha. | MÉDIA | |
+| RF-09 | O administrador pode fazer o gerenciamento de usuários. | MÉDIA | Ler dados do usuário, editar e remover |
+| RF-10 | O administrador e o recepcionista pode gerenciar o painel administrativo. | MÉDIA | visualizar, agendar e cancelar agendamentos |
+| RF-11 | O administrador e o recepcionista pode gerenciar a agenda quinzenal. | MÉDIA | visualizar e gerar o relatório de agenda quinzenal.  |
+| RF-12 | Implementar níveis de acesso e permissões para diferentes tipos de usuários.| MÉDIA |  |
 
 
-
-
-| **ID** | **Requisito Não Funcionais**                      | **Prioridade** | **Descrição**                                                                                     |
+| **ID** | **Requisitos Não Funcionais**                      | **Prioridade** | **Descrição**                                                                                     |
 |--------|-----------------------------------|----------------|-------------------------------------------------------------------------------------------------|
 | RF-01 | Lançamento de dados na agenda para garantir que o agendamento ocorra sem erros. | ALTA | |
 | RF-02 | Conformidade com a LGPD para garantir a proteção de dados dos clientes.| ALTA | |
 | RF-03 | Responsividade, para garantir acesso em dispositivos móveis e computadores.| ALTA | |
 | RF-04 | O sistema deve estar disponível em horário comercial com um tempo de resposta inferior a 4 segundos.| ALTA | |
 | RF-05 | O site deve estar disponível em Português e Inglês. | ALTA | |
-| RF-06 | Usuários: Acesso somente ao site para visualizar informações. | MÉDIA |     |
-| RF-06.1 | Clientes: Acesso somente ao site para visualizar informações e realizar agendamentos. | MÉDIA | |
-| RF-06.2 | Administrador (Dono da Clínica): Acesso total ao painel administrativo, podendo visualizar, editar e cancelar agendamentos, além de gerenciar conteúdos do site. | ALTA | |
-| RF-06.3 | Recepcionistas: Acesso ao painel administrativo para visualizar e gerenciar a agenda, sem permissão para editar conteúdos do site. | ALTA | |
-
 
 
 | ID  | Restrição                                             |
