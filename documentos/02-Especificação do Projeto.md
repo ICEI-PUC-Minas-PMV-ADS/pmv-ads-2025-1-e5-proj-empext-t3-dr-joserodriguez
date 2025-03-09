@@ -90,12 +90,12 @@ https://www.canva.com/design/DAGf2pQd5S0/E1quqrSFAMirmc2RtQ2mAg/view?utm_content
 
 ## Diagrama de Caso de Uso
 
-![Diagrama](img/Diagrama%20de%20casos%20de%20uso%20Clínica.jpeg)
+![Diagrama](img/Diagrama%20de%20casos%20de%20uso%20Clínica.jpg)
  
 
 ## Projeto da Base de Dados
 
-![DataBase](img/modelo_er_atualizado.jpg)
+![DataBase](img/modelo_er_atualizado.jpeg)
 
 ## Modelo Físico
 ```
