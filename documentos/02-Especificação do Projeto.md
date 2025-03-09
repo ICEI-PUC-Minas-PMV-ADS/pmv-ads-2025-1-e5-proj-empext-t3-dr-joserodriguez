@@ -95,7 +95,7 @@ https://www.canva.com/design/DAGf2pQd5S0/E1quqrSFAMirmc2RtQ2mAg/view?utm_content
 
 ## Projeto da Base de Dados
 
-![DataBase](img/modelo_er_atualizado.png)
+![DataBase](img/modelo_er_atualizado.jpg)
 
 ## Modelo Físico
 ```
