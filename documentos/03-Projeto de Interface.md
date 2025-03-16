@@ -34,23 +34,19 @@ Essa pagina mostrará a localizaçao da clinica
 
 Essá pagina esta destinada para o cadastro dos pacientes.
 
-![Cadastro](img/6.png)
+![Cadastro](img/13.png)
 
 # Login
 
-  Essá pagina esta destinada para o Login dos pacientes e do Dr.Jose Rodriguez.
+  Essá pagina esta destinada para o Login do Dr.Jose Rodriguez.
 
 ![Login](img/7.png)
-
-# Agenda
-Já nessa pagina o paciente poderá agendar suas consultas, alterar ou cancelar. 
-![Agenda](img/8.png)
 
 # Gerenciamento da agenda
 
 nessa parte o Dentista poderá ver sua agenda, alterar , adcionar e cancelar suas consultas.
 
-![Gerenciamento da agenda](img/9.png)
+![Gerenciamento da agenda](img/15.png)
 
 # Alterar dados Cadastrais
 
