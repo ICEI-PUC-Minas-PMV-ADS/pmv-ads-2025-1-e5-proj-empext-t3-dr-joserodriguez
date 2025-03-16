@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LoginCadastroMVC.Models.Patient>
+
+@{
+    ViewBag.Title = "Lista de Pacientes";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.Name</td>
+                <td>@patient.DateOfBirth.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Patient", new { id = patient.ID })" class="btn btn-primary">Editar</a>
+                    <a href="@Url.Action("Delete", "Patient", new { id = patient.ID })" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Patient")" class="btn btn-success">Cadastrar Novo Paciente</a>
