@@ -42,8 +42,11 @@ namespace LoginCadastroMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Garante que o SpecialtiesString está atualizado com as especialidades selecionadas
-                patient.SpecialtiesString = string.Join(",", patient.Specialties.Select(s => s.ToString()));
+                // Combina a data e a hora
+                if (patient.AppointmentDate.HasValue && patient.AppointmentTime.HasValue)
+                {
+                    patient.AppointmentDate = patient.AppointmentDate.Value.Date.Add(patient.AppointmentTime.Value);
+                }
 
                 await _db.Patients.AddAsync(patient);
                 await _db.SaveChangesAsync();
@@ -63,7 +66,6 @@ namespace LoginCadastroMVC.Controllers
         // GET: patients/Edit/1
         public async Task<ActionResult> Edit(int id)
         {
-            // Busca o paciente pelo ID
             var patient = await _db.Patients.FindAsync(id);
             if (patient == null)
             {
@@ -102,14 +104,12 @@ namespace LoginCadastroMVC.Controllers
             {
                 try
                 {
-                    // Busca o paciente existente para evitar problemas de tracking
                     var existingPatient = await _db.Patients.FindAsync(id);
                     if (existingPatient == null)
                     {
                         return NotFound();
                     }
 
-                    // Atualiza as propriedades
                     existingPatient.Name = patient.Name;
                     existingPatient.DateOfBirth = patient.DateOfBirth;
                     existingPatient.Address = patient.Address;

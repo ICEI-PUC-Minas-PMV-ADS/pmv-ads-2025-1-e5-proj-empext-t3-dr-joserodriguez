@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8Lgfjz6XX8A/PiDG/SM4gk7FBVZ4N8s8f171fWazULdyVkbXCQtCmH/8EP5VgFHn2NlGzvgF5IAonORGWil/KA==",
+  "dgSpecHash": "DVD6RrbRKxh9RCK5aMzaQBUFL8OPU1fIsebNfPh1XFycJJ2wREt+qndiTzBk5xg4mCNcUBDR1e4AGOvWPa+GiQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\josem\\OneDrive\\Desktop\\Jose Rodriguez\\JoseRodriguez.csproj",
+  "projectFilePath": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\JoseRodriguez.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josem\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\josem\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
