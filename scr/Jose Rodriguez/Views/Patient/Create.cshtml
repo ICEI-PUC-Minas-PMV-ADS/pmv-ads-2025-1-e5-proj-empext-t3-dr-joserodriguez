@@ -7,33 +7,35 @@
     :root {
         --primary: #C6A16F;
         --secondary: #f5f5f5;
-        --text-dark: #333;
-        --text-light: #777;
-        --border-color: #ddd;
+        --text-dark: #f0f0f0;
+        --text-light: #aaa;
+        --border-color: #444;
+        --background-black: #121212;
     }
 
     body {
         font-family: 'Segoe UI', Arial, sans-serif;
-        background-color: #f8f8f8;
+        background-color: var(--background-black);
         margin: 0;
         padding: 0;
+        color: var(--text-dark);
     }
 
     .appointment-container {
         display: flex;
         max-width: 1000px;
         margin: 20px auto;
-        background-color: white;
+        background-color: var(--background-black);
         border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         overflow: hidden;
     }
 
     /* Calendar Section */
     .calendar-section {
         width: 45%;
-        background-color: #333;
-        color: white;
+        background-color: white;
+        color: black;
         padding: 20px;
     }
 
@@ -47,7 +49,7 @@
     .month-nav button {
         background: none;
         border: none;
-        color: white;
+        color: black;
         cursor: pointer;
         font-size: 18px;
     }
@@ -57,7 +59,7 @@
         padding: 10px 0;
         font-weight: bold;
         font-size: 18px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         margin-bottom: 10px;
     }
 
@@ -83,15 +85,17 @@
         font-size: 14px;
         border-radius: 5px;
         cursor: pointer;
+        background-color: #f0f0f0;
     }
 
     .calendar-day.inactive {
-        color: rgba(255, 255, 255, 0.3);
+        color: rgba(0, 0, 0, 0.3);
         cursor: default;
+        background-color: #f8f8f8;
     }
 
     .calendar-day.weekend {
-        color: rgba(255, 255, 255, 0.3);
+        color: rgba(0, 0, 0, 0.3);
         cursor: not-allowed;
         position: relative;
     }
@@ -109,7 +113,7 @@
     }
     
     .calendar-day.past {
-        color: rgba(255, 255, 255, 0.3);
+        color: rgba(0, 0, 0, 0.3);
         cursor: not-allowed;
         position: relative;
     }
@@ -144,7 +148,7 @@
 
     .time-slots-info {
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(0, 0, 0, 0.7);
     }
 
     .time-slots-grid {
@@ -155,7 +159,7 @@
     }
 
     .time-slot {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: #f0f0f0;
         padding: 5px;
         text-align: center;
         border-radius: 5px;
@@ -165,16 +169,18 @@
 
     .time-slot.selected {
         background-color: var(--primary);
+        color: white;
     }
 
     .time-slot:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: #e0e0e0;
     }
 
     /* Form Section */
     .form-section {
         width: 55%;
         padding: 20px;
+        background-color: var(--background-black);
     }
 
     .form-header {
@@ -194,6 +200,8 @@
         border: 1px solid var(--border-color);
         border-radius: 5px;
         font-size: 14px;
+        background-color: #1e1e1e;
+        color: var(--text-dark);
     }
 
     textarea.form-control {
@@ -211,7 +219,8 @@
         padding: 10px;
         border: 1px solid var(--border-color);
         border-radius: 5px;
-        background-color: white;
+        background-color: #1e1e1e;
+        color: var(--text-dark);
         position: relative;
         cursor: pointer;
         display: flex;
@@ -231,9 +240,9 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
-        background-color: white;
+        background-color: #1e1e1e;
         border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
         z-index: 10;
     }
 
@@ -246,10 +255,11 @@
     .specialty-option {
         padding: 10px 12px;
         cursor: pointer;
+        color: var(--text-dark);
     }
 
     .specialty-option:hover {
-        background-color: #f8f8f8;
+        background-color: #2c2c2c;
     }
 
     .submit-btn {
@@ -272,15 +282,13 @@
     }
 
     .alert-success {
-        background-color: #d4edda;
-        color: #155724;
+        background-color: #2c2c2c;
+        color: #C6A16F;
         padding: 12px;
         border-radius: 5px;
         margin-top: 20px;
     }
 
-    /* Responsive adjustments */
-   
         
         .calendar-section, .form-section {
             width: 100%;
