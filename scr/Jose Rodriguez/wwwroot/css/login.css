@@ -1,0 +1,75 @@
+.login-container {
+    width: 100%;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-container {
+    width: 25%;
+}
+
+.img-container img {
+    width: 100%;
+    height: 50%;
+    clip-path: circle(75% at 95% 50%);
+    object-fit: contain;    
+    transform: scaleX(-1);
+}
+
+.login-container-form {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input {
+    padding: 5px;
+    font-size: 20px;
+    color: #928d8c;
+    border: none;
+    border-bottom: 2px solid;
+    margin-bottom: 20px;
+}
+
+.login-input:focus {
+    outline: none;
+}
+
+.link-button {
+    min-width: 55px;
+    height: 25px;
+    margin-right: 10px;
+    color: white;
+    line-height: 25px;
+    background-color: #c59f6e;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0px 15px;
+}
+
+.login-button {
+    width: 100%;
+    font-size: 15px;
+    border: none;
+    font-weight: 700;
+}
+
+.forgot-password {
+    width: 150px;
+    color: #928d8c;
+    text-decoration: none;
+    border-bottom: 2px solid;
+    margin-top: 15px;
+}
+
+.forgot-password:hover {
+    color: #928d8c;
+}
