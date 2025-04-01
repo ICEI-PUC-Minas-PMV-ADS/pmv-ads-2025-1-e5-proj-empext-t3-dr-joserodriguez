@@ -1,0 +1,160 @@
+@{
+    ViewData["Title"] = "Testemunhos de Pacientes";
+}
+
+<style>
+    :root {
+        --primary: #C6A16F;
+        --secondary: #f5f5f5;
+        --text-dark: #f0f0f0;
+        --text-light: #aaa;
+        --border-color: #444;
+        --background-black: #121212;
+    }
+
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background-color: var(--background-black);
+        margin: 0;
+        padding: 0;
+        color: var(--text-dark);
+    }
+
+    .rounded-top {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    .rounded-top-sm {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .miniature-wrapper-active {
+        background-color: cornflowerblue !important;
+    }
+
+    .testimonial-container {
+        background-color: var(--primary);
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 800px;
+        min-height: 300px;
+    }
+
+    .testimonial-img {
+        height: 300px;
+        margin-left: -40px;
+    }
+
+    .miniature-wrapper {
+        background-color: var(--secondary);
+        cursor: pointer;
+        width: 130px;
+        height: 130px;
+    }
+
+    .miniature-img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .miniature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 1rem;
+        width: max-content;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+    }
+
+</style>
+
+<div class="py-5 text-light" style="min-height: 100vh;">
+    <div class="container">
+        <h2 style="color: var(--primary)" class="fw-medium">Testemunhos de pacientes</h2>
+
+        <div class="d-flex mt-5 flex-wrap gap-4">
+            <!-- Testemunho principal -->
+            <div id="testimonial" class="d-flex align-items-center p-4 testimonial-container rounded-top">
+                <img id="testimonial-img" src="~/img/IMG_0752.jpeg" alt="Paciente" class="me-4 testimonial-img">
+                <div class="text-dark">
+                    <p id="testimonial-text" class="fs-6 mb-2">Texto do paciente 1.</p>
+                    <p id="testimonial-name" class="fw-bold mb-0">Paciente 1</p>
+                </div>
+            </div>
+
+            <!-- Miniaturas -->
+            <div class="miniature-grid mt-4">
+                @for (int i = 0; i < 4; i++)
+                {
+                    <div id="miniature-wrapper-@i"
+                         class="d-flex p-3 justify-content-center align-items-center miniature-wrapper rounded-top-sm"
+                         onclick="showTestimonial(@i)">
+                        <img src="~/img/IMG_0752.jpeg" class="rounded-2 img-fluid miniature-img">
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Paginação -->
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            @for (int i = 0; i < 4; i++)
+            {
+                var bgColor = i == 0 ? "var(--secondary)" : "var(--text-light)";
+                <div onclick="showTestimonial(@i)" class="dot rounded-circle" style="width: 10px; height: 10px; background-color: @bgColor;"></div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    const testimonials = [
+        {
+            img: '/img/IMG_0752.jpeg',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            name: 'Paciente 1'
+        },
+        {
+            img: '/img/IMG_0752.jpeg',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            name: 'Paciente 2'
+        },
+        {
+            img: '/img/IMG_0752.jpeg',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            name: 'Paciente 3'
+        },
+        {
+             img: '/img/IMG_0752.jpeg',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            name: 'Paciente 4'
+        }
+    ];
+
+    function showTestimonial(index) {
+        document.getElementById('testimonial-img').src = testimonials[index].img;
+        document.getElementById('testimonial-text').textContent = testimonials[index].text;
+        document.getElementById('testimonial-name').textContent = testimonials[index].name;
+
+        // Atualiza os dots
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+            dot.style.backgroundColor = i === index ? 'var(--primary)' : 'var(--text-light)';
+        });
+
+        // Atualiza miniatura background
+        for (let i = 0; i < testimonials.length; i++) {
+            const wrapper = document.getElementById(`miniature-wrapper-${i}`);
+            if (i === index) {
+                wrapper.classList.add('miniature-wrapper-active');
+            } else {
+                wrapper.classList.remove('miniature-wrapper-active');
+            }
+        }
+    }
+</script>
