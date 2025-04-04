@@ -1,37 +1,40 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Barra de navegação -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="/">Início</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a> <!-- Home route -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Patient/Create">Cadastro</a> <!-- Cadastro route -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/home/Location">Localização</a> <!-- Location route -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/home/Login">Login</a> <!-- Rota de login -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/home/depoimentos">Depoimentos</a> <!-- Rota de depoimentos -->
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!-- Seção inicial (Tela Home) -->
+<div id="home" style="height: 100vh;">
+    @Html.Partial("Tela_home")
+</div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Seção de Antes de Depois -->
+<div id="antes_depois" style="height: 100vh; background-color: #d4c6ab;">
+    @Html.Partial("Antes_depois")
+</div>
+
+<!-- Seção Hitória -->
+<div id="historia" style="height: 100vh;">
+    @Html.Partial("Historia")
+</div>
+
+<!-- Seção de Depoimentos -->
+<div id="depoimentos" style="height: 100vh; background-color: #d4c6ab;">
+    @Html.Partial("Depoimentos")
+</div>
+
+<!-- Seção de Localização -->
+<div id="location" style="height: 100vh;">
+    @Html.Partial("Location")
+</div>
+
+<!-- Seção Agendamento -->
+<div id="agendamento" style="height: 100vh;">
+    @Html.Partial("~/Views/Patient/Create.cshtml")
+</div>
+
+<!-- Seção de Privacy -->
+<div id="privacy" style="height: 100vh; background-color: #d4c6ab;">
+    <h2>Privacy</h2>
+    <p>Política de privacidade...</p>
 </div>
