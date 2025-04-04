@@ -51,9 +51,9 @@ namespace Jose_Rodriguez.Controllers
         {
             return View();
         }
-        public IActionResult Gerenciamento()
+        public IActionResult Management()
         {
-            return View();
+            return View("~/Views/Patient/Management.cshtml");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
