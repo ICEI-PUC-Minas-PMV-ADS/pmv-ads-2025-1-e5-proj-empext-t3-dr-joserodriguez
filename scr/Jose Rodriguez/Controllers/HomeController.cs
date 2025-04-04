@@ -39,6 +39,23 @@ namespace Jose_Rodriguez.Controllers
             return View();
         }
 
+        public IActionResult Antes_depois()
+        {
+            return View();
+        }
+        public IActionResult Historia()
+        {
+            return View();
+        }
+        public IActionResult Tela_home()
+        {
+            return View();
+        }
+        public IActionResult Gerenciamento()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
