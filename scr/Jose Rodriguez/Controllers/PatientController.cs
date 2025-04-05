@@ -38,31 +38,46 @@ namespace LoginCadastroMVC.Controllers
                 .Where(p => p.AppointmentDate.HasValue && p.AppointmentDate.Value.Date == date.Date)
                 .OrderBy(p => p.AppointmentTime)
                 .ToListAsync();
-            return Json(patients);
+
+            
+            var result = patients.Select(p => new
+            {
+                id = p.ID,
+                name = p.Name,
+                time = p.AppointmentTime.HasValue ? p.AppointmentTime.Value.ToString(@"hh\:mm") : ""
+            });
+
+            return Json(result);
         }
 
-        // GET: Patient/Details/5
+        // GET: Patient/GetPatientDetails
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> GetPatientDetails(int id)
         {
             var patient = await _db.Patients.FindAsync(id);
-
             if (patient == null)
             {
                 return NotFound();
             }
-            return Json(patient);
+            return Json(new
+            {
+                id = patient.ID,
+                name = patient.Name,
+                address = patient.Address,
+                email = patient.Email,
+                phone = patient.Phone,
+                specialty = patient.SpecialtiesString,
+                complaint = patient.Complaint
+            });
         }
 
         // GET: patients/Create
         public ActionResult Create()
         {
-            // Prepara a lista de especialidades para o formulário de criação
             ViewBag.SpecialtiesList = Enum.GetValues(typeof(SpecialtyEnum))
                                           .Cast<SpecialtyEnum>()
                                           .Select(s => new { Value = s.ToString(), Text = s.ToString() })
                                           .ToList();
-
             return View();
         }
 
@@ -73,13 +88,11 @@ namespace LoginCadastroMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Combina a data e a hora
                 if (patient.AppointmentDate.HasValue && patient.AppointmentTime.HasValue)
                 {
                     patient.AppointmentDate = patient.AppointmentDate.Value.Date.Add(patient.AppointmentTime.Value);
                 }
 
-                // Converte Specialties para SpecialtiesString se necessário
                 if (patient.Specialties != null && patient.Specialties.Any())
                 {
                     patient.SpecialtiesString = string.Join(",", patient.Specialties.Select(s => s.ToString()));
@@ -92,12 +105,10 @@ namespace LoginCadastroMVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            // Em caso de erro, prepara a lista de especialidades e exibe novamente o formulário
             ViewBag.SpecialtiesList = Enum.GetValues(typeof(SpecialtyEnum))
                                           .Cast<SpecialtyEnum>()
                                           .Select(s => new { Value = s.ToString(), Text = s.ToString() })
                                           .ToList();
-
             return View(patient);
         }
 
@@ -110,7 +121,6 @@ namespace LoginCadastroMVC.Controllers
                 return NotFound();
             }
 
-            // Converte SpecialtiesString para a lista Specialties
             if (!string.IsNullOrEmpty(patient.SpecialtiesString))
             {
                 patient.Specialties = patient.SpecialtiesString
@@ -119,12 +129,10 @@ namespace LoginCadastroMVC.Controllers
                     .ToList();
             }
 
-            // Prepara a lista de especialidades para o formulário de edição
             ViewBag.SpecialtiesList = Enum.GetValues(typeof(SpecialtyEnum))
                                           .Cast<SpecialtyEnum>()
                                           .Select(s => new { Value = s.ToString(), Text = s.ToString() })
                                           .ToList();
-
             return View(patient);
         }
 
@@ -157,7 +165,6 @@ namespace LoginCadastroMVC.Controllers
                     existingPatient.AppointmentDate = patient.AppointmentDate;
                     existingPatient.AppointmentTime = patient.AppointmentTime;
 
-                    // Converte Specialties para SpecialtiesString
                     if (patient.Specialties != null && patient.Specialties.Any())
                     {
                         existingPatient.SpecialtiesString = string.Join(",", patient.Specialties.Select(s => s.ToString()));
@@ -180,19 +187,17 @@ namespace LoginCadastroMVC.Controllers
                 }
             }
 
-            // Em caso de erro, prepara a lista de especialidades e exibe novamente o formulário
             ViewBag.SpecialtiesList = Enum.GetValues(typeof(SpecialtyEnum))
                                           .Cast<SpecialtyEnum>()
                                           .Select(s => new { Value = s.ToString(), Text = s.ToString() })
                                           .ToList();
-
             return View(patient);
         }
 
         // POST: Patient/Update (para chamadas AJAX da página de gerenciamento)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(Patient patient)
+        public async Task<IActionResult> Update([FromBody] Patient patient)  
         {
             if (ModelState.IsValid)
             {
@@ -229,6 +234,7 @@ namespace LoginCadastroMVC.Controllers
             return Json(new { success = false, message = "Erro ao atualizar paciente." });
         }
 
+
         // GET: patients/Delete/1
         public async Task<ActionResult> Delete(int id)
         {
@@ -241,7 +247,7 @@ namespace LoginCadastroMVC.Controllers
             return View(patient);
         }
 
-        // POST: patients/Delete/1 (para o formulário HTML)
+        // POST: patients/Delete/1
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
@@ -257,7 +263,7 @@ namespace LoginCadastroMVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: Patient/DeleteAjax/5 (para chamadas AJAX da página de gerenciamento)
+        // POST: Patient/DeleteAjax/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteAjax(int id)
