@@ -85,6 +85,7 @@ namespace LoginCadastroMVC.Controllers
                     patient.SpecialtiesString = string.Join(",", patient.Specialties.Select(s => s.ToString()));
                 }
 
+                Console.WriteLine("Salvando paciente no banco...");
                 await _db.Patients.AddAsync(patient);
                 await _db.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Paciente cadastrado com sucesso!";
