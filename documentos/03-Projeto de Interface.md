@@ -34,7 +34,7 @@ Essa pagina mostrará a localizaçao da clinica
 
 Nesta página o paciente poderá realizar um agendamento.
 
-![Cadastro](img/03.png)
+![Cadastro](img/Agendar.png)
 
 # Login
 
@@ -45,6 +45,14 @@ Nesta página o paciente poderá realizar um agendamento.
 
 Nesta parte os Dentistas e Recepcionistas poderão visualizar a agenda, alterar , adcionar e cancelar um agendamento.
 
-![Gerenciamento da agenda](img/01.png)
+![Gerenciamento da agenda](img/Gerenciar1.png)
+![Gerenciamento da agenda](img/Gerenciar2.png)
+
+
+![Alterar cadastro Dentista](img/Alterar.png)
+
+![Alterar Senha](img/Alterarsenha.png)
+
+![Alterar Senha](img/Login.png)
 
 
