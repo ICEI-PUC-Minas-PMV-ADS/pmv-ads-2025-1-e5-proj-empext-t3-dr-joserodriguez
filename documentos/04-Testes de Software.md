@@ -101,27 +101,59 @@ Cada funcionalidade desenvolvida deve ser testada utilizando os casos de testes 
 ### Exemplo
 <table>
   <tr>
-    <th colspan="6" width="1000">CT-001<br>Login com credenciais válidas</th>
+    <th colspan="6" width="1000">CT-001<br>Agendamento do paciente com dados válidos</th>
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
-    <td colspan="5">O sistema deve redirecionar o usuário para a página inicial do aplicativo após o login bem-sucedido.</td>
+    <td colspan="5">O sistema deve agendar o paciente fazendo o cadastro dele.</td>
   </tr>
     <tr>
     <td><strong>Responsável pelo Teste</strong></td>
-    <td width="430">José da Silva </td>
+    <td width="430">Peterson Alves Gervazio </td>
      <td width="100"><strong>Data do Teste</strong></td>
-    <td width="150">08/05/2024</td>
+    <td width="150">05/05/2024</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
-    <td colspan="5">O sistema está permitindo o login corretamente.</td>
+    <td colspan="5">O sistema está agendando e cadastrando o paciente corretamente.</td>
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><video src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-time-sheet/assets/82043220/2e3c1722-7adc-4bd4-8b4c-3abe9ddc1b48"/></td>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/dados-validos.png"></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/mensagem-valida.png"></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th colspan="6" width="1000">CT-002<br>Agendamento do paciente com dados inválidos</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">O sistema exibe mensagens de erro e não permite finalizar o agendamento</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Peterson Alves Gervazio </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">05/05/2024</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema não permite o cadastro corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/dados-invalidos.png"></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/campos-vazios.png"></td>
   </tr>
 </table>
 
