@@ -346,7 +346,7 @@
     <div class="form-section">
         <div class="form-header">Faça seu Agendamento</div>
         
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Create", "Patient", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
