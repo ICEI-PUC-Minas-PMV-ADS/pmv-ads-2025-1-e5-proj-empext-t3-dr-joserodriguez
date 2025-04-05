@@ -15,8 +15,8 @@
     <p>@Model.Address</p>
 </div>
 
-<form asp-action="DeleteConfirmed" method="post">
+<form asp-action="Delete" asp-controller="Patient" asp-route-id="@Model.ID" method="post">
     <input type="hidden" asp-for="ID" />
     <button type="submit" class="btn btn-danger">Yes, Delete</button>
-    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Cancel</a>
+    <a href="@Url.Action("Index", "Patient")" class="btn btn-secondary">Cancel</a>
 </form>
