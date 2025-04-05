@@ -14,7 +14,7 @@ namespace LoginCadastroMVC.Models
         [Required(ErrorMessage = "O nome é obrigatório")]
         [StringLength(100, ErrorMessage = "O nome deve ter até 100 caracteres")]
         [Display(Name = "Nome")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Required(ErrorMessage = "A data de nascimento é obrigatória")]
         [DataType(DataType.Date)]
@@ -24,21 +24,21 @@ namespace LoginCadastroMVC.Models
         [Required(ErrorMessage = "O endereço é obrigatório")]
         [StringLength(200, ErrorMessage = "O endereço deve ter até 200 caracteres")]
         [Display(Name = "Endereço")]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         [Required(ErrorMessage = "O email é obrigatório")]
         [EmailAddress(ErrorMessage = "Email inválido")]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Required(ErrorMessage = "O telefone é obrigatório")]
         [Phone(ErrorMessage = "Telefone inválido")]
         [Display(Name = "Telefone")]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         [StringLength(500, ErrorMessage = "A queixa deve ter até 500 caracteres")]
         [Display(Name = "Queixa Principal")]
-        public string Complaint { get; set; }
+        public string? Complaint { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name = "Data da Consulta")]
