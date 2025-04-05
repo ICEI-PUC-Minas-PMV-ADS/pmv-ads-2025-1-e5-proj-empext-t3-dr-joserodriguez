@@ -1,58 +1,113 @@
+# 🦷 Projeto de Interface - Clínica Odontológica
 
-# Projeto de Interface
+Este projeto apresenta a interface de uma aplicação para uma clínica odontológica, com foco na experiência do paciente e no gerenciamento interno pelos profissionais da clínica. Desenvolvido utilizando o padrão **MVC com C#**, **HTML**, **JavaScript** e **Bootstrap**.
 
-# Tela Home
+Abaixo pode-se ver o projeto interface interativo:
 
-Nessa Tela mostrará um video disponibilizado pelo dentista e especificações de tratamentos dentarios.
+https://www.figma.com/design/NXXW3PXQyymDEvkNKzsuYo/Dr.-Jose-Rodriguez-(Copy)?t=wmKkhCENah7HoStj-1
+
+---
+
+## 📺 Tela Home
+
+Nesta tela inicial, é exibido um **vídeo institucional** fornecido pelo dentista, além de **informações sobre os tratamentos odontológicos** oferecidos pela clínica.
 
 ![Home](img/1.png)
 
-# tela antes e depois
+---
 
-O conteudo dessa tela será fotos de antes e depois 
+## 🖼️ Antes e Depois
 
-![Antes e Depois ](img/2.png)
+A página "Antes e Depois" exibe imagens comparativas de pacientes **antes e após os tratamentos**, destacando os resultados alcançados pelos procedimentos odontológicos realizados.
 
-# Historia
+![Antes e Depois](img/2.png)
 
-Já nessa pagina será abordado o percurso profissional do dentista.
+---
 
-![Historia](img/3.png)
+## 👨‍⚕️ História
 
-# Depoimentos
+Página que apresenta o **percurso profissional do dentista**, como sua formação, experiência clínica e especializações, fortalecendo a confiança dos pacientes.
 
-Nessa parte terá depoimentos de pacientes do medico dentista.
+![História](img/3.png)
+
+---
+
+## 💬 Depoimentos
+
+Sessão com **depoimentos reais de pacientes**, relatando suas experiências e satisfação com os serviços da clínica.
+
 ![Depoimentos](img/4.png)
 
-# Localização 
+---
 
-Essa pagina mostrará a localizaçao da clinica
+## 📍 Localização
+
+Página com as **informações de localização da clínica**, incluindo mapa interativo, endereço completo e informações de contato para facilitar o acesso dos pacientes.
 
 ![Localização](img/5.png)
 
-# Agendamento
+---
 
-Nesta página o paciente poderá realizar um agendamento.
+## 📅 Agendamento
 
-![Cadastro](img/Agendar.png)
+Área onde o paciente pode **realizar seu agendamento online**, escolhendo o profissional, o tipo de tratamento, a data e o horário desejado.
 
-# Login
+![Agendamento](img/Agendar.png)
 
-  Essá pagina esta destinada para o Login de Dentistas e Recepcionistas.
-![Login](img/7.png)
+---
 
-# Gerenciamento do Painel Administrativo
+## 🔐 Login
 
-Nesta parte os Dentistas e Recepcionistas poderão visualizar a agenda, alterar , adcionar e cancelar um agendamento.
+Tela de **login restrito para dentistas e recepcionistas**. Após o login, o usuário tem acesso ao painel administrativo do sistema.
 
-![Gerenciamento da agenda](img/Gerenciar1.png)
-![Gerenciamento da agenda](img/Gerenciar2.png)
+![Login](img/Login.png)
 
+---
 
-![Alterar cadastro Dentista](img/Alterar.png)
+## ⚙️ Painel Administrativo
 
-![Alterar Senha](img/Alterarsenha.png)
+Funcionalidade acessível apenas para os profissionais da clínica, onde é possível:
 
-![Alterar Senha](img/Login.png)
+- Visualizar a agenda de atendimentos
+- Adicionar, editar ou cancelar agendamentos
+- Atualizar os dados de cadastro
+- Alterar a senha de acesso
+
+### 📆 Gerenciamento da Agenda
+
+Nesta seção, dentistas e recepcionistas podem **gerenciar todos os agendamentos** da clínica de forma prática e organizada.
+
+![Gerenciamento da Agenda 1](img/Gerenciar1.png)  
+![Gerenciamento da Agenda 2](img/Gerenciar2.png)
+
+---
+
+### 👤 Alterar Cadastro do Dentista
+
+Funcionalidade para **atualização de dados do profissional**, como nome, especialidade, e-mail e demais informações relevantes.
+
+![Alterar Cadastro](img/Alterar.png)
+
+---
+
+### 🔑 Alterar Senha
+
+Tela destinada à **troca de senha** de acesso ao sistema, garantindo mais segurança e controle de acesso aos profissionais.
+
+![Alterar Senha](img/Alterarsennha.png)
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+O projeto foi desenvolvido com as seguintes tecnologias:
+
+- ASP.NET MVC (C#)
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap 5
+
+---
 
 
