@@ -1,23 +1,21 @@
 # Planos de Testes de Software
 
-Apresente os casos de testes utilizados na realização da verificação e validação da aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos bem como o tratamento de erros (robustez da aplicação).
-
 ### Tipo de Teste
 - **Sucesso**: Tem o objetivo de verificar se as funcionalidades funcionam corretamente.
 - **Insucesso**: Tem o objetivo de verificar se o sistema trata erros de maneira correta.
 
-#### Exemplo de Caso de Teste de Sucesso
+#### Caso de Teste de Sucesso
 <table>
   <tr>
-    <th colspan="2" width="1000">CT-001<br>Login com credenciais válidas</th>
+    <th colspan="2" width="1000">CT-001<br>Agendamento do paciente com dados válidos</th>
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
-    <td>Este caso de teste verifica se um usuário pode fazer login com sucesso utilizando credenciais válidas.</td>
+    <td>Verifica se é possível cadastrar um paciente corretamente.</td>
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">José da Silva</td>
+    <td width="430">Arthur Oliveira Santos</td>
   </tr>
  <tr>
     <td><strong>Tipo do Teste</strong></td>
@@ -25,41 +23,46 @@ Apresente os casos de testes utilizados na realização da verificação e valid
   </tr> 
   <tr>
     <td><strong>Requisitos associados</strong></td>
-    <td>RF-001: O funcionário deve conseguir logar no aplicativo</td>
+    <td>RF-02, RF-03, RF-09</td>
   </tr>
   <tr>
     <td><strong>Passos</strong></td>
     <td>
-      1. Abrir o aplicativo.<br>
-      2. Inserir o CPF válido.<br>
-      3. Inserir a senha válida.<br>
-      4. Clicar no botão "Entrar".
+      1. Acessar a página "Cadastrar Pacientes/Agendamento".<br>
+      2. Preencher todos os campos obrigatórios.<br>
+      3. Clicar no botão "Confirmar".<br>
       </td>
   </tr>
     <tr>
     <td><strong>Dados de teste</strong></td>
     <td>
-      - <strong>CPF:</strong> Colocar CPF cadastrado na base<br>
-      - <strong>Senha:</strong> Colocar valor de senha válida
+      - <strong>Nome:</strong> John Doe Marsh <br>
+      - <strong>Data de Nascimento:</strong> 11/11/2000 <br>
+      - <strong>Endereço:</strong> Rua A <br>
+      - <strong>E-mail:</strong> john@gmail.com <br>
+      - <strong>Telefone:</strong> 12345678910 <br>
+      - <strong>Descrição:</strong> Dentes prestes a cair. <br>
+      - <strong>Procedimento:</strong> ProteseDentaria
   </tr>
     <tr>
     <td><strong>Critérios de êxito</strong></td>
-    <td>O sistema deve redirecionar o usuário para a página inicial do aplicativo após o login bem-sucedido.</td>
+    <td>O paciente é salvo no banco de dados e aparece na página de gerenciamento.</td>
   </tr>
 </table>
 
-#### Exemplo de Caso de Teste de Insucesso
+#### Caso de Teste de Insucesso
+
 <table>
   <tr>
-    <th colspan="2" width="1000">CT-001<br>Login com credenciais inválidas</th>
+    <th colspan="2" width="1000">CT-002<br>Agendamento do paciente com dados inválidos</th>
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
-    <td>Este caso de teste verifica o tratamento de credenciais inválidas no login.</td>
+    <td>Verifica se o sistema impede o cadastro quando campos obrigatórios estão vazios.</td>
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">José da Silva</td>
+    <td width="430">Arthur Oliveira Santos</td>
   </tr>
  <tr>
     <td><strong>Tipo do Teste</strong></td>
@@ -67,51 +70,42 @@ Apresente os casos de testes utilizados na realização da verificação e valid
   </tr> 
   <tr>
     <td><strong>Requisitos associados</strong></td>
-    <td>RF-001: O funcionário não conseguirá logar no aplicativo</td>
+    <td>RF-02, RF-03, RF-09</td>
   </tr>
   <tr>
     <td><strong>Passos</strong></td>
     <td>
-      1. Abrir o aplicativo.<br>
-      2. Inserir o CPF válido.<br>
-      3. Inserir a senha inválida.<br>
-      4. Clicar no botão "Entrar".
+      1. Acessar a página "Cadastrar Pacientes/Agendamento".<br>
+      2. Deixar os campos obrigatórios vazios.<br>
+      3. Clicar no botão "Confirmar".<br>
       </td>
   </tr>
     <tr>
     <td><strong>Dados de teste</strong></td>
     <td>
-      - <strong>CPF:</strong> Colocar CPF cadastrado na base<br>
-      - <strong>Senha:</strong> Colocar senha inválida
+      - <strong>Campos vazios.<br>
   </tr>
     <tr>
     <td><strong>Critérios de êxito</strong></td>
-    <td>O sistema deve apresentar a mensagem de login inválido.</td>
+    <td>O sistema exibe mensagens de erro e não permite finalizar o agendamento.</td>
   </tr>
 </table>
 
- 
 # Evidências de Testes de Software
 
-Apresente imagens e/ou vídeos que comprovam que um determinado teste foi executado, e o resultado esperado foi obtido. Normalmente são screenshots de telas, ou vídeos do software em funcionamento.
-
-## Parte 1 - Testes Unitários
-Cada funcionalidade desenvolvida deve ser testada utilizando os casos de testes (sucesso e insucesso) criados pelo responsável pela funcionalidade. Todos os testes devem ser evidenciados.
-
-### Exemplo
 <table>
   <tr>
     <th colspan="6" width="1000">CT-001<br>Agendamento do paciente com dados válidos</th>
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
-    <td colspan="5">O sistema deve agendar o paciente fazendo o cadastro dele.</td>
+    <td colspan="5">O paciente é salvo no banco de dados e aparece na página de gerenciamento.</td>
   </tr>
     <tr>
     <td><strong>Responsável pelo Teste</strong></td>
     <td width="430">Peterson Alves Gervazio </td>
      <td width="100"><strong>Data do Teste</strong></td>
-    <td width="150">05/05/2024</td>
+    <td width="150">05/04/2025</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
@@ -125,6 +119,12 @@ Cada funcionalidade desenvolvida deve ser testada utilizando os casos de testes 
   </tr>
   <tr>
     <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/mensagem-valida.png"></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/fb3a20eb-95cc-44ff-8a5d-85bf0326de50"></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/9030c6e4-5d93-477b-af3a-681611ca900c"></td>
   </tr>
 </table>
 
@@ -140,7 +140,7 @@ Cada funcionalidade desenvolvida deve ser testada utilizando os casos de testes 
     <td><strong>Responsável pelo Teste</strong></td>
     <td width="430">Peterson Alves Gervazio </td>
      <td width="100"><strong>Data do Teste</strong></td>
-    <td width="150">05/05/2024</td>
+    <td width="150">05/04/2025</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
