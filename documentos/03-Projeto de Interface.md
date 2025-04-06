@@ -52,7 +52,8 @@ Página com as **informações de localização da clínica**, incluindo mapa in
 
 Área onde o paciente pode **realizar seu agendamento online**, escolhendo o profissional, o tipo de tratamento, a data e o horário desejado.
 
-![Agendamento](img/Agendar.png)
+![Agendamento](img/agendamentoimg.PNG)
+![Agendamento](img/agendamentoimg2.PNG)
 
 ---
 
@@ -77,8 +78,7 @@ Funcionalidade acessível apenas para os profissionais da clínica, onde é poss
 
 Nesta seção, dentistas e recepcionistas podem **gerenciar todos os agendamentos** da clínica de forma prática e organizada.
 
-![Gerenciamento da Agenda 1](img/Gerenciar1.png)  
-![Gerenciamento da Agenda 2](img/Gerenciar2.png)
+![Gerenciamento da Agenda 1](img/gerenciamentoimg.PNG)  
 
 ---
 
