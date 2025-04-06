@@ -132,6 +132,46 @@
   </tr>
 </table>
 
+#### Caso de Teste de Sucesso
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-004<br>Deletar paciente.</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se o sistema deleta corretamente um paciente.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Arthur Oliveira Santos</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-09, RF-10</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a listagem de pacientes.<br>
+      2. Clicar no botão "Excluir" de um paciente.<br>
+      3. Confirmar a exclusão.<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - paciente: Teste<br>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>O paciente é removido do sistema e não aparece mais em gerenciamento.</td>
+  </tr>
+</table>
+
 # Evidências de Testes de Software
 
 <table>
@@ -228,41 +268,63 @@
     <tr>
     <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/cc744dc5-0d05-4314-b04b-4e7a36d0838d"></td>
   </tr>
-
-
 </table>
 
-## Parte 2 - Testes por pares
-A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade deve ser testada por um colega e os testes devem ser evidenciados. O colega "Tester" deve utilizar o caso de teste criado pelo desenvolvedor responsável pela funcionalidade (desenvolveu a funcionalidade e criou o caso de testes descrito no plano de testes).
-
-### Exemplo
 <table>
   <tr>
-    <th colspan="6" width="1000">CT-001<br>Login com credenciais válidas</th>
+    <th colspan="6" width="1000">CT-004<br>Deletar paciente.</th>
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
-    <td colspan="5">O sistema deve redirecionar o usuário para a página inicial do aplicativo após o login bem-sucedido.</td>
+    <td colspan="5">O paciente é removido do sistema e não aparece mais em gerenciamento.</td>
   </tr>
     <tr>
-    <td><strong>Responsável pela funcionalidade</strong></td>
-    <td width="430">José da Silva </td>
-      <td><strong>Responsável pelo teste</strong></td>
-    <td width="430">Maria Oliveira </td>
-     <td width="100"><strong>Data do teste</strong></td>
-    <td width="150">08/05/2024</td>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Arthur Oliveira Santos</td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">06/04/2025</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
-    <td colspan="5">O sistema está permitindo o login corretamente.</td>
+    <td colspan="5">O sistema não deletou corretamente.</td>
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
-  <tr>
-    <td colspan="6" align="center"><video src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-time-sheet/assets/82043220/2e3c1722-7adc-4bd4-8b4c-3abe9ddc1b48"/></td>
+   <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/4e63ad90-a91c-4fef-9379-6d6f9a3cabb0"></td>
+  </tr>
+   <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/5ce91f6f-ba1d-46e6-9e53-4c196e4621a8"></td>
+  </tr>
+    <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/b6d92c38-84d6-4970-913f-ec4ca69c4a71"></td>
   </tr>
 </table>
 
+## Solução
+O problema está na forma como o método DeleteConfirmed está sendo chamado na view Delete.cshtml, em conjunto com o atributo [HttpPost("Delete/{id}")].
 
+[HttpPost("Delete/{id}"), ActionName("Delete")]
 
+![Screenshot 2025-04-05 160738](https://github.com/user-attachments/assets/4162a446-8110-41aa-baf1-038148981ffa)
+
+![Screenshot 2025-04-05 160832](https://github.com/user-attachments/assets/cdd95817-9062-4a70-9695-c25ab61f0305)
+
+Mas no formulário da view Delete.cshtml
+
+form asp-action="Delete" asp-controller="Patient" asp-route-id="@Model.ID" method="post"
+
+![Screenshot 2025-04-05 160655](https://github.com/user-attachments/assets/d888ee66-b942-4dbc-8b4a-244405b4080b)
+
+O que acontece:
+
+O asp-action="Delete" chama a ação com nome Delete, não DeleteConfirmed.
+
+Mas o método com [HttpPost("Delete/{id}")] tem ActionName("Delete"), que espera que o ID seja passado na rota, como parte da URL (/Patient/Delete/1), e não no corpo do formulário.
+
+Agora quando deletamos o paciente, o erro de não encontrar o método/página foi resolvido e o paciente não aparece mais em gerenciamento
+
+![Screenshot 2025-04-06 111559](https://github.com/user-attachments/assets/aefd838d-165e-4289-ae73-7348743e3403)
+
+![Screenshot 2025-04-06 115344](https://github.com/user-attachments/assets/70a9996c-a076-4327-9ee9-37d54b65569d)
