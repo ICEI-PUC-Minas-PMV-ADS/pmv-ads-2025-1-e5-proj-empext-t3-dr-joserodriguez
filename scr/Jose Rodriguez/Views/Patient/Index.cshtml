@@ -19,7 +19,9 @@
         {
             <tr>
                 <td>@patient.Name</td>
-                <td>@patient.DateOfBirth.ToString("yyyy-MM-dd")</td>
+                <td>
+                    @patient.DateOfBirth?.ToString("dd/MM/yyyy")
+                </td>
                 <td>
                     <a href="@Url.Action("Edit", "Patient", new { id = patient.ID })" class="btn btn-primary">Editar</a>
                     <a href="@Url.Action("Delete", "Patient", new { id = patient.ID })" class="btn btn-danger">Excluir</a>

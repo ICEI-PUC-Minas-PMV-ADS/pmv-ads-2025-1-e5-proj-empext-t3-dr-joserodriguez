@@ -19,7 +19,7 @@ namespace LoginCadastroMVC.Models
         [Required(ErrorMessage = "A data de nascimento é obrigatória")]
         [DataType(DataType.Date)]
         [Display(Name = "Data de Nascimento")]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "O endereço é obrigatório")]
         [StringLength(200, ErrorMessage = "O endereço deve ter até 200 caracteres")]
