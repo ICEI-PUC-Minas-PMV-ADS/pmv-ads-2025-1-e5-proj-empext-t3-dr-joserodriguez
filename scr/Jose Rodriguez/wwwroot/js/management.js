@@ -172,6 +172,7 @@
     function populatePatientForm(patient) {
         document.getElementById('PatientID').value = patient.id;
         document.getElementById('Name').value = patient.name;
+        document.getElementById('DateOfBirth').value = patient.dateOfBirth ? patient.dateOfBirth.split('T')[0] : '';
         document.getElementById('Address').value = patient.address;
         document.getElementById('Email').value = patient.email;
         document.getElementById('Phone').value = patient.phone;
