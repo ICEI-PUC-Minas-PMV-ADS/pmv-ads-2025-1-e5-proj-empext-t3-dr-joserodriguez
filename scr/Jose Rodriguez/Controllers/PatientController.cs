@@ -63,6 +63,7 @@ namespace LoginCadastroMVC.Controllers
             {
                 id = patient.ID,
                 name = patient.Name,
+                dateOfBirth = patient.DateOfBirth,
                 address = patient.Address,
                 email = patient.Email,
                 phone = patient.Phone,
