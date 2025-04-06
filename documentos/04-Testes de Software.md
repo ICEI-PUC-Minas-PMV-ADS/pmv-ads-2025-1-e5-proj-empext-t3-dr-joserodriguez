@@ -91,6 +91,47 @@
   </tr>
 </table>
 
+#### Caso de Teste de Sucesso
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-003<br>Editar paciente com dados válidos</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se é possível editar corretamente os dados de um paciente.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Arthur Oliveira Santos</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-09</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página de edição de um paciente.<br>
+      2. Alterar os dados desejados.<br>
+      3. Clicar em "Salvar Alterações".<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - Email anterior: john@gmail.com<br>
+      - Novo email: johnDoeMarsh@gmail.com
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>Os dados são atualizados corretamente.</td>
+  </tr>
+</table>
+
 # Evidências de Testes de Software
 
 <table>
@@ -155,6 +196,40 @@
   <tr>
     <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/campos-vazios.png"></td>
   </tr>
+</table>
+
+<table>
+  <tr>
+    <th colspan="6" width="1000">CT-003<br>Editar paciente com dados válidos</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">Os dados são atualizados corretamente.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Arthur Oliveira Santos</td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">06/04/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema editou corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+   <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/f750689a-c181-4bc4-b54d-b11517b5704a"></td>
+  </tr>
+   <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/1e57750c-524c-4742-8747-a7af6c179372"></td>
+  </tr>
+    <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/cc744dc5-0d05-4314-b04b-4e7a36d0838d"></td>
+  </tr>
+
+
 </table>
 
 ## Parte 2 - Testes por pares
