@@ -78,7 +78,8 @@ Funcionalidade acessível apenas para os profissionais da clínica, onde é poss
 
 Nesta seção, dentistas e recepcionistas podem **gerenciar todos os agendamentos** da clínica de forma prática e organizada.
 
-![Gerenciamento da Agenda 1](img/gerenciamentoimg.PNG)  
+![Gerenciamento da Agenda 1](img/gerenciamentoimg2.PNG)  
+![Gerenciamento da Agenda 1](img/gerenciamentoimg.PNG) 
 
 ---
 
