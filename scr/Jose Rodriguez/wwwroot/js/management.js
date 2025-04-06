@@ -200,10 +200,17 @@
         formElements.forEach(el => {
             el.readOnly = isReadOnly;
             el.style.opacity = isReadOnly ? '0.8' : '1';
+
+            if (isReadOnly) {
+                el.classList.remove('editable');
+            }
         });
+
+        // Toggle button visibility
         saveBtn.style.display = isReadOnly ? 'none' : 'block';
         editBtn.style.display = isReadOnly ? 'block' : 'none';
     }
+
 
     prevMonthButton.addEventListener('click', function () {
         currentMonth--;
@@ -299,8 +306,16 @@
             showToast('Selecione um paciente primeiro.', 'error');
             return;
         }
+
         setFormReadOnly(false);
+
+        // Adiciona a classe editable nos inputs e textarea
+        const formElements = patientForm.querySelectorAll('input, textarea');
+        formElements.forEach(el => {
+            el.classList.add('editable');
+        });
     });
+
 
     deleteBtn.addEventListener('click', function () {
         if (!selectedPatientId) {
