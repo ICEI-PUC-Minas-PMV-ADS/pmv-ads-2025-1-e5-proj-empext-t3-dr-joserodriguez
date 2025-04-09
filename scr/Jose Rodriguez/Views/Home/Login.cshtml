@@ -1,3 +1,4 @@
+@model LoginCadastroMVC.Models.User
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,17 +9,28 @@
 <!-- Página de login -->
 <div class="login-container">
     <div class="img-container">
-            <img src="~/img/IMG_0752.jpeg" alt="Imagem de login">
-        </div>
+        <img src="~/img/IMG_0752.jpeg" alt="Imagem de login">
+    </div>
 
-        <div class="login-container-form">
-            <form class="form-container">
-                <input type="text" placeholder="E-mail" class="login-input">
-                <input type="password" placeholder="Senha" class="login-input">
+    <div class="login-container-form">
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+        
+            <div class="input-container">
+                @Html.TextBoxFor(m => m.Email, new { @class = "login-input", placeholder = "E-mail" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
 
-                <button type="submit" class="link-button login-button">Login</button>
-            </form>
-            <a href="" class="forgot-password">Esqueceu sua senha?</a>
+            <div class="input-container">
+                @Html.PasswordFor(m => m.Password, new { @class = "login-input", placeholder = "Senha" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="link-button login-button">Login</button>
+        }
+        <a href="" class="forgot-password">Esqueceu sua senha?</a>
     </div>
 </div>
 

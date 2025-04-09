@@ -13,5 +13,7 @@ namespace SeuProjeto.Models // Altere para o namespace correto
 
         // DbSet para a entidade Patient
         public DbSet<Patient> Patients { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

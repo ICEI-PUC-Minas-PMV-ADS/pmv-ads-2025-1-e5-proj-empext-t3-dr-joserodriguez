@@ -30,12 +30,13 @@
 }
 
 .login-input {
+    width: 100%;
     padding: 5px;
     font-size: 20px;
     color: #928d8c;
     border: none;
     border-bottom: 2px solid;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .login-input:focus {
@@ -72,4 +73,14 @@
 
 .forgot-password:hover {
     color: #928d8c;
+}
+
+.input-container {
+    height: 75px;
+    margin-bottom: 25px;
+}
+
+.validation-summary-errors ul {
+    list-style-type: none;
+    padding-left: 0;
 }

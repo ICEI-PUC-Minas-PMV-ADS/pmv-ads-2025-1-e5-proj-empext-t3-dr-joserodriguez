@@ -3,6 +3,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (TempData["LoginSucess"] != null)
+{
+    <script>
+        alert("@TempData["LoginSucess"]");
+    </script>
+}
+
 <!-- Seção inicial (Tela Home) -->
 <div id="home" style="height: 100vh;">
     @Html.Partial("Tela_home")
