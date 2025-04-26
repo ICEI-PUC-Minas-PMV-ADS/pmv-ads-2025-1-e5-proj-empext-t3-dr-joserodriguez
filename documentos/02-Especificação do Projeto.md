@@ -68,7 +68,7 @@ https://www.canva.com/design/DAGf2pQd5S0/E1quqrSFAMirmc2RtQ2mAg/view?utm_content
 | RF-05 | Enviar e-mail de confirmação para o cliente um ou dois dias antes de uma consulta. | ALTA | |
 | RF-06 | O cliente pode enviar email de cancelamento da consulta para a recepção. | ALTA | |
 | RF-07 | Enviar e-mail de confirmação de cancelamento para o cliente. | ALTA | |
-| RF-08 | O administrador e o recepcionista pode realizar a recuperação e alteração de senha. | MÉDIA | |
+| RF-08 | O administrador e o recepcionista pode realizar o login e a recuperação e alteração de senha. | MÉDIA | |
 | RF-09 | O administrador pode fazer o gerenciamento de usuários. | MÉDIA | Ler dados do usuário, editar e remover |
 | RF-10 | O administrador e o recepcionista pode gerenciar o painel administrativo. | MÉDIA | visualizar, agendar e cancelar agendamentos |
 | RF-11 | O administrador e o recepcionista pode gerenciar a agenda quinzenal. | MÉDIA | visualizar e gerar o relatório de agenda quinzenal.  |
