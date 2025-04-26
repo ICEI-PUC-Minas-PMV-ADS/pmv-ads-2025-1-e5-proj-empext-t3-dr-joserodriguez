@@ -3,11 +3,35 @@
 }
 
 <style>
-    /* CSS integrado na view */
+    /* CSS para o body */
     body {
-        min-height: 100vh; /* Faz a altura mínima da página ser a altura da janela */
+        min-height: 100vh;
         margin: 0;
-        overflow-x: hidden; /* Impede rolagem horizontal */
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Estilo para o vídeo */
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* Proporção 16:9 */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        margin-bottom: 50px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-container iframe, 
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border: none;
     }
 
     .service-icon {
@@ -26,21 +50,27 @@
         transition: all 0.3s ease;
         border: 1px solid #d4af37; /* Borda dourada */
         background-color: #f7f1d7; /* Fundo dourado claro */
+        color: black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        text-align: center;
+        height: 100%;
     }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            background-color: #d4af37; /* Fundo dourado quando passar o mouse */
-        }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        background-color: #d4af37; /* Fundo dourado quando passar o mouse */
+        color: white; /* Texto branco no hover */
+    }
 
     .details-content {
         margin-top: 15px;
-        margin-bottom: 15px;
-        text-align: left;
+        display: none; /* Inicialmente oculto */
         padding: 10px;
-        background-color: #f8f9fa;
-        border-radius: 5px;
+        color: black;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
     }
 
     .saiba-mais {
@@ -49,102 +79,76 @@
         color: #d4af37; /* Cor dourada no texto */
     }
 
-        .saiba-mais:hover {
-            background-color: #d4af37; /* Fundo dourado no hover */
-            color: white; /* Texto branco no hover */
-        }
-
-    .preview-text {
-        min-height: 50px;
+    .saiba-mais:hover {
+        background-color: #d4af37; /* Fundo dourado no hover */
+        color: white; /* Texto branco no hover */
     }
 
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* Proporção 16:9 */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-        margin-bottom: 50px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    .highlight-card {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-color: #f39c12;
     }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            border: none;
-        }
 
     .section-title {
-        position: relative;
-        margin-bottom: 30px;
-        padding-bottom: 15px;
         text-align: center;
+        margin-bottom: 30px;
+        color: white;
     }
 
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: #d4af37; /* Linha dourada abaixo do título */
-        }
-
-    /* Ajustes para o carrossel */
-    #carouselServicos {
-        max-height: 600px; /* Limita a altura do carrossel */
-        overflow-y: auto;
+    /* Ajustando a flexibilidade dos cards */
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
     }
 
-    .carousel-item {
-        min-height: 300px; /* Define uma altura mínima para os itens do carrossel */
+    .card-wrapper {
+        flex: 1 1 300px;
+        max-width: 350px;
+        margin-bottom: 20px;
     }
 
-    /* Ajustes para as setas de navegação do carrossel */
+    /* Ajustando a aparência das setas */
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
-        background-color: #d4af37; /* Cor das setas douradas */
-        border-radius: 50%; /* Torna as setas arredondadas */
+        background-color: #d4af37; /* Cor dourada para as setas */
+        border-radius: 50%;
+        padding: 10px;
     }
 
-    /* Estilo das setas para garantir visibilidade */
     .carousel-control-prev,
     .carousel-control-next {
-        background-color: rgba(0, 0, 0, 0.3); /* Fundo semitransparente para as setas */
+        width: 5%;
+        opacity: 0.9;
     }
 
-    /* Estilos de texto nos cards */
-    .card-text {
-        color: #6c6c6c; /* Cor do texto mais suave */
-    }
-
-    .card-title {
-        color: #333; /* Cor escura para o título */
-    }
-
-    /* Botões */
+    /* Estilo dos botões */
     .btn-outline-primary {
-        border-color: #d4af37; /* Borda dourada no botão */
-        color: #d4af37; /* Cor dourada no texto do botão */
+        border-color: #d4af37;
+        color: #d4af37;
     }
 
-        .btn-outline-primary:hover {
-            background-color: #d4af37; /* Fundo dourado no hover */
-            color: white; /* Texto branco no hover */
-        }
+    .btn-outline-primary:hover {
+        background-color: #d4af37;
+        color: white;
+    }
 
-    /* Destaque para o card */
-    .highlight-card {
-        transform: scale(1.05); /* Aumenta ligeiramente o card */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte para destacar */
-        border-color: #f39c12; /* Cor dourada mais intensa na borda */
+    /* Indicadores do carrossel */
+    .carousel-indicators {
+        bottom: -40px;
+    }
+
+    .carousel-indicators button {
+        background-color: #d4af37;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+    }
+
+   
+        
     }
 </style>
 
@@ -160,158 +164,245 @@
     </div>
 </div>
 
-<!-- Título da Seção de Carrossel -->
+<!-- Título da Seção -->
 <div class="section-title">
     <h2>Conheça nossos tratamentos</h2>
 </div>
 
 <!-- Seção de Carrossel de Cards -->
 <div id="carouselServicos" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicadores do carrossel -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselServicos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselServicos" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselServicos" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
     <div class="carousel-inner">
         <!-- Primeira página de cards -->
         <div class="carousel-item active">
-            <div class="row">
-                <!-- Clínica Geral -->
-                <div class="col-md-4">
-                    <div class="card h-100">
+            <div class="card-container">
+                <!-- Card 1 -->
+                <div class="card-wrapper">
+                    <div class="card">
                         <div class="card-body text-center">
                             <div class="service-icon mb-3">
                                 <i class="fas fa-tooth"></i>
                             </div>
                             <h4 class="card-title">Clínica Geral</h4>
                             <p class="card-text preview-text">Procedimentos básicos e preventivos para manter sua saúde bucal.</p>
-                            <div class="details-content" id="details-1" style="display: none;">
-                                <p>A Clínica Geral é a base de todos os tratamentos odontológicos...</p>
+                            <div class="details-content" id="details-1">
+                                <p>A Clínica Geral oferece atendimentos preventivos e exames periódicos. Entre os procedimentos estão limpezas e orientações de cuidados diários.</p>
                             </div>
                             <button class="btn btn-outline-primary saiba-mais" data-id="1">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="1" style="display:none;">Saiba Menos</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Endodontia -->
-                <div class="col-md-4">
-                    <div class="card h-100">
+                <!-- Card 2 -->
+                <div class="card-wrapper">
+                    <div class="card">
                         <div class="card-body text-center">
                             <div class="service-icon mb-3">
                                 <i class="fas fa-syringe"></i>
                             </div>
                             <h4 class="card-title">Endodontia</h4>
                             <p class="card-text preview-text">Tratamento de canal para dentes com infecção ou dor.</p>
-                            <div class="details-content" id="details-2" style="display: none;">
-                                <p>A Endodontia é a especialidade responsável pelo tratamento de canal...</p>
+                            <div class="details-content" id="details-2">
+                                <p>Endodontia resolve problemas de infecção na polpa dentária com tratamentos de canal. Ajudamos a salvar seu dente e aliviar dores intensas.</p>
                             </div>
                             <button class="btn btn-outline-primary saiba-mais" data-id="2">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="2" style="display:none;">Saiba Menos</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Periodontia -->
-                <div class="col-md-4">
-                    <div class="card h-100">
+                <!-- Card 3 -->
+                <div class="card-wrapper">
+                    <div class="card">
                         <div class="card-body text-center">
                             <div class="service-icon mb-3">
-                                <i class="fas fa-tooth"></i> <!-- Ícone de dente atualizado -->
+                                <i class="fas fa-tooth"></i>
                             </div>
                             <h4 class="card-title">Periodontia</h4>
                             <p class="card-text preview-text">Tratamento das gengivas e estruturas de suporte dos dentes.</p>
-                            <div class="details-content" id="details-3" style="display: none;">
-                                <p>A Periodontia trata das doenças que afetam os tecidos que dão suporte aos dentes...</p>
+                            <div class="details-content" id="details-3">
+                                <p>Com a Periodontia, tratamos doenças das gengivas e da estrutura óssea ao redor dos dentes. A prevenção é essencial para evitar problemas graves.</p>
                             </div>
                             <button class="btn btn-outline-primary saiba-mais" data-id="3">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="3" style="display:none;">Saiba Menos</button>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <!-- Segunda página de cards -->
         <div class="carousel-item">
-            <div class="row">
-                <!-- Ortodontia -->
-                <div class="col-md-4">
-                    <div class="card h-100">
+            <div class="card-container">
+                <!-- Card 4 -->
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <h4 class="card-title">Odontopediatria</h4>
+                            <p class="card-text preview-text">Cuidados odontológicos para crianças e adolescentes.</p>
+                            <div class="details-content" id="details-4">
+                                <p>A odontopediatria cuida da saúde bucal dos pequenos, desde os primeiros dentes até a adolescência. Realizamos prevenção, tratamentos e orientações sobre hábitos saudáveis.</p>
+                            </div>
+                            <button class="btn btn-outline-primary saiba-mais" data-id="4">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="4" style="display:none;">Saiba Menos</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <h4 class="card-title">Ortodontia</h4>
+                            <p class="card-text preview-text">Correção do alinhamento dentário e melhoria estética.</p>
+                            <div class="details-content" id="details-5">
+                                <p>A ortodontia trata dos dentes e ossos da face, corrigindo problemas de alinhamento e oclusão para melhorar a estética e a funcionalidade da boca.</p>
+                            </div>
+                            <button class="btn btn-outline-primary saiba-mais" data-id="5">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="5" style="display:none;">Saiba Menos</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="card-wrapper">
+                    <div class="card">
                         <div class="card-body text-center">
                             <div class="service-icon mb-3">
                                 <i class="fas fa-teeth"></i>
                             </div>
-                            <h4 class="card-title">Ortodontia</h4>
-                            <p class="card-text preview-text">Alinhamento dos dentes e correção da mordida.</p>
-                            <div class="details-content" id="details-4" style="display: none;">
-                                <p>A Ortodontia é a especialidade que corrige o posicionamento dos dentes...</p>
-                            </div>
-                            <button class="btn btn-outline-primary saiba-mais" data-id="4">Saiba Mais</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Implantodontia -->
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <div class="service-icon mb-3">
-                                <i class="fas fa-tooth"></i>
-                            </div>
-                            <h4 class="card-title">Implantodontia</h4>
-                            <p class="card-text preview-text">Reposição de dentes perdidos com implantes de titânio.</p>
-                            <div class="details-content" id="details-5" style="display: none;">
-                                <p>A Implantodontia é a área responsável pela reposição de dentes perdidos...</p>
-                            </div>
-                            <button class="btn btn-outline-primary saiba-mais" data-id="5">Saiba Mais</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Prótese Dentária -->
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <div class="service-icon mb-3">
-                                <i class="fas fa-teeth-open"></i>
-                            </div>
                             <h4 class="card-title">Prótese Dentária</h4>
-                            <p class="card-text preview-text">Reabilitação com próteses fixas ou removíveis.</p>
-                            <div class="details-content" id="details-6" style="display: none;">
-                                <p>A Prótese Dentária é a especialidade dedicada à reabilitação oral...</p>
+                            <p class="card-text preview-text">Substituição de dentes perdidos com próteses dentárias.</p>
+                            <div class="details-content" id="details-6">
+                                <p>A prótese dentária é uma solução para restaurar dentes faltantes, melhorando a estética e a função de mastigação.</p>
                             </div>
                             <button class="btn btn-outline-primary saiba-mais" data-id="6">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="6" style="display:none;">Saiba Menos</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Terceira página de cards -->
+        <div class="carousel-item">
+            <div class="card-container">
+                <!-- Card 7 (Implantes Dentários) -->
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-tooth"></i> <!-- Dente -->
+                            </div>
+                            <h4 class="card-title">Implantes Dentários</h4>
+                            <p class="card-text preview-text">Substituição de dentes perdidos com implantes duráveis.</p>
+                            <div class="details-content" id="details-7">
+                                <p>Os implantes dentários são a melhor solução para substituir dentes perdidos, proporcionando estética e funcionalidade duradoura.</p>
+                            </div>
+                            <button class="btn btn-outline-primary saiba-mais" data-id="7">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="7" style="display:none;">Saiba Menos</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 (Lentes de Contato Dental) -->
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-teeth"></i> <!-- Lentes -->
+                            </div>
+                            <h4 class="card-title">Lentes de Contato Dental</h4>
+                            <p class="card-text preview-text">Melhore a estética dos seus dentes com lentes de contato dental.</p>
+                            <div class="details-content" id="details-8">
+                                <p>As lentes de contato dental são ultra finas e ideais para melhorar a estética do sorriso, corrigindo a forma e cor dos dentes.</p>
+                            </div>
+                            <button class="btn btn-outline-primary saiba-mais" data-id="8">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="8" style="display:none;">Saiba Menos</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 9 (Clareamento Dental) - Adicionado para equilibrar -->
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-tooth"></i> <!-- Varinha mágica para clareamento -->
+                            </div>
+                            <h4 class="card-title">Clareamento Dental</h4>
+                            <p class="card-text preview-text">Procedimento para deixar seus dentes mais brancos e brilhantes.</p>
+                            <div class="details-content" id="details-9">
+                                <p>O clareamento dental é um procedimento estético que remove manchas e pigmentações, deixando seus dentes visivelmente mais brancos.</p>
+                            </div>
+                            <button class="btn btn-outline-primary saiba-mais" data-id="9">Saiba Mais</button>
+                            <button class="btn btn-outline-primary saiba-menos" data-id="9" style="display:none;">Saiba Menos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Controles do Carrossel -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselServicos" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselServicos" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
     </button>
 </div>
 
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('.saiba-mais').click(function () {
-                var id = $(this).data('id');
-                var detailsDiv = $('#details-' + id);
-                var card = $(this).closest('.card'); // Encontrar o card correspondente
-
-                // Se o conteúdo já está visível, esconda-o
-                if (detailsDiv.is(':visible')) {
-                    detailsDiv.slideUp();
-                    $(this).text('Saiba Mais');
-                    card.removeClass('highlight-card'); // Remove o destaque do card
-                } else {
-                    // Mostra o conteúdo e adiciona o destaque ao card
-                    detailsDiv.slideDown();
-                    $(this).text('Ocultar');
-                    card.addClass('highlight-card'); // Adiciona a classe de destaque
-                }
+<script>
+    // JavaScript para alternar as informações adicionais ao clicar no "Saiba Mais" e "Saiba Menos"
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.saiba-mais').forEach(button => {
+            button.addEventListener('click', function() {
+                const cardId = this.getAttribute('data-id');
+                const detailsContent = document.getElementById(`details-${cardId}`);
+                const saibaMaisButton = this;
+                const saibaMenosButton = document.querySelector(`.saiba-menos[data-id="${cardId}"]`);
+                
+                detailsContent.style.display = 'block';
+                saibaMaisButton.style.display = 'none';
+                saibaMenosButton.style.display = 'inline-block';
             });
         });
-    </script>
-}
+
+        document.querySelectorAll('.saiba-menos').forEach(button => {
+            button.addEventListener('click', function() {
+                const cardId = this.getAttribute('data-id');
+                const detailsContent = document.getElementById(`details-${cardId}`);
+                const saibaMaisButton = document.querySelector(`.saiba-mais[data-id="${cardId}"]`);
+                
+                detailsContent.style.display = 'none';
+                saibaMaisButton.style.display = 'inline-block';
+                this.style.display = 'none';
+            });
+        });
+
+        // Adiciona pausa automática do carousel ao passar o mouse
+        document.querySelector('#carouselServicos').addEventListener('mouseenter', function() {
+            bootstrap.Carousel.getInstance(this).pause();
+        });
+
+        document.querySelector('#carouselServicos').addEventListener('mouseleave', function() {
+            bootstrap.Carousel.getInstance(this).cycle();
+        });
+    });
+</script>
