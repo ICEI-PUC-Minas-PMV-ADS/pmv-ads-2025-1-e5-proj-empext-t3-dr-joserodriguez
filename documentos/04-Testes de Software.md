@@ -172,6 +172,52 @@
   </tr>
 </table>
 
+#### Caso de Teste de Sucesso
+<table>
+<tr>
+    <th colspan="2" width="1000">CT-005<br>Login</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se é possível fazer o login do dentista corretamente.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Mayra Rodriguez</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Codigo </strong></td>
+    <td width="430">Bianca </td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-08</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página "Login".<br>
+      2. Preencher todos os campos obrigatórios.<br>
+      3. Clicar no botão "Confirmar".<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - <strong>E-mail:</strong> teste@email.com<br>
+      - <strong>Senha:</strong> 12345678910 <br>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>Login Efetuado com sucesso.</td>
+  </tr>
+</table>
+
+
 # Evidências de Testes de Software
 
 <table>
@@ -302,6 +348,7 @@
   </tr>
 </table>
 
+
 ## Solução
 O problema está na forma como o método DeleteConfirmed está sendo chamado na view Delete.cshtml, em conjunto com o atributo [HttpPost("Delete/{id}")].
 
@@ -328,3 +375,30 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
 ![Screenshot 2025-04-06 111559](https://github.com/user-attachments/assets/aefd838d-165e-4289-ae73-7348743e3403)
 
 ![Screenshot 2025-04-06 115344](https://github.com/user-attachments/assets/70a9996c-a076-4327-9ee9-37d54b65569d)
+
+<table>
+  <tr>
+    <th colspan="6" width="1000">CT-005<br>Login.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">O Login ser efetuado</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Mayra Rodriguez</td>
+    <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">06/04/2025</td>
+  </tr>
+  <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">Tudo ocorreu como esperado.</td>
+  </tr>
+  <tr>
+    <td><strong>Link do vídeo</strong></td>
+    <td colspan="5">
+      <a href="https://www.youtube.com/watch?v=KShbUSnWtnY" target="_blank">Assistir no YouTube</a>
+    </td>
+  </tr>
+  
+</table>
