@@ -100,17 +100,13 @@
             <div class="alert alert-success">@ViewBag.ResetLinkSent</div>
         }
 
-        @using (Html.BeginForm("SendResetLink", "ResetPassword", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
+        <div class="input-container">
+            @Html.TextBoxFor(m => m.Email, new { @class = "reset-input", placeholder = "E-mail", type = "email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
 
-            <div class="input-container">
-                @Html.TextBoxFor(m => m.Email, new { @class = "reset-input", placeholder = "E-mail", type = "email" })
-                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-            </div>
-
-            <button type="submit" class="reset-button">Recuperar</button>
-        }
+        <button type="submit" class="reset-button">Recuperar</button>
+        
 
         <a href="/Home/Login" class="cancel-reset">Cancelar</a>
     </div>
