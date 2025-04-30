@@ -7,6 +7,8 @@ namespace LoginCadastroMVC.Models
         [Key]
         public int Id { get; set; }
 
+        public string? NameUser { get; set; }
+
         [Required(ErrorMessage = "O e-mail é obrigatório.")]
         [EmailAddress(ErrorMessage = "Digite um e-mail válido.")]
         public string Email { get; set; }

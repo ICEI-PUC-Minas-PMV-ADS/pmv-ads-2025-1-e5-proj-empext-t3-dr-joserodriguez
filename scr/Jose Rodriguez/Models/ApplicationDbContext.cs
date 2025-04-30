@@ -24,6 +24,7 @@ namespace SeuProjeto.Models // Altere para o namespace correto
                 new User
                 {
                     Id = 1,
+                    NameUser = "Dr.José Rodriguez",
                     Email = "Consultoriodontovip@gmail.com",
                     Password = "odontovipJR294"
                 }
