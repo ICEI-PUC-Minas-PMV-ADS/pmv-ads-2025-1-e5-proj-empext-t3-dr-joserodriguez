@@ -26,22 +26,29 @@
 </div>
 
 <!-- Seção de Depoimentos -->
-<div id="depoimentos" style="height: 100vh; background-color: #d4c6ab;">
+<div id="depoimentos" style="height: 90vh; background-color: #d4c6ab;">
     @Html.Partial("Depoimentos")
 </div>
 
 <!-- Seção de Localização -->
-<div id="location" style="height: 100vh;">
+<div id="location" style="height: 70vh;">
     @Html.Partial("Location")
 </div>
 
 <!-- Seção Agendamento -->
-<div id="agendamento" style="height: 100vh;">
+<div id="agendamento" style="height: 90vh;">
     @Html.Partial("~/Views/Patient/Create.cshtml")
 </div>
 
 <!-- Seção de Privacy -->
-<div id="privacy" style="height: 100vh; background-color: #d4c6ab;">
-    <h2>Privacy</h2>
-    <p>Política de privacidade...</p>
+<div id="privacy" style="height: 28.5vh; background-color: #d4c6ab;">
+    <div class="container mt-4 p-4 border rounded">
+        <h4>Informações de Contato</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Endereço: Av. Dom José Gaspar, 500 - Coração Eucarístico, Belo Horizonte - MG, 30535-901</p>
+        <p><i class="fas fa-calendar-alt"></i> Dias aberto: Segunda a Sexta, das 08:00 às 18:00</p>
+        <p><i class="fas fa-envelope"></i> Email: contato@pucminas.br</p>
+        <p><i class="fas fa-phone"></i> Telefone: (31) 3319-4444</p>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </div>
