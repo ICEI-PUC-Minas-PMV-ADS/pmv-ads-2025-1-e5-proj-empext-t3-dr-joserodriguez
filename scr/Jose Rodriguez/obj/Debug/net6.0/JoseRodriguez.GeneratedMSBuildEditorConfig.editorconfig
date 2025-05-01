@@ -18,6 +18,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\josem\Music\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\scr\Jose Rodriguez
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Dentistas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudGlzdGFzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Dentistas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudGlzdGFzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Dentistas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudGlzdGFzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Dentistas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudGlzdGFzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Dentistas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudGlzdGFzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Home/Antes_depois.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbnRlc19kZXBvaXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Home/RedefinirSenha.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWRlZmluaXJTZW5oYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/josem/Music/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/scr/Jose Rodriguez/Views/Home/Tela_home.cshtml]

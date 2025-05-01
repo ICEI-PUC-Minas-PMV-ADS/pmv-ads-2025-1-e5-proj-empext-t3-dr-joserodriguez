@@ -99,8 +99,48 @@ namespace Jose_Rodriguez.Migrations
                         {
                             Id = 1,
                             Email = "Consultoriodontovip@gmail.com",
-                            NameUser = "Dr.José Rodriguez",
+                            NameUser = "Dr. José Rodriguez",
                             Password = "odontovipJR294"
+                        });
+                });
+
+            modelBuilder.Entity("SeuProjeto.Models.Dentista", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Cedula")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dentistas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cedula = "123456",
+                            Email = "maria.silva@odontovip.com",
+                            Nome = "Dr. Maria Silva",
+                            Telefone = "(11) 98765-4321"
                         });
                 });
 #pragma warning restore 612, 618
