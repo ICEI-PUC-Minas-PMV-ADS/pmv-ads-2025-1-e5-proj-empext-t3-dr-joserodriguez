@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Jose_Rodriguez.Models.ContactViewModel
+@{
     ViewData["Title"] = "Localização";
     Layout = null;
 }
@@ -11,21 +12,33 @@
         <div class="col-md-4">
             <div class="card p-4 shadow">
                 <h4>Entre em Contato</h4>
-                <form>
+                <form asp-action="Location" method="post">
                     <div class="mb-3">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Seu nome">
+                        <label asp-for="Nome" class="form-label">Nome</label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="email" placeholder="seuemail@email.com">
+                        <label asp-for="Email" class="form-label">E-mail</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="mensagem" class="form-label">Mensagem</label>
-                        <textarea class="form-control" id="mensagem" rows="4" placeholder="Escreva sua mensagem"></textarea>
+                        <label asp-for="Mensagem" class="form-label">Mensagem</label>
+                        <textarea asp-for="Mensagem" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Mensagem" class="text-danger"></span>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Enviar Mensagem</button>
                 </form>
+
+                @if (ViewBag.MensagemEnviada != null)
+                {
+                    <div class="alert alert-success mt-3">Mensagem enviada com sucesso!</div>
+                }
+                else if (ViewBag.Erro != null)
+                {
+                    <div class="alert alert-danger mt-3">Erro ao enviar mensagem. Tente novamente mais tarde.</div>
+                }
             </div>
         </div>
 
@@ -36,5 +49,11 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
 
