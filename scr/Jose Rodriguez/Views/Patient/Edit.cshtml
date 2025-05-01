@@ -4,78 +4,120 @@
     ViewBag.Title = "Editar Paciente";
 }
 
-<h2>Editar Paciente</h2>
+<style scoped>
+    .container-edit-patient {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        min-height: 100vh;
+    }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.ID)  <!-- Usando a propriedade ID corretamente -->
+    .profile-pic-edit {
+        flex: 1 1 300px;
+        max-width: 400px;
+        aspect-ratio: 1;
+        border-radius: 0 50% 50% 0;
+        overflow: hidden;
+    }
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        .profile-pic-edit img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .form-edit-patient {
+        flex: 1 1 300px;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 20px;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .form-title-edit-patient {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    select, input, textarea {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        color: white;
+        font-size: 1rem;
+        padding: 12px 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .button-edit-patient {
+        padding: 12px;
+        border: none;
+        border-radius: 20px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .save-edit-patient {
+        background-color: #d6aa6d;
+        color: white;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Complaint, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Complaint, new { @class = "form-control", rows = 4 })
-                @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .cancel-edit-patient {
+        background-color: #e3bfc1;
+        color: black;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SpecialtiesString, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.SpecialtiesString, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SpecialtiesString, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    .validation-error {
+        color: red;
+        font-size: 14px;
+    }
+</style>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar Alterações" class="btn btn-primary" />
-                @Html.ActionLink("Voltar para Lista", "Index", null, new { @class = "btn btn-default" })
-            </div>
-        </div>
+<div class="container-edit-patient">
+    <div class="profile-pic-edit">
+        <img src="~/img/IMG_0752.jpeg" alt="Foto do Paciente">
     </div>
-}
 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-edit-patient">
+            <div class="form-title-edit-patient">Alterar Cadastro de Paciente</div>
+
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Nome Completo" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-error" })
+
+            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { placeholder = "Número de Telefone" } })
+            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-error" })
+
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "E-mail", type = "email" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-error" })
+
+            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { placeholder = "Data de Nascimento", type = "date" } })
+            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "validation-error" })
+
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { placeholder = "Endereço" } })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "validation-error" })
+
+            @Html.TextAreaFor(model => model.Complaint, new { placeholder = "Queixa", rows = 3 })
+            @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "validation-error" })
+
+            @Html.TextBoxFor(model => model.SpecialtiesString, new { placeholder = "Especialidades" }) 
+            @Html.ValidationMessageFor(model => model.SpecialtiesString, "", new { @class = "validation-error" }) 
+
+            <button type="submit" class="button-edit-patient save-edit-patient">Salvar</button>
+            <button type="button" class="button-edit-patient cancel-edit-patient" onclick="window.location.href='/patients/index'">Cancelar</button>
+        </div>
+    }
+</div>
