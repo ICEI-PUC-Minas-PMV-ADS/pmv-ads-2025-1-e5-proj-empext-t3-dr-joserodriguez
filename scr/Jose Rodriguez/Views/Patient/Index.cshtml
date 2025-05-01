@@ -4,31 +4,107 @@
     ViewBag.Title = "Lista de Pacientes";
 }
 
-<h2>@ViewBag.Title</h2>
+<style scoped>
+    .patients-list-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Date of Birth</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+    .patients-table {
+        background-color: #222;
+        padding: 30px;
+        border-radius: 16px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .patient-card {
+        display: flex;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .patient-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .patient-name {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .patient-dob {
+        font-size: 16px;
+        color: #ccc;
+    }
+
+    .patient-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-custom {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+    }
+
+    .btn-edit {
+        background-color: #d6aa6d;
+    }
+
+    .btn-delete {
+        background-color: #e3bfc1;
+        color: black;
+    }
+
+    .btn-create {
+        background-color: #4CAF50;
+        padding: 12px 20px;
+        border-radius: 20px;
+        font-size: 16px;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<div class="patients-list-container">
+    <h2>@ViewBag.Title</h2>
+
+    <div style="width: 100%; display: flex; justify-content: flex-end;">
+        <a href="@Url.Action("Create", "Patient")" class="btn-create">Cadastrar Novo Paciente</a>
+    </div>
+
+    <div class="patients-table">
         @foreach (var patient in Model)
         {
-            <tr>
-                <td>@patient.Name</td>
-                <td>
-                    @patient.DateOfBirth?.ToString("dd/MM/yyyy")
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit", "Patient", new { id = patient.ID })" class="btn btn-primary">Editar</a>
-                    <a href="@Url.Action("Delete", "Patient", new { id = patient.ID })" class="btn btn-danger">Excluir</a>
-                </td>
-            </tr>
+            <div class="patient-card">
+                <div class="patient-info">
+                    <div class="patient-name">@patient.Name</div>
+                    <div class="patient-dob">@patient.DateOfBirth?.ToString("dd/MM/yyyy")</div>
+                </div>
+                <div class="patient-actions">
+                    <a href="@Url.Action("Edit", "Patient", new { id = patient.ID })" class="btn-custom btn-edit">Editar</a>
+                    <a href="@Url.Action("Delete", "Patient", new { id = patient.ID })" class="btn-custom btn-delete">Excluir</a>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
-
-<a href="@Url.Action("Create", "Patient")" class="btn btn-success">Cadastrar Novo Paciente</a>
+    </div>
+</div>
