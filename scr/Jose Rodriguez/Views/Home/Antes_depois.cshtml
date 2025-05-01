@@ -2,5 +2,78 @@
     ViewData["Title"] = "Antes e Depois";
     Layout = null;
 }
-<h1>Antes e Depois</h1>
-<p>Nessa Tela mostrará um video disponibilizado pelo dentista e especificações de tratamentos dentarios.</p>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mhayes-twentytwenty/1.0.0/css/twentytwenty.min.css">
+
+<style>
+    .before-after-h1 {
+        color:#b39464;
+        margin-bottom: 20px;
+    }
+
+    .before-after-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .twenty-container {
+        border: 3px solid white;
+    }
+
+    .twenty-container img {
+        border-radius: 0;
+    }
+
+    .twentytwenty-before-label:before {
+        content: "Antes";
+    }
+
+    .twentytwenty-after-label:before {
+        content: "Depois"!important;
+    }
+
+    .twentytwenty-handle {
+        background-color: white !important;
+    }
+
+    .twentytwenty-left-arrow {
+        border-right: 6px solid rgb(0, 0, 0)!important;
+    }
+
+    .twentytwenty-right-arrow {
+        border-left: 6px solid rgb(0, 0, 0)!important;
+    }
+</style>
+
+<h1 class="before-after-h1">Antes e Depois</h1>
+
+<div class="before-after-container">
+    <div class="twenty-container">
+        <img src="~/img/IMG_1026-before.png">
+        <img src="~/img/IMG_1026-after.png">
+    </div>
+
+    <div class="twenty-container">
+        <img src="~/img/IMG_1027-before.png">
+        <img src="~/img/IMG_1027-after.png">
+    </div>
+
+    <div class="twenty-container">
+        <img src="~/img/IMG_1029-before.png">
+        <img src="~/img/IMG_1029-after.png">
+    </div>
+
+    <div class="twenty-container">
+        <img src="~/img/IMG_1030-before.png">
+        <img src="~/img/IMG_1030-after.png">
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mhayes-twentytwenty/1.0.0/js/jquery.twentytwenty.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mhayes-twentytwenty/1.0.0/js/jquery.event.move.min.js"></script>
+
+<script>
+    $(".twenty-container").twentytwenty();
+</script>

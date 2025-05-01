@@ -2,5 +2,98 @@
     ViewData["Title"] = "Historia";
     Layout = null;
 }
-<h2>Historia</h2>
-<p>Aqui vai o percurso profissional do dentista.</p>
+
+<style>
+    #historia-background {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        background-color: white;
+    }
+
+    #historia {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    .history-container {
+        background-color: white;
+        display: flex;
+        margin-top: 5rem;
+        color: rgba(199,163,114,255);
+        padding: 2rem;
+    }
+
+    .history-img-container {
+        width: 40%;
+    }
+
+    .history-img-container img {
+        clip-path: inset(0 0 0 0 round 0 50% 50% 0);
+        border-radius: 0;
+    }
+
+    .history-txt {
+        padding: 0 5rem;
+        width: 60%;
+    }
+
+    @@media (max-width: 1000px) {
+        .history-txt {
+            padding: 0 2rem;
+        }
+    }
+
+    @@media (max-width: 750px) {
+        .history-txt {
+            padding: 0 1rem;
+        }
+    }
+
+    .history-txt h2 {
+        position: relative;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .history-txt h2::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 45%;
+        height: 2px;
+        background-color: rgba(199,163,114,255);
+    }
+
+    .history-txt p {
+        margin-top: 20px;
+    }
+
+    .history-txt-imgs {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        margin-top: 5rem;
+    }
+
+    .history-txt-imgs img {
+        width: 50%;
+        border-radius: 0;
+        object-fit: cover;
+    }
+</style>
+
+<div class="history-container">
+    <div class="history-img-container">
+        <img src="~/img/IMG_0705.jpeg">
+    </div>
+    <div class="history-txt">
+        <h2>Dr. José Rodriguez</h2>
+        <p>Olá, sou a Dr. José Michell Rodriguez Fernandez, médico deritista especializado en Perio-Implantologia e Reabilitação Oral. Com uma trajetória que começou no Peru e passou por Brasil, EUA e Portugal, onde me especializel em instituições como USP, Unicamp e Universidade de Loma Linda estou feliz em recebê-los no Clinico Dr. José Rodriguez, localizada no Algarve. Oferecemos o que hà de mais modemo em odontologia digital, com atendimento humanizado e acessivel estrutura de panto e tecnologia avançada, garantindo tratamentos de qualidade para residentes e turistas</p>
+
+        <div class="history-txt-imgs">
+            <img src="~/img/IMG_0711.png">
+            <img src="~/img/IMG_0712.png">
+        </div>
+    </div>
+</div>
