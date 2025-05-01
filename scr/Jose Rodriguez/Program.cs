@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using LoginCadastroMVC.Models; // Verifique se este é o namespace correto
 using SeuProjeto.Models; // Verifique se este é o namespace correto
+using SeuProjeto.Services; // Se você estiver usando um serviço de email
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +11,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Adiciona os serviços MVC (controladores e visualizações)
 builder.Services.AddControllersWithViews();
 
+// Registro do serviço EmailService (caso você precise injetar no seu controlador)
+builder.Services.AddScoped<EmailService>();
+
 var app = builder.Build();
 
 // Configura o pipeline de requisição HTTP
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();  // Exibe erros detalhados no ambiente de desenvolvimento
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts(); // HSTS é configurado para segurança adicional

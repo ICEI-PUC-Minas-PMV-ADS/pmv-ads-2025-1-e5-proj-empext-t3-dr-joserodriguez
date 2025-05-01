@@ -1,8 +1,6 @@
-﻿// Caminho do arquivo: SeuProjeto/Services/EmailService.cs
-
-using Microsoft.Extensions.Configuration;
-using System.Net;
+﻿using System.Net;
 using System.Net.Mail;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace SeuProjeto.Services
@@ -16,29 +14,33 @@ namespace SeuProjeto.Services
             _configuration = configuration;
         }
 
-        public async Task SendEmailAsync(string toEmail, string subject, string body)
+        // Alterado para método assíncrono
+        public async Task EnviarEmailAsync(string destinatario, string assunto, string corpo)
         {
+            // Recuperando as configurações do arquivo appsettings.json
             var smtpServer = _configuration["EmailSettings:SmtpServer"];
             var smtpPort = int.Parse(_configuration["EmailSettings:SmtpPort"]);
-            var smtpUsername = _configuration["EmailSettings:SmtpUsername"];
-            var smtpPassword = _configuration["EmailSettings:SmtpPassword"];
-            var fromEmail = _configuration["EmailSettings:FromEmail"];
+            var smtpUser = _configuration["EmailSettings:SmtpUser"];
+            var smtpPass = _configuration["EmailSettings:SmtpPass"];
 
-            var mailMessage = new MailMessage
+            var mensagem = new MailMessage
             {
-                From = new MailAddress(fromEmail),
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = true,
+                From = new MailAddress(smtpUser),
+                Subject = assunto,
+                Body = corpo,
+                IsBodyHtml = true
             };
 
-            mailMessage.To.Add(toEmail);
+            mensagem.To.Add(destinatario);
 
-            using (var smtpClient = new SmtpClient(smtpServer, smtpPort))
+            // Utilizando o cliente SMTP com a configuração de envio assíncrono
+            using (var cliente = new SmtpClient(smtpServer, smtpPort))
             {
-                smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
-                smtpClient.EnableSsl = true;
-                await smtpClient.SendMailAsync(mailMessage);
+                cliente.Credentials = new NetworkCredential(smtpUser, smtpPass);
+                cliente.EnableSsl = true;
+
+                // Envio assíncrono do e-mail
+                await cliente.SendMailAsync(mensagem);
             }
         }
     }
