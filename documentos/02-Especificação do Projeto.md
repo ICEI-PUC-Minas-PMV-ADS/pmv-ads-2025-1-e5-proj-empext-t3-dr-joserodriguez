@@ -61,7 +61,7 @@ https://www.canva.com/design/DAGf2pQd5S0/E1quqrSFAMirmc2RtQ2mAg/view?utm_content
 
 | **ID** | **Requisitos Funcionais**                      | **Prioridade** | **Descrição**                                                                                     |
 |--------|-----------------------------------|----------------|-------------------------------------------------------------------------------------------------|
-| RF-01 | Permitir que o usuário consulte informações sobre a clínica e os profissionais.| ALTA| história, serviços oferecidos e casos clínicos. |
+| RF-01 | Permitir que o usuário consulte informações sobre a clínica.| ALTA| história, serviços oferecidos e casos clínicos. |
 | RF-02 | O cliente pode preencher o formulário de agendamento de consulta. | ALTA|  |
 | RF-03 | Automatizar o agendamento de consultas online, permitindo que o cliente escolha horários disponíveis sem a necessidade de intervenção da recepção. | ALTA |   |
 | RF-04 | Gerar relatórios quinzenais com consultas agendadas e canceladas. | ALTA |  |
