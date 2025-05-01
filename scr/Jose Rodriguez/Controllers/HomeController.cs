@@ -40,7 +40,7 @@ namespace Jose_Rodriguez.Controllers
                 <p><strong>Mensagem:</strong><br>{model.Mensagem}</p>
             ";
 
-                    await _emailService.EnviarEmailAsync("medepermissao@gmail.com", "Mensagem do site", corpo); // Mudar Destinatário para teste. Oficial (consultoriodontovip@gmail.com)
+                    await _emailService.EnviarEmailAsync("consultoriodontovip2025@gmail.com", "Mensagem do site", corpo);
 
                     ViewBag.MensagemEnviada = true;
                 }
@@ -50,7 +50,7 @@ namespace Jose_Rodriguez.Controllers
                 }
             }
 
-            return View(model);
+            return RedirectToAction("Index");
         }
 
 
