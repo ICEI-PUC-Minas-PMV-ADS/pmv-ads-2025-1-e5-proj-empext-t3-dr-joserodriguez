@@ -72,6 +72,7 @@ https://www.canva.com/design/DAGf2pQd5S0/E1quqrSFAMirmc2RtQ2mAg/view?utm_content
 | RF-09 | O administrador pode fazer o gerenciamento de usuários. | MÉDIA | Ler dados do usuário, editar e remover |
 | RF-10 | O administrador e o recepcionista pode gerenciar o painel administrativo. | MÉDIA | visualizar, agendar e cancelar agendamentos |
 | RF-11 | O administrador e o recepcionista pode gerenciar a agenda quinzenal. | MÉDIA | visualizar e gerar o relatório de agenda quinzenal.  |
+| RF-12 | Enviar e-mail de recuperação de senha para o usuário. | ALTA | |
 
 
 | **ID** | **Requisitos Não Funcionais**                      | **Prioridade** | **Descrição**                                                                                     |
