@@ -397,9 +397,8 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
   <tr>
     <td><strong>Link do vídeo</strong></td>
     <td colspan="5">
-      <a href="https://www.youtube.com/watch?v=KShbUSnWtnY" target="_blank">Assistir no YouTube</a>
+      <a href="https://youtu.be/DuERvaUvUaM" target="_blank">Assistir no YouTube</a>
 
-    </td>
   </tr>
   
 </table>
