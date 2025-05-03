@@ -217,6 +217,49 @@
   </tr>
 </table>
 
+#### Caso de Teste de Sucesso
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-006<br>Cancelamento de consulta via e-mail.
+    Permitir que o usuário consulte informações sobre a clínica.</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se a mensagem enviada pelo cliente é recebida pelo email da clínica.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Peterson Alves Gervazio</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-01, RF-06</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página "Localização".<br>
+      2. Preencher todos os campos.<br>
+      3. Clicar no botão "Enviar Mensagem".<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - <strong>Nome:</strong> Maria Silva <br>
+      - <strong>E-mail:</strong> maria.silva@email.com  <br>
+      - <strong>Mensagem:</strong> Olá, gostaria de cancelar minha consulta marcada para o dia 05/05/2025 às 14h. Nome: Maria Silva. Motivo: imprevisto profissional. <br>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>A mensagem é recebida pelo email da clínica.</td>
+  </tr>
+</table>
+
 
 # Evidências de Testes de Software
 
@@ -401,4 +444,35 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
 
   </tr>
   
+</table>
+
+
+<table>
+  <tr>
+    <th colspan="6" width="1000">CT-006<br>Cancelamento de consulta via e-mail.
+    Permitir que o usuário consulte informações sobre a clínica.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">A mensagem é recebida pelo email da clínica.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Peterson Alves Gervazio </td>
+    <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">02/05/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está recebendo a mensagem do cliente corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/6e2c0a95-bad7-4cad-837a-587ca6a9151b"></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/cbf09fbe-1f2b-4a55-af3e-3a321ed119cb"></td>
+  </tr>
 </table>
