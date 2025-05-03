@@ -208,8 +208,8 @@
     <tr>
     <td><strong>Dados de teste</strong></td>
     <td>
-      - <strong>E-mail:</strong> teste@email.com<br>
-      - <strong>Senha:</strong> 12345678910 <br>
+      - <strong>E-mail:</strong> consultoriodontovip@gmail.com<br>
+      - <strong>Senha:</strong> odontovipJR294 <br>
   </tr>
     <tr>
     <td><strong>Critérios de êxito</strong></td>
@@ -397,7 +397,7 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
   <tr>
     <td><strong>Link do vídeo</strong></td>
     <td colspan="5">
-      <a href="https://www.youtube.com/watch?v=KShbUSnWtnY" target="_blank">Assistir no YouTube</a>
+      <a href="[https://www.youtube.com/watch?v=KShbUSnWtnY] target="_blank">Assistir no YouTube</a>
     </td>
   </tr>
   
