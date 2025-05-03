@@ -228,6 +228,10 @@
     <td>Verifica se a mensagem enviada pelo cliente é recebida pelo email da clínica.</td>
   </tr>
   <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Arthur Oliveira</td>
+  </tr>
+  <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
     <td width="430">Peterson Alves Gervazio</td>
   </tr>
@@ -455,6 +459,10 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
     <td colspan="5">A mensagem é recebida pelo email da clínica.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Arthur Oliveira</td>
   </tr>
     <tr>
     <td><strong>Responsável pelo Teste</strong></td>
