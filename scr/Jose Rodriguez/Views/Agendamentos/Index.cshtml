@@ -1,4 +1,7 @@
-﻿@model SeuProjeto.Models.AgendamentoViewModel
+﻿@model LoginCadastroMVC.Models.AgendamentoViewModel
+@{
+    Layout = null;
+}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,17 +11,17 @@
     <title>Agendamento de Consulta Odontológica</title>
     <style>
         :root {
-            --primary: #2196F3;
+            --primary: #C6A16F;
             --secondary: #f5f5f5;
-            --text-dark: #333;
+            --text-dark: #f0f0f0;
             --text-light: #aaa;
-            --border-color: #ddd;
-            --background: #f4f4f9;
+            --border-color: #444;
+            --background-black: #121212;
         }
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--background);
+            background-color: var(--background-black);
             margin: 0;
             padding: 0;
             color: var(--text-dark);
@@ -26,19 +29,19 @@
 
         .appointment-container {
             display: flex;
-            flex-direction: column;
             max-width: 1000px;
-            margin: 50px auto;
-            background-color: white;
+            margin: 20px auto;
+            background-color: var(--background-black);
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             overflow: hidden;
         }
 
         /* Calendar Section */
         .calendar-section {
-            width: 100%;
+            width: 45%;
             background-color: white;
+            color: black;
             padding: 20px;
         }
 
@@ -52,7 +55,7 @@
             .month-nav button {
                 background: none;
                 border: none;
-                color: var(--text-dark);
+                color: black;
                 cursor: pointer;
                 font-size: 18px;
             }
@@ -163,7 +166,7 @@
 
         .time-slot {
             background-color: #f0f0f0;
-            padding: 8px 5px;
+            padding: 5px;
             text-align: center;
             border-radius: 5px;
             font-size: 12px;
@@ -181,29 +184,21 @@
 
         /* Form Section */
         .form-section {
-            width: 100%;
+            width: 55%;
             padding: 20px;
-            background-color: white;
+            background-color: var(--background-black);
         }
 
         .form-header {
             text-align: center;
             font-size: 22px;
-            color: var(--primary);
+            color: var(--text-dark);
             margin-bottom: 20px;
-            font-weight: bold;
         }
 
         .form-group {
             margin-bottom: 15px;
         }
-
-            .form-group label {
-                display: block;
-                font-weight: 600;
-                margin-bottom: 6px;
-                color: var(--text-dark);
-            }
 
         .form-control {
             width: 100%;
@@ -211,7 +206,7 @@
             border: 1px solid var(--border-color);
             border-radius: 5px;
             font-size: 14px;
-            background-color: white;
+            background-color: #1e1e1e;
             color: var(--text-dark);
         }
 
@@ -229,7 +224,7 @@
             padding: 10px;
             border: 1px solid var(--border-color);
             border-radius: 5px;
-            background-color: white;
+            background-color: #1e1e1e;
             color: var(--text-dark);
             cursor: pointer;
             display: flex;
@@ -249,14 +244,14 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
-            background-color: white;
+            background-color: #1e1e1e;
             border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
             .specialty-options.show {
-                max-height: 300px;
+                max-height: 200px;
                 overflow-y: auto;
                 border: 1px solid var(--border-color);
             }
@@ -268,7 +263,7 @@
         }
 
             .specialty-option:hover {
-                background-color: #f5f5f5;
+                background-color: #2c2c2c;
             }
 
         .submit-btn {
@@ -281,29 +276,35 @@
             font-size: 16px;
             cursor: pointer;
             margin-top: 15px;
-            font-weight: bold;
-            transition: background-color 0.3s;
         }
 
             .submit-btn:hover {
-                background-color: #1976D2;
+                background-color: #b5814a;
             }
 
         .text-danger {
-            color: #ff5252;
+            color: #C6A16F;
             font-size: 12px;
             margin-top: 4px;
             display: block;
         }
 
         .alert-success {
-            background-color: rgba(33, 150, 243, 0.1);
-            color: var(--primary);
+            background-color: #2c2c2c;
+            color: #C6A16F;
             padding: 12px;
             border-radius: 5px;
             margin-top: 20px;
-            text-align: center;
-            border: 1px solid var(--primary);
+        }
+
+        @@media (max-width: 768px) {
+            .appointment-container {
+                flex-direction: column;
+            }
+
+            .calendar-section, .form-section {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -355,31 +356,30 @@
         </div>
 
         <div class="form-section">
-            <div class="form-header">Faça seu Agendamento Odontológico</div>
+            <div class="form-header">Faça seu Agendamento</div>
 
-            <form asp-action="Enviar" method="post">
+            @using (Html.BeginForm("Enviar", "Agendamentos", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
                 <div class="form-group">
-                    <label for="Nome">Nome:</label>
-                    <input type="text" id="Nome" name="Nome" class="form-control" value="@Model.Nome" required />
-                    <div class="text-danger">@Html.ValidationMessageFor(m => m.Nome)</div>
+                    @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", placeholder = "Nome", required = "required" })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    <label for="Email">Email:</label>
-                    <input type="email" id="Email" name="Email" class="form-control" value="@Model.Email" required />
-                    <div class="text-danger">@Html.ValidationMessageFor(m => m.Email)</div>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email", type = "email", required = "required" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    <label for="Telefone">Telefone:</label>
-                    <input type="text" id="Telefone" name="Telefone" class="form-control" value="@Model.Telefone" required />
-                    <div class="text-danger">@Html.ValidationMessageFor(m => m.Telefone)</div>
+                    @Html.TextBoxFor(model => model.Telefone, new { @class = "form-control", placeholder = "Telefone", required = "required" })
+                    @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    <label for="Especialidade">Especialidade:</label>
                     <div class="specialty-dropdown">
-                        <div class="specialty-select" id="specialty-display">Selecione uma especialidade</div>
+                        <div class="specialty-select" id="specialty-display">Procedimento: Odontologia Geral</div>
                         <div class="specialty-options" id="specialty-options">
                             <div class="specialty-option" data-value="Ortodontia">Ortodontia</div>
                             <div class="specialty-option" data-value="Endodontia">Endodontia</div>
@@ -392,25 +392,23 @@
                             <div class="specialty-option" data-value="RadiologiaOdontologica">Radiologia Odontológica</div>
                             <div class="specialty-option" data-value="Odontogeriatria">Odontogeriatria</div>
                         </div>
-                        <input type="hidden" id="Especialidade" name="Especialidade" value="" required />
+                        @Html.HiddenFor(model => model.Especialidade, new { id = "Especialidade" })
                     </div>
-                    <div class="text-danger">@Html.ValidationMessageFor(m => m.Especialidade)</div>
+                    @Html.ValidationMessageFor(model => model.Especialidade, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    <label for="DataHora">Data e Hora:</label>
-                    <input type="text" id="DataHora" name="DataHora" class="form-control" value="@Model.DataHora" readonly required />
-                    <div class="text-danger">@Html.ValidationMessageFor(m => m.DataHora)</div>
+                    @Html.TextBoxFor(model => model.DataHora, new { @class = "form-control", @readonly = "readonly", required = "required", style = "cursor: not-allowed; background-color: #1e1e1e;" })
+                    @Html.ValidationMessageFor(model => model.DataHora, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    <label for="Mensagem">Mensagem (opcional):</label>
-                    <textarea id="Mensagem" name="Mensagem" class="form-control">@Model.Mensagem</textarea>
-                    <div class="text-danger">@Html.ValidationMessageFor(m => m.Mensagem)</div>
+                    @Html.TextAreaFor(model => model.Mensagem, new { @class = "form-control", placeholder = "Mensagem (opcional)" })
+                    @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
                 </div>
 
-                <button type="submit" class="submit-btn">Confirmar Agendamento</button>
-            </form>
+                <button type="submit" class="submit-btn">Confirmar</button>
+            }
 
             @if (TempData["SuccessMessage"] != null)
             {
@@ -454,7 +452,8 @@
         specialtyOptionElements.forEach(option => {
             option.addEventListener('click', () => {
                 const value = option.getAttribute('data-value');
-                specialtyDisplay.textContent = option.textContent;
+                const text = option.textContent;
+                specialtyDisplay.textContent = 'Procedimento: ' + text;
                 specialtyInput.value = value;
                 specialtyOptions.classList.remove('show');
             });
@@ -480,6 +479,7 @@
             // Generate calendar days
             for (let i = 0; i < firstDay; i++) {
                 const emptyCell = document.createElement('div');
+                emptyCell.classList.add('calendar-day', 'inactive');
                 calendarGrid.appendChild(emptyCell);
             }
 
@@ -516,7 +516,7 @@
             // Find the day cell that was selected and add the 'selected' class
             const dayCells = document.querySelectorAll('.calendar-day');
             for (let i = 0; i < dayCells.length; i++) {
-                if (parseInt(dayCells[i].textContent) === day && !dayCells[i].classList.contains('inactive')) {
+                if (parseInt(dayCells[i].textContent) === day && !dayCells[i].classList.contains('inactive') && !dayCells[i].classList.contains('weekend') && !dayCells[i].classList.contains('past')) {
                     dayCells[i].classList.add('selected');
                     break;
                 }
