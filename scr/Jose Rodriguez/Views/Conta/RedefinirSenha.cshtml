@@ -1,4 +1,4 @@
-@model LoginCadastroMVC.Models.User
+@model SeuProjeto.Models.RedefinirSenhaViewModel
 @{
     ViewData["Title"] = "Redefinir Senha";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -85,29 +85,34 @@
 </style>
 
 
-<div class="reset-container">
-    <div class="reset-container-form">
-        <div class="mb-4">
-            <div class="reset-title">Redefinição de Senha</div>
-            <div class="reset-text">
-                Enviaremos um link de redefinição de senha para o seu e-mail. Verifique sua caixa de entrada e siga as instruções
-                para criar uma nova senha. Caso não encontre, confira a pasta de spam.
+@using (Html.BeginForm("RedefinirSenha", "Conta", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="reset-container">
+        <div class="reset-container-form">
+            <div class="mb-4">
+                <div class="reset-title">Redefinição de Senha</div>
+                <div class="reset-text">
+                    Enviaremos um link de redefinição de senha para o seu e-mail. Verifique sua caixa de entrada e siga as instruções
+                    para criar uma nova senha. Caso não encontre, confira a pasta de spam.
+                </div>
             </div>
+
+            @if (ViewBag.ResetLinkSent != null)
+            {
+                var cssClass = ViewBag.ResetLinkClass ?? "alert-info";
+                <div class="alert @cssClass">@ViewBag.ResetLinkSent</div>
+            }
+
+            <div class="input-container">
+                @Html.TextBoxFor(m => m.Email, new { @class = "reset-input", placeholder = "E-mail", type = "email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="reset-button">Recuperar</button>
+
+            <a href="/Home/Login" class="cancel-reset">Cancelar</a>
         </div>
-
-        @if (ViewBag.ResetLinkSent != null)
-        {
-            <div class="alert alert-success">@ViewBag.ResetLinkSent</div>
-        }
-
-        <div class="input-container">
-            @Html.TextBoxFor(m => m.Email, new { @class = "reset-input", placeholder = "E-mail", type = "email" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-        </div>
-
-        <button type="submit" class="reset-button">Recuperar</button>
-        
-
-        <a href="/Home/Login" class="cancel-reset">Cancelar</a>
     </div>
-</div>
+}

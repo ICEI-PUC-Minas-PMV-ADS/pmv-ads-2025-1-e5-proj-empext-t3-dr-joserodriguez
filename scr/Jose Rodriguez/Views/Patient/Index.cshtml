@@ -27,6 +27,7 @@
 
     .patient-card {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         background-color: #333;
         color: white;
@@ -37,12 +38,12 @@
     }
 
     .patient-info {
-        display: flex;
-        flex-direction: column;
+        flex: 1 1 300px;
+        min-width: 200px;
     }
 
     .patient-name {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
     }
 
@@ -54,6 +55,7 @@
     .patient-actions {
         display: flex;
         gap: 10px;
+        flex: 0 0 auto;
     }
 
     .btn-custom {
