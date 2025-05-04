@@ -264,6 +264,44 @@
   </tr>
 </table>
 
+#### Caso de Teste de Sucesso
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-007<br>Tela Home</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se é possível visualizar a Home corretamente.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Bianca Cristina</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-01</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página "Home".<br>
+      2. Visualizar informações e vídeo sobre a clínica.<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      -
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>A interface está funcionando corretamente.</td>
+  </tr>
+</table>
 
 # Evidências de Testes de Software
 
@@ -484,3 +522,28 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
     <td colspan="6" align="center"><img src="https://github.com/user-attachments/assets/cbf09fbe-1f2b-4a55-af3e-3a321ed119cb"></td>
   </tr>
 </table>
+
+<table>
+  <tr>
+    <th colspan="6" width="1000">CT-007<br>Tela Home.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">O Tela Home é visualizada corretamente</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Bianca Cristina</td>
+    <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">03/05/2025</td>
+  </tr>
+  <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">A Home está funcionando corretamente.</td>
+  </tr>
+  <tr>
+    <td><strong>Link do vídeo</strong></td>
+    <td colspan="5">
+      <a href="https://youtu.be/DuERvaUvUaM" target="_blank">Assistir no YouTube</a>
+
+  </tr>
