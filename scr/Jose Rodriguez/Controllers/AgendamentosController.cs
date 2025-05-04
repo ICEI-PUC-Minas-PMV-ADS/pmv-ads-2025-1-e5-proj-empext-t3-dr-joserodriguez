@@ -1,58 +1,111 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SeuProjeto.Models;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using LoginCadastroMVC.Models;
 using SeuProjeto.Services;
+using SeuProjeto.Models;
 
-namespace SeuProjeto.Controllers
+namespace LoginCadastroMVC.Controllers
 {
     public class AgendamentosController : Controller
     {
         private readonly EmailService _emailService;
 
-        // Injeção de dependência do serviço de e-mail
         public AgendamentosController(EmailService emailService)
         {
             _emailService = emailService;
         }
 
-        // Ação GET para exibir o formulário de agendamento
         public IActionResult Index()
         {
-            return View(new AgendamentoViewModel());
+            var model = new AgendamentoViewModel();
+            return View(model);
         }
 
-        // Ação POST para enviar o agendamento
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Enviar(AgendamentoViewModel model)
+        public async Task<IActionResult> Enviar(AgendamentoViewModel model)
         {
-            if (!ModelState.IsValid)
-                return View("Index", model); // Retorna o formulário com erros de validação
-
-            // Preparando o assunto do e-mail
-            string assunto = "Novo Agendamento de Consulta";
-
-            // Criando o corpo do e-mail com as informações do modelo
-            string corpo = $@"
-                <h3>Detalhes do Agendamento</h3>
-                <p><strong>Nome:</strong> {model.Nome}</p>
-                <p><strong>Email:</strong> {model.Email}</p>
-                <p><strong>Telefone:</strong> {model.Telefone}</p>
-                <p><strong>Data:</strong> {model.DataConsulta:dd/MM/yyyy}</p>
-                <p><strong>Horário:</strong> {model.AppointmentTime}</p>
-                <p><strong>Especialidade:</strong> {model.Especialidade}</p>";
-
-            // Adiciona a mensagem se existir
-            if (!string.IsNullOrEmpty(model.Mensagem))
+            if (ModelState.IsValid)
             {
-                corpo += $@"<p><strong>Mensagem:</strong> {model.Mensagem}</p>";
+                try
+                {
+                    var emailBody = GetEmailBody(model);
+                    var subject = $"Novo Agendamento - {model.Nome}";
+
+                    // Usa o EmailService para enviar
+                    await _emailService.EnviarEmailAsync(
+                        "consultoriodontovip2025@gmail.com", // destinatário
+                        subject,
+                        emailBody
+                    );
+
+                    TempData["SuccessMessage"] = "Agendamento realizado com sucesso! Em breve entraremos em contato.";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Erro ao enviar o agendamento: {ex.Message}");
+                }
             }
 
-            // Enviar o e-mail usando o serviço
-            _emailService.EnviarEmailAsync("consultoriodontovip@gmail.com", assunto, corpo);
+            return View("Index", model);
+        }
 
-            // Exibe uma mensagem de sucesso e redireciona de volta para a página de agendamento
-            TempData["SuccessMessage"] = "Agendamento enviado com sucesso!";
-            return RedirectToAction("Index");
+        private string GetEmailBody(AgendamentoViewModel model)
+        {
+            return $@"
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        body {{ font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }}
+                        .container {{ max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
+                        .header {{ background-color: #C6A16F; color: white; padding: 20px; border-radius: 8px 8px 0 0; text-align: center; }}
+                        .content {{ padding: 30px; }}
+                        .field {{ margin-bottom: 20px; }}
+                        .label {{ font-weight: bold; color: #333; margin-bottom: 5px; display: block; }}
+                        .value {{ color: #555; padding: 10px; background-color: #f8f9fa; border-radius: 4px; }}
+                        .footer {{ background-color: #f8f9fa; padding: 15px; text-align: center; border-radius: 0 0 8px 8px; font-size: 12px; color: #666; }}
+                    </style>
+                </head>
+                <body>
+                    <div class='container'>
+                        <div class='header'>
+                            <h2>Novo Agendamento Odontológico</h2>
+                        </div>
+                        <div class='content'>
+                            <div class='field'>
+                                <div class='label'>Nome do Paciente:</div>
+                                <div class='value'>{model.Nome}</div>
+                            </div>
+                            <div class='field'>
+                                <div class='label'>Email:</div>
+                                <div class='value'>{model.Email}</div>
+                            </div>
+                            <div class='field'>
+                                <div class='label'>Telefone:</div>
+                                <div class='value'>{model.Telefone}</div>
+                            </div>
+                            <div class='field'>
+                                <div class='label'>Especialidade:</div>
+                                <div class='value'>{model.Especialidade}</div>
+                            </div>
+                            <div class='field'>
+                                <div class='label'>Data e Hora:</div>
+                                <div class='value'>{model.DataHora}</div>
+                            </div>
+                            <div class='field'>
+                                <div class='label'>Mensagem:</div>
+                                <div class='value'>{(string.IsNullOrEmpty(model.Mensagem) ? "Nenhuma mensagem adicional" : model.Mensagem)}</div>
+                            </div>
+                        </div>
+                        <div class='footer'>
+                            Este é um email automático gerado pelo sistema de agendamento.
+                        </div>
+                    </div>
+                </body>
+                </html>";
         }
     }
 }
