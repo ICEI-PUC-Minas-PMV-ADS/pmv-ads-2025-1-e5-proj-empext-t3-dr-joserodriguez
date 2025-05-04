@@ -14,6 +14,15 @@ builder.Services.AddControllersWithViews();
 // Registro do serviço EmailService (caso você precise injetar no seu controlador)
 builder.Services.AddScoped<EmailService>();
 
+// ADICIONE ESTAS LINHAS PARA SESSÃO
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configura o pipeline de requisição HTTP
@@ -31,6 +40,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles(); // Permite servir arquivos estáticos (CSS, JS, imagens, etc.)
 
 app.UseRouting();
+
+// ADICIONE ESTA LINHA PARA USAR SESSÃO
+app.UseSession();
+
 app.UseAuthorization(); // Ativa a autorização para segurança das rotas
 
 // Rota personalizada para pacientes
