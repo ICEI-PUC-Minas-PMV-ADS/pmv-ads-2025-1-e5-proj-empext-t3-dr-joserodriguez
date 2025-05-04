@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using LoginCadastroMVC.Models;
 using SeuProjeto.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace LoginCadastroMVC.Controllers
 {
@@ -23,7 +24,7 @@ namespace LoginCadastroMVC.Controllers
                 return View("~/Views/Home/Login.cshtml", model);
             }
 
-            var user = _db.Users.FirstOrDefault(u => u.Email == model.Email);
+            var user = _db.Users.FirstOrDefault(u => u.Email.ToLower() == model.Email.ToLower());
 
             if (user == null || user.Password != model.Password)
             {
@@ -32,7 +33,18 @@ namespace LoginCadastroMVC.Controllers
                 return View("~/Views/Home/Login.cshtml", model);
             }
 
+            // Criar sessão de admin
+            HttpContext.Session.SetString("AdminLogado", "true");
+            HttpContext.Session.SetString("AdminNome", user.NameUser);
+            HttpContext.Session.SetString("AdminEmail", user.Email);
+
             TempData["LoginSucess"] = "Login realizado com sucesso!";
+            return RedirectToAction("Painel", "Admin");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
     }
