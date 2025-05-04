@@ -303,6 +303,53 @@
   </tr>
 </table>
 
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-008<br>Cadastrar Dentista</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se é possível cadastrar o dentista corretamente.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável Codigo </strong></td>
+    <td width="430">Mayra Rodriguez</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Bianca Cristina</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-09</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página "Cadastrar Dentista".<br>
+      2. Preencher todos os campos obrigatórios.<br>
+      3. Clicar no botão "Criar".<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - <strong>Nome:</strong> Claudia Vitoriana <br>
+      - <strong>Cédula Profissional:</strong> 1234563 <br>
+      - <strong>E-mail:</strong> internet@nos.pt <br>
+      - <strong>Telefone:</strong> 913563877 <br>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>O dentista é salvo no banco de dados e aparece na página de gerenciamento.</td>
+  </tr>
+</table>
+
+
 # Evidências de Testes de Software
 
 <table>
@@ -544,6 +591,35 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
   <tr>
     <td><strong>Link do vídeo</strong></td>
     <td colspan="5">
-      <a href="https://youtu.be/DuERvaUvUaM" target="_blank">Assistir no YouTube</a>
+      <a href="https://www.youtube.com/watch?v=AqrHyjIp4g0" target="_blank">Assistir no YouTube</a>
+
+  </tr>
+
+<table>
+  <tr>
+    <th colspan="6" width="1000">CT-008<br>Cadastrar Dentista.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">O cadastro é realizado corretamente</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Mayra Rodriguez</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Bianca Cristina</td>
+    <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">03/05/2025</td>
+  </tr>
+  <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O cadastro é feito com sucesso.</td>
+  </tr>
+  <tr>
+    <td><strong>Link do vídeo</strong></td>
+    <td colspan="5">
+      <a href="https://www.youtube.com/watch?v=ZdyVcvAxkT4" target="_blank">Assistir no YouTube</a>
 
   </tr>
