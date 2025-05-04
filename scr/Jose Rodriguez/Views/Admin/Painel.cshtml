@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Painel Administrativo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .admin-container {
+        display: flex;
+        min-height: calc(100vh - 200px);
+        background-color: #121212;
+        color: white;
+        margin-top: -20px;
+    }
+
+    .admin-photo {
+        flex: 1;
+        background-color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+        .admin-photo img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+    .admin-panel {
+        flex: 1;
+        padding: 40px;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .admin-panel h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .admin-panel h2 {
+            color: #C6A16F;
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+
+    .admin-button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 15px;
+        background-color: #C6A16F;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
+
+        .admin-button:hover {
+            background-color: #d4b584;
+            color: white;
+            text-decoration: none;
+        }
+
+        .admin-button:last-child {
+            background-color: #ff8ba7;
+        }
+
+            .admin-button:last-child:hover {
+                background-color: #ffa3b9;
+            }
+</style>
+
+<div class="admin-container">
+    <div class="admin-photo">
+        <img src="~/img/IMG_0752.jpeg" alt="Dr. José Rodriguez" />
+    </div>
+    <div class="admin-panel">
+        <h1>Painel Administrativo</h1>
+        <h2>Dr. José Rodriguez</h2>
+
+        <a href="/Patient/Create" class="admin-button">Cadastrar Paciente</a>
+        <a href="/Home/Management" class="admin-button">Alterar Cadastro de Paciente</a>
+        <a href="/Dentistas/Create" class="admin-button">Cadastrar Dentista</a>
+        <a href="/Dentistas/Index" class="admin-button">Alterar Cadastro de Dentista</a>
+        <a href="/Agendamentos/Index" class="admin-button">Gerenciamento de Agenda</a>
+    </div>
+</div>
