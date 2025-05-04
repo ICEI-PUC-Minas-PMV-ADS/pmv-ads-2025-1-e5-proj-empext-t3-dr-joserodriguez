@@ -436,6 +436,94 @@
   </tr>
 </table>
 
+#### Caso de Teste de Sucesso
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-011<br>Envio da mensagem para recuperar senha para o e-mail.</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se o e-mail está correto e envia a mensagem.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Peterson Alves Gervazio</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Arthur Oliveira</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-12</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página "Recuperar Senha".<br>
+      2. Preencher o e-mail<br>
+      3. Clicar no botão "Recuperar Senha".<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      <strong>E-mail:</strong> emailvalido@email.com  <br>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>A mensagem é enviada para e-mail digitado no input.</td>
+  </tr>
+</table>
+
+#### Caso de Teste de Insucesso
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-012<br>Envio da mensagem para recuperar senha para o e-mail.</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se o e-mail está correto e envia a mensagem.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Peterson Alves Gervazio</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Arthur Oliveira</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Insucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-12</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página "Recuperar Senha".<br>
+      2. Preencher o e-mail<br>
+      3. Clicar no botão "Recuperar Senha".<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      <strong>E-mail:</strong> emailinvalido@email.com  <br>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>A mensagem não é enviada para o e-mail.</td>
+  </tr>
+</table>
+
 
 # Evidências de Testes de Software
 
@@ -768,3 +856,67 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
       <a href="https://www.youtube.com/watch?v=ZdyVcvAxkT4" target="_blank">Assistir no YouTube</a>
 
   </tr>
+
+  <table>
+  <tr>
+    <th colspan="6" width="1000">CT-011<br>Envio da mensagem para recuperar senha para o e-mail.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">	A mensagem é enviada para e-mail digitado no input.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Peterson Alves Gervazio</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Arthur Oliveira </td>
+    <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">04/05/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está enviando corretamente a mensagem para o e-mail digitado no input</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/recuperaremailsuccess.png"></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/printdoemailsuccess.png"></td>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <th colspan="6" width="1000">CT-012<br>Envio da mensagem para recuperar senha para o e-mail.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">A mensagem não é enviada para o e-mail.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Peterson Alves Gervazio</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Arthur Oliveira </td>
+    <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">04/05/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema não envia a mensagem caso o email estiver incorreto ou não estiver cadastrado.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/recuperaremailfail.png"></td>
+  </tr>
+</table>
