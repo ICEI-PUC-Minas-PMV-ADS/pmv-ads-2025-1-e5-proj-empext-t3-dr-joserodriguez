@@ -394,6 +394,49 @@
   </tr>
 </table>
 
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-010<br>Deletar dados de Dentista</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se é possível deletar os dados de dentista corretamente.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável Codigo </strong></td>
+    <td width="430">Mayra Rodriguez</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Bianca Cristina</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-09</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página de Listagem de Dentistas.<br>
+      2. Clicar no botão "Deletar" de algum dentista.<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - <strong>Dentista deletado:</strong> Claudia Vitoriana <br>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>Os dados são deletados corretamente.</td>
+  </tr>
+</table>
+
+
 # Evidências de Testes de Software
 
 <table>
@@ -689,6 +732,35 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
   <tr>
     <td width="170"><strong>Comentário</strong></td>
     <td colspan="5">A edição é feita com sucesso.</td>
+  </tr>
+  <tr>
+    <td><strong>Link do vídeo</strong></td>
+    <td colspan="5">
+      <a href="https://www.youtube.com/watch?v=ZdyVcvAxkT4" target="_blank">Assistir no YouTube</a>
+
+  </tr>
+
+  <table>
+  <tr>
+    <th colspan="6" width="1000">CT-010<br>Deletar dados de Dentista.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">Os dados são deletados corretamente</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Mayra Rodriguez</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo Teste</strong></td>
+    <td width="430">Bianca Cristina</td>
+    <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">03/05/2025</td>
+  </tr>
+  <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">Os dados são deletados com sucesso.</td>
   </tr>
   <tr>
     <td><strong>Link do vídeo</strong></td>
