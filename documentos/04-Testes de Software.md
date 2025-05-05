@@ -920,3 +920,22 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
     <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/recuperaremailfail.png"></td>
   </tr>
 </table>
+
+# Testes Cruzados - Agendamento X Gerenciamento 
+## (Geovanne e Mayra)
+
+<table>
+  <tr>
+    <th colspan="6" width="1000">Teste cruzado entre Agendamento e Gerenciamento</th>
+  </tr>
+
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/teste-cruzado-gerenciamento.jpg"></td>
+  </tr>
+    <tr>
+    <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/teste-cruzado-agendamento.jpg"></td>
+  </tr>
+  </table>
