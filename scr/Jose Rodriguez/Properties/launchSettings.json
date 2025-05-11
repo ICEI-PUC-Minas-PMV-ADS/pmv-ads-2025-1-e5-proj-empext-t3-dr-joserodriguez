@@ -1,27 +1,28 @@
 ﻿{
   "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
+    "windowsAuthentication": false, // Desabilita autenticação do Windows
+    "anonymousAuthentication": true, // Habilita autenticação anônima
     "iisExpress": {
-      "applicationUrl": "http://localhost:58672",
-      "sslPort": 44301
+      "applicationUrl": "http://localhost:58672", // URL de execução no IIS Express
+      "sslPort": 44301 // Porta SSL para o IIS Express
     }
   },
   "profiles": {
     "Jose_Rodriguez": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7094;http://localhost:5238",
+      "commandName": "Project", // Executa diretamente o projeto via dotnet run
+      "dotnetRunMessages": true, // Exibe mensagens durante a execução
+      "launchBrowser": true, // Lança o navegador automaticamente ao rodar o projeto
+      "applicationUrl": "https://localhost:7094;http://localhost:5238", // URLs de execução
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development", // Ambiente de desenvolvimento
+        "ConnectionStrings:DefaultConnection": "Data Source=SQL1003.site4now.net;Initial Catalog=db_ab8d0d_joserod;User Id=db_ab8d0d_joserod_admin;Password=Teste13!;MultipleActiveResultSets=true" // Configura string de conexão no ambiente
       }
     },
     "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
+      "commandName": "IISExpress", // Executa a aplicação no IIS Express
+      "launchBrowser": true, // Lança o navegador automaticamente
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development" // Ambiente de desenvolvimento
       }
     }
   }

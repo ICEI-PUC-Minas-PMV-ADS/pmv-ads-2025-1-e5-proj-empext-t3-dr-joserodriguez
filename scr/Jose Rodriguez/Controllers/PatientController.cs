@@ -21,7 +21,8 @@ namespace LoginCadastroMVC.Controllers
         // GET: patients/Index
         public async Task<ActionResult> Index()
         {
-            return View(await _db.Patients.ToListAsync());
+            var patients = await _db.Patients.ToListAsync();
+            return View(patients);
         }
 
         // GET: Patient/Management
@@ -39,7 +40,6 @@ namespace LoginCadastroMVC.Controllers
                 .OrderBy(p => p.AppointmentTime)
                 .ToListAsync();
 
-            
             var result = patients.Select(p => new
             {
                 id = p.ID,
@@ -99,7 +99,6 @@ namespace LoginCadastroMVC.Controllers
                     patient.SpecialtiesString = string.Join(",", patient.Specialties.Select(s => s.ToString()));
                 }
 
-                Console.WriteLine("Salvando paciente no banco...");
                 await _db.Patients.AddAsync(patient);
                 await _db.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Paciente cadastrado com sucesso!";
@@ -198,7 +197,7 @@ namespace LoginCadastroMVC.Controllers
         // POST: Patient/Update (para chamadas AJAX da página de gerenciamento)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update([FromBody] Patient patient)  
+        public async Task<IActionResult> Update([FromBody] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -234,7 +233,6 @@ namespace LoginCadastroMVC.Controllers
             }
             return Json(new { success = false, message = "Erro ao atualizar paciente." });
         }
-
 
         // GET: patients/Delete/1
         public async Task<ActionResult> Delete(int id)

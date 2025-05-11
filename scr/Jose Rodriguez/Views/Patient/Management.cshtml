@@ -4,15 +4,134 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Container Principal -->
+<style>
+    .management-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .calendar-section {
+        width: 60%;
+    }
+
+    .month-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .month-header {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .days-header {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+    }
+
+    .day, .empty-day {
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+    }
+
+        .day:hover {
+            background-color: #ddd;
+        }
+
+    .empty-day {
+        background-color: transparent;
+        cursor: default;
+    }
+
+    .time-slots {
+        margin-top: 20px;
+    }
+
+    .time-slot {
+        padding: 5px;
+        margin: 5px 0;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+    }
+
+    .no-timeslot {
+        padding: 10px;
+        color: gray;
+    }
+
+    .management-section {
+        width: 40%;
+        padding: 10px;
+        border-left: 2px solid #ccc;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .btn-group {
+        margin-top: 10px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-save {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .btn-edit {
+        background-color: #2196F3;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #f44336;
+        color: white;
+    }
+
+    .no-patients {
+        margin-top: 20px;
+        color: #777;
+    }
+</style>
+
 <div class="management-container">
-    <!-- Calendário -->
+    <!-- CALENDÁRIO -->
     <div class="calendar-section">
         <div class="month-nav">
             <button id="prev-month">&lt;</button>
-            <div class="month-header" id="current-month"></div>
+            <div id="current-month" class="month-header"
+                 data-month="@DateTime.Now.Month - 1" data-year="@DateTime.Now.Year">
+                @DateTime.Now.ToString("MMMM yyyy")
+            </div>
             <button id="next-month">&gt;</button>
         </div>
+
         <div class="days-header">
             <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
         </div>
@@ -20,53 +139,60 @@
 
         <div class="time-slots">
             <div class="time-slots-header">
-                <div>Horários Agendados:</div>
-                <div class="time-slots-info" id="selected-date-info">Selecione uma data</div>
+                <strong>Horários Agendados:</strong>
+                <div id="selected-date-info">Selecione uma data</div>
             </div>
             <div class="time-slots-grid" id="time-slots-grid"></div>
         </div>
     </div>
 
-    <!-- Gerenciamento -->
+    <!-- GERENCIAMENTO -->
     <div class="management-section">
-        <div class="management-header">Gerenciamento</div>
-
-        <div class="patient-dropdown">
-            <div class="patient-select" id="patient-dropdown">
-                <span id="selected-patient-text">Paciente</span>
-            </div>
-            <div class="patient-options" id="patient-options"></div>
-        </div>
+        <div class="management-header"><h3>Gerenciamento</h3></div>
 
         <form id="patient-form" method="post">
             @Html.AntiForgeryToken()
-            <input type="hidden" id="PatientID" name="ID" value="" />
-            <div class="form-group"><input type="text" id="Name" name="Name" class="form-control" placeholder="Nome Completo" /></div>
+            <input type="hidden" id="PatientID" name="ID" />
+
+            <div class="form-group">
+                <input type="text" id="Name" name="Name" class="form-control" placeholder="Nome Completo" />
+            </div>
+
             <div class="form-group">
                 <input type="date" id="DateOfBirth" name="DateOfBirth" class="form-control" placeholder="Data de Nascimento" />
             </div>
 
-            <div class="form-group"><input type="text" id="Address" name="Address" class="form-control" placeholder="Endereço" /></div>
-            <div class="form-group"><input type="email" id="Email" name="Email" class="form-control" placeholder="E-mail" /></div>
-            <div class="form-group"><input type="tel" id="Phone" name="Phone" class="form-control" placeholder="Telefone" /></div>
+            <div class="form-group">
+                <input type="text" id="Address" name="Address" class="form-control" placeholder="Endereço" />
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="Email" name="Email" class="form-control" placeholder="E-mail" />
+            </div>
+
+            <div class="form-group">
+                <input type="tel" id="Phone" name="Phone" class="form-control" placeholder="Telefone" />
+            </div>
+
             <div class="form-group">
                 <select id="Procedure" name="SpecialtiesString" class="form-control">
                     <option value="">Selecione um Procedimento</option>
-                    <option value="Ortodontia">Ortodontia</option>
-                    <option value="Periodontia">Periodontia</option>
-                    <option value="Endodontia">Endodontia</option>
-                    <option value="Clínica Geral">Clínica Geral</option>
-                    <option value="Implantodontia">Implantodontia</option>
+                    @foreach (var specialty in Enum.GetValues(typeof(LoginCadastroMVC.Models.SpecialtyEnum)).Cast<LoginCadastroMVC.Models.SpecialtyEnum>())
+                    {
+                        <option value="@specialty.ToString()">@specialty</option>
+                    }
                 </select>
             </div>
 
-            <div class="form-group"><textarea id="Complaint" name="Complaint" class="form-control" placeholder="Descrição"></textarea></div>
+            <div class="form-group">
+                <textarea id="Complaint" name="Complaint" class="form-control" placeholder="Descrição"></textarea>
+            </div>
 
             <div class="btn-group">
                 <button type="button" id="save-btn" class="btn btn-save">Salvar</button>
+                <button type="button" id="edit-btn" class="btn btn-edit">Editar</button>
+                <button type="button" id="delete-btn" class="btn btn-delete">Excluir</button>
             </div>
-            <button type="button" id="edit-btn" class="btn btn-edit">Editar</button>
-            <button type="button" id="delete-btn" class="btn btn-delete">Excluir</button>
         </form>
 
         <div id="no-patient-selected" class="no-patients">
@@ -75,10 +201,91 @@
     </div>
 </div>
 
-<!-- Toast Container -->
-<div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-
-<!-- JavaScript -->
 @section Scripts {
-    <script src="~/js/tests/management-tests.js"></script>
+    <script>
+        $(document).ready(function () {
+            function loadCalendar(month, year) {
+                var daysInMonth = new Date(year, month + 1, 0).getDate();
+                var firstDay = new Date(year, month, 1).getDay();
+                $('#calendar-grid').empty();
+
+                for (var i = 0; i < firstDay; i++) {
+                    $('#calendar-grid').append('<div class="empty-day"></div>');
+                }
+
+                for (var day = 1; day <= daysInMonth; day++) {
+                    var date = new Date(year, month, day).toISOString().split('T')[0];
+                    var dayDiv = $('<div class="day"></div>').text(day).data('date', date);
+                    $('#calendar-grid').append(dayDiv);
+                }
+
+                $('.day').on('click', function () {
+                    var selectedDate = $(this).data('date');
+                    $('#selected-date-info').text('Horários agendados para: ' + selectedDate);
+                    loadTimeSlots(selectedDate);
+                });
+            }
+
+            function loadTimeSlots(date) {
+                $.ajax({
+                    url: '@Url.Action("GetByDate", "Patient")',
+                    data: { date: date },
+                    success: function (data) {
+                        $('#time-slots-grid').empty();
+                        if (data.length > 0) {
+                            data.forEach(function (slot) {
+                                $('#time-slots-grid').append(`<div class="time-slot">${slot.time} - ${slot.name}</div>`);
+                            });
+                        } else {
+                            $('#time-slots-grid').append('<div class="no-timeslot">Nenhum horário agendado.</div>');
+                        }
+                    },
+                    error: function () {
+                        $('#time-slots-grid').html('<div class="no-timeslot">Erro ao buscar horários.</div>');
+                    }
+                });
+            }
+
+            $('#prev-month').on('click', function () {
+                var month = parseInt($('#current-month').data('month'));
+                var year = parseInt($('#current-month').data('year'));
+
+                if (month === 0) {
+                    month = 11;
+                    year--;
+                } else {
+                    month--;
+                }
+
+                updateHeader(month, year);
+                loadCalendar(month, year);
+            });
+
+            $('#next-month').on('click', function () {
+                var month = parseInt($('#current-month').data('month'));
+                var year = parseInt($('#current-month').data('year'));
+
+                if (month === 11) {
+                    month = 0;
+                    year++;
+                } else {
+                    month++;
+                }
+
+                updateHeader(month, year);
+                loadCalendar(month, year);
+            });
+
+            function updateHeader(month, year) {
+                const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                $('#current-month').text(months[month] + ' ' + year);
+                $('#current-month').data('month', month);
+                $('#current-month').data('year', year);
+            }
+
+            let today = new Date();
+            loadCalendar(today.getMonth(), today.getFullYear());
+        });
+    </script>
 }

@@ -21,8 +21,52 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_0705.jpeg",
+      "PackagePath": "staticwebassets\\img\\IMG_0705.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_0711.png",
+      "PackagePath": "staticwebassets\\img\\IMG_0711.png"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_0712.png",
+      "PackagePath": "staticwebassets\\img\\IMG_0712.png"
+    },
+    {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_0752.jpeg",
       "PackagePath": "staticwebassets\\img\\IMG_0752.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_1026-after.png",
+      "PackagePath": "staticwebassets\\img\\IMG_1026-after.png"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_1026-before.png",
+      "PackagePath": "staticwebassets\\img\\IMG_1026-before.png"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_1027-after.png",
+      "PackagePath": "staticwebassets\\img\\IMG_1027-after.png"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_1027-before.png",
+      "PackagePath": "staticwebassets\\img\\IMG_1027-before.png"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_1029-after.png",
+      "PackagePath": "staticwebassets\\img\\IMG_1029-after.png"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_1029-before.png",
+      "PackagePath": "staticwebassets\\img\\IMG_1029-before.png"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_1030-after.png",
+      "PackagePath": "staticwebassets\\img\\IMG_1030-after.png"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\IMG_1030-before.png",
+      "PackagePath": "staticwebassets\\img\\IMG_1030-before.png"
     },
     {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\drjose.jpg",
@@ -63,6 +107,14 @@
     {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\js\\tests\\agendamento-tests.js",
+      "PackagePath": "staticwebassets\\js\\tests\\agendamento-tests.js"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\js\\tests\\management-tests.js",
+      "PackagePath": "staticwebassets\\js\\tests\\management-tests.js"
     },
     {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -291,6 +343,10 @@
     {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\tests\\agendamento-tests.css",
+      "PackagePath": "staticwebassets\\tests\\agendamento-tests.css"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.JoseRodriguez.Microsoft.AspNetCore.StaticWebAssets.props",
