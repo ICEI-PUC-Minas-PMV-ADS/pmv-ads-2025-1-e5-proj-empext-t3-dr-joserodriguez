@@ -195,6 +195,28 @@
             color: #333;
         }
 
+    .appointment-info {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .appointment-info-row {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .appointment-info-label {
+        font-weight: 600;
+        width: 140px;
+        color: #555;
+    }
+
+    .appointment-info-value {
+        flex: 1;
+    }
+
     .form-group {
         margin-bottom: 15px;
     }
@@ -241,6 +263,20 @@
         background-color: #9e9e9e;
         color: white;
     }
+
+    .btn-add {
+        background-color: #4caf50;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+        .btn-add:hover {
+            background-color: #45a049;
+        }
 
     .no-patients {
         text-align: center;
@@ -330,6 +366,35 @@
         background-color: #f5f5f5;
         color: #333;
     }
+
+    /* Estilos para novo agendamento */
+    .new-appointment-form {
+        margin-top: 15px;
+    }
+
+        .new-appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .new-appointment-form input,
+        .new-appointment-form select,
+        .new-appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+    /* Estilo para mensagem de erro */
+    .error-message {
+        color: #f44336;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+    }
 </style>
 
 <div class="management-container">
@@ -361,6 +426,7 @@
             <div class="time-slots-header">
                 <strong>Horários Agendados:</strong>
                 <div id="selected-date-info">Selecione uma data</div>
+                <button id="new-appointment-btn" class="btn btn-add" style="display:none;">Novo Agendamento</button>
             </div>
             <div class="time-slots-grid" id="time-slots-grid">
                 <div class="no-timeslot">Nenhum horário agendado.</div>
@@ -370,58 +436,58 @@
 
     <!-- GERENCIAMENTO -->
     <div class="management-section">
-        <div class="management-header"><h3>Gerenciamento de Consulta</h3></div>
+        <div class="management-header"><h3>Informações da Consulta</h3></div>
 
-        <form id="patient-form" method="post">
-            @Html.AntiForgeryToken()
-            <input type="hidden" id="PatientID" name="ID" />
-            <input type="hidden" id="AppointmentDate" name="AppointmentDate" />
-            <input type="hidden" id="AppointmentTime" name="AppointmentTime" />
-
-            <div class="form-group">
-                <input type="text" id="Name" name="Name" class="form-control" placeholder="Nome Completo" />
+        <div id="appointment-info" style="display:none;">
+            <div class="appointment-info">
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Paciente:</div>
+                    <div class="appointment-info-value" id="info-patient-name"></div>
+                </div>
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Email:</div>
+                    <div class="appointment-info-value" id="info-patient-email"></div>
+                </div>
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Telefone:</div>
+                    <div class="appointment-info-value" id="info-patient-phone"></div>
+                </div>
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Data de Nascimento:</div>
+                    <div class="appointment-info-value" id="info-patient-dob"></div>
+                </div>
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Endereço:</div>
+                    <div class="appointment-info-value" id="info-patient-address"></div>
+                </div>
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Procedimento:</div>
+                    <div class="appointment-info-value" id="info-patient-procedure"></div>
+                </div>
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Descrição:</div>
+                    <div class="appointment-info-value" id="info-patient-complaint"></div>
+                </div>
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Data da Consulta:</div>
+                    <div class="appointment-info-value" id="info-appointment-date"></div>
+                </div>
+                <div class="appointment-info-row">
+                    <div class="appointment-info-label">Horário:</div>
+                    <div class="appointment-info-value" id="info-appointment-time"></div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <input type="date" id="DateOfBirth" name="DateOfBirth" class="form-control" placeholder="Data de Nascimento" />
-            </div>
-
-            <div class="form-group">
-                <input type="text" id="Address" name="Address" class="form-control" placeholder="Endereço" />
-            </div>
-
-            <div class="form-group">
-                <input type="email" id="Email" name="Email" class="form-control" placeholder="E-mail" />
-            </div>
-
-            <div class="form-group">
-                <input type="tel" id="Phone" name="Phone" class="form-control" placeholder="Telefone" />
-            </div>
-
-            <div class="form-group">
-                <select id="Procedure" name="SpecialtiesString" class="form-control">
-                    <option value="">Selecione um Procedimento</option>
-                    @foreach (var specialty in Enum.GetValues(typeof(LoginCadastroMVC.Models.SpecialtyEnum)).Cast<LoginCadastroMVC.Models.SpecialtyEnum>())
-                    {
-                        <option value="@specialty.ToString()">@specialty</option>
-                    }
-                </select>
-            </div>
-
-            <div class="form-group">
-                <textarea id="Complaint" name="Complaint" class="form-control" placeholder="Descrição"></textarea>
-            </div>
+            <input type="hidden" id="current-appointment-id">
 
             <div class="btn-group">
-                <button type="button" id="save-btn" class="btn btn-save">Salvar</button>
                 <button type="button" id="reschedule-btn" class="btn btn-edit">Reagendar</button>
                 <button type="button" id="delete-btn" class="btn btn-delete">Excluir</button>
-                <button type="button" id="cancel-btn" class="btn btn-cancel" style="display:none;">Cancelar</button>
             </div>
-        </form>
+        </div>
 
         <div id="no-patient-selected" class="no-patients">
-            Selecione uma data e um paciente para gerenciar
+            Selecione uma data e um paciente para visualizar informações
         </div>
     </div>
 </div>
@@ -447,12 +513,52 @@
     </div>
 </div>
 
+<!-- Modal de Novo Agendamento -->
+<div id="new-appointment-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Novo Agendamento</h4>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="new-appointment-form">
+            <label for="appointment-date">Data:</label>
+            <input type="date" id="appointment-date" class="form-control" readonly>
+
+            <label for="appointment-time">Horário:</label>
+            <input type="time" id="appointment-time" class="form-control">
+
+            <label for="patient-select">Paciente:</label>
+            <select id="patient-select" class="form-control">
+                <option value="">Selecione um paciente</option>
+                <!-- Será preenchido via AJAX -->
+            </select>
+
+            <label for="appointment-procedure">Procedimento:</label>
+            <select id="appointment-procedure" class="form-control">
+                <option value="">Selecione um Procedimento</option>
+                @foreach (var specialty in Enum.GetValues(typeof(LoginCadastroMVC.Models.SpecialtyEnum)).Cast<LoginCadastroMVC.Models.SpecialtyEnum>())
+                {
+                    <option value="@specialty.ToString()">@specialty</option>
+                }
+            </select>
+
+            <label for="appointment-complaint">Descrição:</label>
+            <textarea id="appointment-complaint" class="form-control" placeholder="Descrição"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel-modal">Cancelar</button>
+            <button class="btn-confirm-appointment">Confirmar</button>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script>
         $(document).ready(function () {
             let appointmentsData = [];
             let selectedPatientId = null;
             let selectedDate = null;
+            let availableTimeSlots = ['08:00', '09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
 
             // Inicializar o calendário com o mês atual
             let today = new Date();
@@ -524,6 +630,7 @@
                     selectedDate = $(this).data('date');
                     const formattedDate = formatDate(selectedDate);
                     $('#selected-date-info').text('Horários agendados para: ' + formattedDate);
+                    $('#new-appointment-btn').show();
                     loadTimeSlots(selectedDate);
                 });
 
@@ -550,7 +657,7 @@
                                             <div class="time-slot" data-id="${slot.id}">
                                                 <span>${slot.appointmentTime} - ${slot.name}</span>
                                                 <div class="time-slot-actions">
-                                                    <button class="edit-slot" title="Editar"><i class="fas fa-edit"></i> Editar</button>
+                                                    <button class="edit-slot" title="Visualizar"><i class="fas fa-eye"></i> Visualizar</button>
                                                     <button class="reschedule-slot" title="Reagendar"><i class="fas fa-calendar-alt"></i> Reagendar</button>
                                                     <button class="delete-slot" title="Excluir"><i class="fas fa-trash"></i> Excluir</button>
                                                 </div>
@@ -560,14 +667,14 @@
                                 // Evento de clique para seleção
                                 $slotDiv.on('click', function (e) {
                                     if (!$(e.target).closest('button').length) {
-                                        selectPatient(slot);
+                                        displayAppointmentInfo(slot);
                                     }
                                 });
 
                                 // Eventos para os botões
                                 $slotDiv.find('.edit-slot').on('click', function (e) {
                                     e.stopPropagation();
-                                    selectPatient(slot);
+                                    displayAppointmentInfo(slot);
                                 });
 
                                 $slotDiv.find('.reschedule-slot').on('click', function (e) {
@@ -594,42 +701,43 @@
                 });
             }
 
-            // Selecionar um paciente para edição
-            function selectPatient(patient) {
-                selectedPatientId = patient.id;
+            // Exibir informações da consulta sem edição dos dados do paciente
+            function displayAppointmentInfo(appointment) {
+                selectedPatientId = appointment.id;
+                $('#current-appointment-id').val(appointment.id);
 
-                $('#PatientID').val(patient.id);
-                $('#Name').val(patient.name);
-                $('#Email').val(patient.email);
-                $('#Phone').val(patient.phone);
-                $('#Address').val(patient.address);
-                $('#DateOfBirth').val(patient.dateOfBirth?.split('T')[0]);
-                $('#Procedure').val(patient.specialtiesString || patient.procedure);
-                $('#Complaint').val(patient.complaint);
-                $('#AppointmentDate').val(patient.appointmentDate?.split('T')[0]);
-                $('#AppointmentTime').val(patient.appointmentTime);
+                // Preencher informações do paciente e da consulta
+                $('#info-patient-name').text(appointment.name);
+                $('#info-patient-email').text(appointment.email);
+                $('#info-patient-phone').text(appointment.phone);
+                $('#info-patient-dob').text(formatDate(appointment.dateOfBirth));
+                $('#info-patient-address').text(appointment.address);
+                $('#info-patient-procedure').text(appointment.specialtiesString || appointment.procedure);
+                $('#info-patient-complaint').text(appointment.complaint);
+                $('#info-appointment-date').text(formatDate(appointment.appointmentDate));
+                $('#info-appointment-time').text(appointment.appointmentTime);
 
+                // Mostrar a seção de informações
                 $('#no-patient-selected').hide();
-                $('#patient-form').show();
-                $('#cancel-btn').show();
+                $('#appointment-info').show();
             }
 
             // Reagendar consulta
-            function openRescheduleModal(patient) {
-                selectedPatientId = patient.id;
+            function openRescheduleModal(appointment) {
+                selectedPatientId = appointment.id;
 
                 // Configurar valores iniciais
-                const appointmentDate = patient.appointmentDate?.split('T')[0] || '';
+                const appointmentDate = appointment.appointmentDate?.split('T')[0] || '';
                 $('#reschedule-date').val(appointmentDate);
-                $('#reschedule-time').val(patient.appointmentTime);
+                $('#reschedule-time').val(appointment.appointmentTime);
 
                 // Mostrar modal
                 $('#reschedule-modal').css('display', 'block');
             }
 
-            // Fechar modal
+            // Fechar modais
             $('.modal-close, .btn-cancel-modal').on('click', function () {
-                $('#reschedule-modal').css('display', 'none');
+                $('.modal').css('display', 'none');
             });
 
             // Confirmar reagendamento
@@ -671,7 +779,7 @@
                             loadTimeSlots(selectedDate);
                         }
 
-                        resetForm();
+                        resetView();
                         alert('Consulta reagendada com sucesso!');
                     },
                     error: function () {
@@ -700,7 +808,7 @@
                             loadTimeSlots(selectedDate);
                         }
 
-                        resetForm();
+                        resetView();
                         alert('Consulta excluída com sucesso!');
                     },
                     error: function () {
@@ -709,13 +817,12 @@
                 });
             }
 
-            // Resetar formulário
-            function resetForm() {
-                $('#patient-form')[0].reset();
-                $('#PatientID').val('');
+            // Resetar visualização
+            function resetView() {
+                $('#appointment-info').hide();
                 $('#no-patient-selected').show();
-                $('#patient-form').hide();
                 selectedPatientId = null;
+                $('#current-appointment-id').val('');
             }
 
             // Navegação do calendário
@@ -755,39 +862,19 @@
             }
 
             // Eventos dos botões
-            $('#save-btn').on('click', function () {
-                if (!validateForm()) return;
-
-                const formData = $('#patient-form').serialize();
-
-                $.ajax({
-                    url: '@Url.Action("Update", "Patient")',
-                    type: 'POST',
-                    data: formData,
-                    success: function (result) {
-                        // Recarregar dados
-                        if (selectedDate) {
-                            loadTimeSlots(selectedDate);
-                        }
-                        resetForm();
-                        alert('Dados do paciente atualizados com sucesso!');
-                    },
-                    error: function () {
-                        alert('Erro ao salvar dados. Tente novamente.');
-                    }
-                });
-            });
-
             $('#reschedule-btn').on('click', function () {
                 if (selectedPatientId) {
-                    // Obter dados do paciente selecionado
-                    const patient = {
-                        id: $('#PatientID').val(),
-                        appointmentDate: $('#AppointmentDate').val(),
-                        appointmentTime: $('#AppointmentTime').val()
-                    };
-
-                    openRescheduleModal(patient);
+                    $.ajax({
+                        url: '@Url.Action("GetById", "Patient")',
+                        type: 'GET',
+                        data: { id: selectedPatientId },
+                        success: function (data) {
+                            openRescheduleModal(data);
+                        },
+                        error: function () {
+                            alert('Erro ao buscar dados da consulta. Tente novamente.');
+                        }
+                    });
                 } else {
                     alert('Selecione um paciente primeiro.');
                 }
@@ -803,30 +890,140 @@
                 }
             });
 
-            $('#cancel-btn').on('click', function () {
-                resetForm();
+            // Inicialização do modal de novo agendamento
+            $('#new-appointment-btn').on('click', function () {
+                // Configurar a data selecionada no modal
+                $('#appointment-date').val(selectedDate);
+
+                // Carregar lista de pacientes
+                loadPatientsList();
+
+                // Abrir o modal
+                $('#new-appointment-modal').css('display', 'block');
             });
 
-            // Validação básica do formulário
-            function validateForm() {
-                const name = $('#Name').val();
-                const email = $('#Email').val();
+            // Função para carregar a lista de pacientes existentes
+            function loadPatientsList() {
+                $.ajax({
+                    url: '@Url.Action("GetAllPatients", "Patient")',
+                    type: 'GET',
+                    success: function (data) {
+                        const $select = $('#patient-select');
+                        $select.find('option:not(:first)').remove();
 
-                if (!name) {
-                    alert('O nome do paciente é obrigatório.');
-                    return false;
-                }
-
-                if (!email) {
-                    alert('O email do paciente é obrigatório.');
-                    return false;
-                }
-
-                return true;
+                        if (data && data.length > 0) {
+                            data.forEach(function (patient) {
+                                $select.append(`<option value="${patient.id}">${patient.name}</option>`);
+                            });
+                        }
+                    },
+                    error: function () {
+                        alert('Erro ao carregar lista de pacientes.');
+                    }
+                });
             }
 
-            // Iniciar com o formulário oculto
-            $('#patient-form').hide();
+            // Confirmar novo agendamento
+            $('.btn-confirm-appointment').on('click', function () {
+                const patientId = $('#patient-select').val();
+                const date = $('#appointment-date').val();
+                const time = $('#appointment-time').val();
+                const procedure = $('#appointment-procedure').val();
+                const complaint = $('#appointment-complaint').val();
+
+                if (!patientId) {
+                    alert('Por favor, selecione um paciente.');
+                    return;
+                }
+
+                if (!date || !time) {
+                    alert('Por favor, selecione data e horário.');
+                    return;
+                }
+
+                // Verificar disponibilidade do horário
+                checkTimeAvailability(date, time, function (isAvailable) {
+                    if (isAvailable) {
+                        createNewAppointment(patientId, date, time, procedure, complaint);
+                    } else {
+                        alert('Horário não disponível. Por favor, escolha outro horário.');
+                    }
+                });
+            });
+
+            // Verificar disponibilidade do horário
+            function checkTimeAvailability(date, time, callback) {
+                $.ajax({
+                    url: '@Url.Action("CheckTimeAvailability", "Patient")',
+                    type: 'GET',
+                    data: {
+                        date: date,
+                        time: time
+                    },
+                    success: function (isAvailable) {
+                        callback(isAvailable);
+                    },
+                    error: function () {
+                        alert('Erro ao verificar disponibilidade do horário.');
+                        callback(false);
+                    }
+                });
+            }
+
+            // Criar novo agendamento
+            function createNewAppointment(patientId, date, time, procedure, complaint) {
+                $.ajax({
+                    url: '@Url.Action("CreateAppointment", "Patient")',
+                    type: 'POST',
+                    data: {
+                        patientId: patientId,
+                        appointmentDate: date,
+                        appointmentTime: time,
+                        procedure: procedure,
+                        complaint: complaint
+                    },
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function (result) {
+                        $('#new-appointment-modal').css('display', 'none');
+
+                        // Limpar campos do formulário
+                        $('#patient-select').val('');
+                        $('#appointment-time').val('');
+                        $('#appointment-procedure').val('');
+                        $('#appointment-complaint').val('');
+
+                        // Recarregar dados do calendário
+                        const month = parseInt($('#current-month').data('month'));
+                        const year = parseInt($('#current-month').data('year'));
+                        loadMonthAppointments(month, year);
+
+                        // Recarregar slots se estiver na mesma data
+                        if (selectedDate) {
+                            loadTimeSlots(selectedDate);
+                        }
+
+                        alert('Consulta agendada com sucesso!');
+                    },
+                    error: function () {
+                        alert('Erro ao criar agendamento. Tente novamente.');
+                    }
+                });
+            }
+
+            // Quando clica fora do modal, fecha
+            $(window).on('click', function (event) {
+                if ($(event.target).hasClass('modal')) {
+                    $('.modal').css('display', 'none');
+                }
+            });
+
+            // Inicializar com o dia atual selecionado
+            const todayElement = $('.day.today');
+            if (todayElement.length) {
+                todayElement.click();
+            }
         });
     </script>
 }

@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\joserodriguez.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:joserodriguez.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\views\\patient\\management.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:views\\patient\\management.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\views\\admin\\painel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -43,24 +55,12 @@
       "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\joserodriguez.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:joserodriguez.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\views\\home\\antes_depois.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:views\\home\\antes_depois.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|solutionrelative:models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3DD258FA-0E9D-4E96-BBDB-D6FBC91273EA}|JoseRodriguez.csproj|c:\\users\\josem\\music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\jose rodriguez\\views\\agendamentos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -166,11 +166,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 38,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Painel.cshtml",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Views\\Admin\\Painel.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\Painel.cshtml",
@@ -178,12 +178,11 @@
               "RelativeToolTip": "Views\\Admin\\Painel.cshtml",
               "ViewState": "AQIAAD4AAAAAAAAAAAAkwF4AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T06:56:02.067Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T06:56:02.067Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Views\\Home\\Login.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Login.cshtml",
@@ -191,12 +190,11 @@
               "RelativeToolTip": "Views\\Home\\Login.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T06:55:47.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T06:55:47.552Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "joserodriguez-001-site1 - FTP.pubxml",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Properties\\PublishProfiles\\joserodriguez-001-site1 - FTP.pubxml",
               "RelativeDocumentMoniker": "Properties\\PublishProfiles\\joserodriguez-001-site1 - FTP.pubxml",
@@ -204,12 +202,11 @@
               "RelativeToolTip": "Properties\\PublishProfiles\\joserodriguez-001-site1 - FTP.pubxml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2025-05-11T13:12:56.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-11T13:12:56.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "joserodriguez-001-site1 - Web Deploy.pubxml",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Properties\\PublishProfiles\\joserodriguez-001-site1 - Web Deploy.pubxml",
               "RelativeDocumentMoniker": "Properties\\PublishProfiles\\joserodriguez-001-site1 - Web Deploy.pubxml",
@@ -305,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
@@ -401,13 +398,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Management.cshtml",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Views\\Patient\\Management.cshtml",
               "RelativeDocumentMoniker": "Views\\Patient\\Management.cshtml",
               "ToolTip": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Views\\Patient\\Management.cshtml",
               "RelativeToolTip": "Views\\Patient\\Management.cshtml",
-              "ViewState": "AQIAAB0DAAAAAAAAAAAkwD8DAAABAAAA",
+              "ViewState": "AQIAAOgDAAAAAAAAAAAkwAQEAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-19T09:32:36.827Z",
               "EditorCaption": ""
@@ -426,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Antes_depois.cshtml",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Views\\Home\\Antes_depois.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Antes_depois.cshtml",
@@ -450,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
@@ -458,8 +455,7 @@
               "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-24T10:45:20.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T10:45:20.281Z"
             },
             {
               "$type": "Document",
@@ -475,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
@@ -483,8 +479,7 @@
               "RelativeToolTip": "Views\\_ViewImports.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-24T10:45:12.289Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T10:45:12.289Z"
             },
             {
               "$type": "Document",
@@ -548,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 3,
               "Title": "Patient.cs",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Models\\Patient.cs",
               "RelativeDocumentMoniker": "Models\\Patient.cs",
@@ -556,7 +551,8 @@
               "RelativeToolTip": "Models\\Patient.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAwwFIAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T14:08:20.907Z"
+              "WhenOpened": "2025-03-16T14:08:20.907Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -584,7 +580,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "JoseRodriguez.csproj",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\JoseRodriguez.csproj",
               "RelativeDocumentMoniker": "JoseRodriguez.csproj",
@@ -597,7 +593,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -609,7 +605,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -621,7 +617,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -633,15 +629,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 0,
               "Title": "PatientController.cs",
               "DocumentMoniker": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Controllers\\PatientController.cs",
               "RelativeDocumentMoniker": "Controllers\\PatientController.cs",
               "ToolTip": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\Controllers\\PatientController.cs",
               "RelativeToolTip": "Controllers\\PatientController.cs",
-              "ViewState": "AQIAABkBAAAAAAAAAAAgwB4BAAAAAAAA",
+              "ViewState": "AQIAAL0AAAAAAAAAAAAkwNkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T11:54:41.711Z"
+              "WhenOpened": "2025-03-16T11:54:41.711Z",
+              "EditorCaption": ""
             }
           ]
         }
