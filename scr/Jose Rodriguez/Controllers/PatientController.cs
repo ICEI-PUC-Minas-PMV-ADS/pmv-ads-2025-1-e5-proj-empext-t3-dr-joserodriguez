@@ -25,6 +25,96 @@ namespace LoginCadastroMVC.Controllers
             return View(patients);
         }
 
+        // -----------------------------
+        // CRUD DE PACIENTES
+        // -----------------------------
+
+        // GET: Patient/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Patient/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Patient patient)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Add(patient);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(patient);
+        }
+
+        // GET: Patient/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var patient = await _db.Patients.FindAsync(id);
+            if (patient == null) return NotFound();
+
+            return View(patient);
+        }
+
+        // POST: Patient/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Patient patient)
+        {
+            if (id != patient.ID) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _db.Update(patient);
+                    await _db.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_db.Patients.Any(e => e.ID == patient.ID))
+                        return NotFound();
+                    else
+                        throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(patient);
+        }
+
+        // GET: Patient/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var patient = await _db.Patients.FirstOrDefaultAsync(m => m.ID == id);
+            if (patient == null) return NotFound();
+
+            return View(patient);
+        }
+
+        // POST: Patient/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var patient = await _db.Patients.FindAsync(id);
+            if (patient != null)
+            {
+                _db.Patients.Remove(patient);
+                await _db.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        // -----------------------------
+        // AGENDAMENTO / GERENCIAMENTO
+        // -----------------------------
+
         // GET: Patient/Management
         public IActionResult Management()
         {
@@ -63,17 +153,15 @@ namespace LoginCadastroMVC.Controllers
         public async Task<IActionResult> GetByMonth(string month, string year)
         {
             if (!int.TryParse(month, out int monthInt) || !int.TryParse(year, out int yearInt))
-            {
                 return BadRequest("Mês ou ano inválidos");
-            }
 
             var firstDay = new DateTime(yearInt, monthInt, 1);
             var lastDay = firstDay.AddMonths(1).AddDays(-1);
 
             var appointments = await _db.Patients
                 .Where(p => p.AppointmentDate.HasValue &&
-                       p.AppointmentDate.Value.Date >= firstDay.Date &&
-                       p.AppointmentDate.Value.Date <= lastDay.Date)
+                            p.AppointmentDate.Value.Date >= firstDay.Date &&
+                            p.AppointmentDate.Value.Date <= lastDay.Date)
                 .Select(p => new
                 {
                     id = p.ID,
@@ -91,10 +179,7 @@ namespace LoginCadastroMVC.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var patient = await _db.Patients.FindAsync(id);
-            if (patient == null)
-            {
-                return NotFound();
-            }
+            if (patient == null) return NotFound();
 
             return Json(new
             {
@@ -174,7 +259,7 @@ namespace LoginCadastroMVC.Controllers
             });
         }
 
-        // ✅ POST: Patient/Reschedule
+        // POST: Patient/Reschedule
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Reschedule(int id, DateTime appointmentDate, string appointmentTime, string? procedure, string? complaint)
@@ -210,8 +295,5 @@ namespace LoginCadastroMVC.Controllers
             await _db.SaveChangesAsync();
             return Json(new { success = true, message = "Consulta reagendada com sucesso!" });
         }
-
-        // (outros métodos como Create, Edit, Delete seguem aqui – mantidos do seu código anterior)
-        // Posso completá-los também, caso queira incluir tudo em um só lugar.
     }
 }

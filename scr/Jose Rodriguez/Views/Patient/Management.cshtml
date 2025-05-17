@@ -554,6 +554,7 @@
 
 @section Scripts {
     <script>
+
         $(document).ready(function () {
             let appointmentsData = [];
             let selectedPatientId = null;
@@ -614,7 +615,8 @@
 
                 // Adicionar os dias do mês
                 for (let day = 1; day <= daysInMonth; day++) {
-                    const date = new Date(year, month, day);
+                    // Usar UTC para evitar problemas de fuso horário
+                    const date = new Date(Date.UTC(year, month, day));
                     const dateStr = date.toISOString().split('T')[0];
                     const isToday = dateStr === currentDate;
 
@@ -640,7 +642,8 @@
 
             // Formatar data para exibição
             function formatDate(dateStr) {
-                const date = new Date(dateStr);
+                // Adicionar 'T00:00:00' para garantir interpretação correta
+                const date = new Date(dateStr + 'T00:00:00');
                 return date.toLocaleDateString('pt-BR');
             }
 
@@ -654,15 +657,15 @@
                         if (data && data.length > 0) {
                             data.forEach(function (slot) {
                                 const $slotDiv = $(`
-                                            <div class="time-slot" data-id="${slot.id}">
-                                                <span>${slot.appointmentTime} - ${slot.name}</span>
-                                                <div class="time-slot-actions">
-                                                    <button class="edit-slot" title="Visualizar"><i class="fas fa-eye"></i> Visualizar</button>
-                                                    <button class="reschedule-slot" title="Reagendar"><i class="fas fa-calendar-alt"></i> Reagendar</button>
-                                                    <button class="delete-slot" title="Excluir"><i class="fas fa-trash"></i> Excluir</button>
-                                                </div>
-                                            </div>
-                                        `);
+                                    <div class="time-slot" data-id="${slot.id}">
+                                        <span>${slot.appointmentTime} - ${slot.name}</span>
+                                        <div class="time-slot-actions">
+                                            <button class="edit-slot" title="Visualizar"><i class="fas fa-eye"></i> Visualizar</button>
+                                            <button class="reschedule-slot" title="Reagendar"><i class="fas fa-calendar-alt"></i> Reagendar</button>
+                                            <button class="delete-slot" title="Excluir"><i class="fas fa-trash"></i> Excluir</button>
+                                        </div>
+                                    </div>
+                                `);
 
                                 // Evento de clique para seleção
                                 $slotDiv.on('click', function (e) {
@@ -755,16 +758,17 @@
 
             // Função de reagendamento
             function rescheduleAppointment(patientId, newDate, newTime) {
+                // Obter o token antes de enviar a solicitação
+                const token = $('input[name="__RequestVerificationToken"]').val();
+
                 $.ajax({
                     url: '@Url.Action("Reschedule", "Patient")',
                     type: 'POST',
                     data: {
                         id: patientId,
                         appointmentDate: newDate,
-                        appointmentTime: newTime
-                    },
-                    headers: {
-                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                        appointmentTime: newTime,
+                        __RequestVerificationToken: token
                     },
                     success: function (result) {
                         $('#reschedule-modal').css('display', 'none');
@@ -790,12 +794,15 @@
 
             // Excluir consulta
             function deleteAppointment(patientId) {
+                // Obter o token antes de enviar a solicitação
+                const token = $('input[name="__RequestVerificationToken"]').val();
+
                 $.ajax({
                     url: '@Url.Action("Delete", "Patient")',
                     type: 'POST',
-                    data: { id: patientId },
-                    headers: {
-                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    data: {
+                        id: patientId,
+                        __RequestVerificationToken: token
                     },
                     success: function (result) {
                         // Recarregar dados do calendário
@@ -898,9 +905,36 @@
                 // Carregar lista de pacientes
                 loadPatientsList();
 
+                // Carregar horários disponíveis para a data selecionada
+                loadAvailableTimes(selectedDate);
+
                 // Abrir o modal
                 $('#new-appointment-modal').css('display', 'block');
             });
+
+            // Carregar horários disponíveis
+            function loadAvailableTimes(date) {
+                $.ajax({
+                    url: '@Url.Action("GetAvailableTimes", "Patient")',
+                    type: 'GET',
+                    data: { date: date },
+                    success: function (data) {
+                        // Limpar campo de tempo (pode ser substituído por uma dropdown)
+                        $('#appointment-time').empty();
+
+                        // Se quiser implementar uma dropdown de horários disponíveis:
+                        // const $timeSelect = $('#appointment-time');
+                        // $timeSelect.empty();
+                        // $timeSelect.append('<option value="">Selecione um horário</option>');
+                        // data.forEach(function(time) {
+                        //     $timeSelect.append(`<option value="${time}">${time}</option>`);
+                        // });
+                    },
+                    error: function () {
+                        console.error('Erro ao carregar horários disponíveis');
+                    }
+                });
+            }
 
             // Função para carregar a lista de pacientes existentes
             function loadPatientsList() {
@@ -960,8 +994,13 @@
                         date: date,
                         time: time
                     },
-                    success: function (isAvailable) {
-                        callback(isAvailable);
+                    success: function (result) {
+                        // Verificar se o resultado é um objeto que contém a propriedade isAvailable
+                        if (typeof result === 'object' && result.hasOwnProperty('isAvailable')) {
+                            callback(result.isAvailable);
+                        } else {
+                            callback(result);
+                        }
                     },
                     error: function () {
                         alert('Erro ao verificar disponibilidade do horário.');
@@ -972,6 +1011,9 @@
 
             // Criar novo agendamento
             function createNewAppointment(patientId, date, time, procedure, complaint) {
+                // Obter o token antes de enviar a solicitação
+                const token = $('input[name="__RequestVerificationToken"]').val();
+
                 $.ajax({
                     url: '@Url.Action("CreateAppointment", "Patient")',
                     type: 'POST',
@@ -980,33 +1022,36 @@
                         appointmentDate: date,
                         appointmentTime: time,
                         procedure: procedure,
-                        complaint: complaint
-                    },
-                    headers: {
-                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                        complaint: complaint,
+                        __RequestVerificationToken: token
                     },
                     success: function (result) {
-                        $('#new-appointment-modal').css('display', 'none');
+                        if (result.success) {
+                            $('#new-appointment-modal').css('display', 'none');
 
-                        // Limpar campos do formulário
-                        $('#patient-select').val('');
-                        $('#appointment-time').val('');
-                        $('#appointment-procedure').val('');
-                        $('#appointment-complaint').val('');
+                            // Limpar campos do formulário
+                            $('#patient-select').val('');
+                            $('#appointment-time').val('');
+                            $('#appointment-procedure').val('');
+                            $('#appointment-complaint').val('');
 
-                        // Recarregar dados do calendário
-                        const month = parseInt($('#current-month').data('month'));
-                        const year = parseInt($('#current-month').data('year'));
-                        loadMonthAppointments(month, year);
+                            // Recarregar dados do calendário
+                            const month = parseInt($('#current-month').data('month'));
+                            const year = parseInt($('#current-month').data('year'));
+                            loadMonthAppointments(month, year);
 
-                        // Recarregar slots se estiver na mesma data
-                        if (selectedDate) {
-                            loadTimeSlots(selectedDate);
+                            // Recarregar slots se estiver na mesma data
+                            if (selectedDate) {
+                                loadTimeSlots(selectedDate);
+                            }
+
+                            alert('Consulta agendada com sucesso!');
+                        } else {
+                            alert(result.message || 'Erro ao criar agendamento. Tente novamente.');
                         }
-
-                        alert('Consulta agendada com sucesso!');
                     },
-                    error: function () {
+                    error: function (jqXHR) {
+                        console.error('Erro ao criar agendamento:', jqXHR);
                         alert('Erro ao criar agendamento. Tente novamente.');
                     }
                 });
@@ -1024,6 +1069,6 @@
             if (todayElement.length) {
                 todayElement.click();
             }
-        });
+        })
     </script>
 }
