@@ -1,25 +1,60 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LoginCadastroMVC.Models;
 using SeuProjeto.Services;
 using SeuProjeto.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace LoginCadastroMVC.Controllers
 {
     public class AgendamentosController : Controller
     {
         private readonly EmailService _emailService;
+        private readonly ApplicationDbContext _context;
 
-        public AgendamentosController(EmailService emailService)
+        public AgendamentosController(EmailService emailService, ApplicationDbContext context)
         {
             _emailService = emailService;
+            _context = context;
         }
 
         public IActionResult Index()
         {
             var model = new AgendamentoViewModel();
             return View(model);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> GetHorariosOcupados(string data)
+        {
+            if (string.IsNullOrEmpty(data))
+                return Json(new List<string>());
+
+            try
+            {
+                // Converter string para DateTime (formato: dd/MM/yyyy)
+                DateTime dataAgendamento = DateTime.ParseExact(
+                    data,
+                    "dd/MM/yyyy",
+                    CultureInfo.InvariantCulture
+                );
+
+                // Buscar horários já agendados para esta data
+                var horariosOcupados = await _context.Agendamentos
+                    .Where(a => a.Data.Date == dataAgendamento.Date)
+                    .Select(a => a.Hora)
+                    .ToListAsync();
+
+                return Json(horariosOcupados);
+            }
+            catch
+            {
+                return Json(new List<string>());
+            }
         }
 
         [HttpPost]
@@ -30,10 +65,47 @@ namespace LoginCadastroMVC.Controllers
             {
                 try
                 {
+                    // Converter string de data e hora para objetos DateTime e string de hora
+                    string[] partes = model.DataHora.Split(" - ");
+                    string dataString = partes[0]; // formato: dd/MM/yyyy
+                    string hora = partes[1]; // formato: HH:mm
+
+                    DateTime data = DateTime.ParseExact(
+                        dataString,
+                        "dd/MM/yyyy",
+                        CultureInfo.InvariantCulture
+                    );
+
+                    // Verificar se o horário já está ocupado
+                    bool horarioOcupado = await _context.Agendamentos
+                        .AnyAsync(a => a.Data.Date == data.Date && a.Hora == hora);
+
+                    if (horarioOcupado)
+                    {
+                        TempData["ErrorMessage"] = "Este horário já está ocupado. Por favor, selecione outro horário.";
+                        return View("Index", model);
+                    }
+
+                    // Criar e salvar o novo agendamento
+                    var agendamento = new Agendamento
+                    {
+                        Nome = model.Nome,
+                        Email = model.Email,
+                        Telefone = model.Telefone,
+                        Especialidade = model.Especialidade,
+                        Data = data,
+                        Hora = hora,
+                        Mensagem = model.Mensagem,
+                        Confirmado = true
+                    };
+
+                    _context.Agendamentos.Add(agendamento);
+                    await _context.SaveChangesAsync();
+
+                    // Enviar email de confirmação
                     var emailBody = GetEmailBody(model);
                     var subject = $"Novo Agendamento - {model.Nome}";
 
-                    // Usa o EmailService para enviar
                     await _emailService.EnviarEmailAsync(
                         "consultoriodontovip2025@gmail.com", // destinatário
                         subject,
