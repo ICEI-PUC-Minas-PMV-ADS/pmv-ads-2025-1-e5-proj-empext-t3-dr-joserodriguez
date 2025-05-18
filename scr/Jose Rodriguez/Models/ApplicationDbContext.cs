@@ -20,6 +20,8 @@ namespace SeuProjeto.Models // Altere para o namespace correto
         // ✅ DbSet para a entidade Dentista
         public DbSet<Dentista> Dentistas { get; set; } // Adicionando o DbSet para Dentista
 
+        public DbSet<Agendamento> Agendamentos { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
