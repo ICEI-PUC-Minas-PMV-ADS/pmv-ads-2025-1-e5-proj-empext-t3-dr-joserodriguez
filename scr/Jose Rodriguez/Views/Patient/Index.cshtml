@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LoginCadastroMVC.Models.Patient>
 
 @{
-    ViewBag.Title = "Lista de Pacientes";
+    ViewBag.Title = "Pacientes";
 }
 
 <style scoped>
@@ -85,28 +85,81 @@
         color: white;
         text-decoration: none;
     }
+
+    .search-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    .search-form {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        flex: 1;
+    }
+
+    .search-input {
+        flex: 1;
+        padding: 12px 15px;
+        border-radius: 25px;
+        border: none;
+        background-color: #333;
+        color: white;
+        font-size: 16px;
+    }
+
+        .search-input::placeholder {
+            color: #888;
+        }
+
+    .search-button {
+        background-color: #d6aa6d;
+        padding: 12px 20px;
+        border-radius: 25px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
 </style>
 
 <div class="patients-list-container">
     <h2>@ViewBag.Title</h2>
 
-    <div style="width: 100%; display: flex; justify-content: flex-end;">
+    <div class="search-container">
+        @using (Html.BeginForm("Index", "Patient", FormMethod.Get, new { @class = "search-form" }))
+        {
+            <input type="text" name="searchString" class="search-input" placeholder="Pesquisar por nome..." value="@ViewBag.CurrentFilter" />
+            <button type="submit" class="search-button">Pesquisar</button>
+        }
+
         <a href="@Url.Action("Create", "Patient")" class="btn-create">Cadastrar Novo Paciente</a>
     </div>
 
     <div class="patients-table">
-        @foreach (var patient in Model)
+        @if (Model.Any())
         {
-            <div class="patient-card">
-                <div class="patient-info">
-                    <div class="patient-name">@patient.Name</div>
-                    <div class="patient-dob">@patient.DateOfBirth?.ToString("dd/MM/yyyy")</div>
+            foreach (var patient in Model)
+            {
+                <div class="patient-card">
+                    <div class="patient-info">
+                        <div class="patient-name">@patient.Name</div>
+                        <div class="patient-dob">@patient.DateOfBirth?.ToString("dd/MM/yyyy")</div>
+                    </div>
+                    <div class="patient-actions">
+                        <a href="@Url.Action("Edit", "Patient", new { id = patient.ID })" class="btn-custom btn-edit">Editar</a>
+                        <a href="@Url.Action("Delete", "Patient", new { id = patient.ID })" class="btn-custom btn-delete">Excluir</a>
+                    </div>
                 </div>
-                <div class="patient-actions">
-                    <a href="@Url.Action("Edit", "Patient", new { id = patient.ID })" class="btn-custom btn-edit">Editar</a>
-                    <a href="@Url.Action("Delete", "Patient", new { id = patient.ID })" class="btn-custom btn-delete">Excluir</a>
-                </div>
-            </div>
+            }
+        }
+        else
+        {
+            <div style="color:white; text-align:center; font-size:18px;">Nenhum paciente encontrado com os critérios de pesquisa.</div>
         }
     </div>
 </div>

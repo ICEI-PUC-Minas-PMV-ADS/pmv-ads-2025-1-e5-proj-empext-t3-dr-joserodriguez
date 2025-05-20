@@ -18,26 +18,36 @@ namespace JoseRodriguez.Controllers
             _context = context;
         }
 
-        // GET: Dentistas
-        public async Task<IActionResult> Index()
+        // GET: Dentistas (com pesquisa)
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Dentistas.ToListAsync());
+            ViewBag.CurrentFilter = searchString;
+
+            var dentistas = from d in _context.Dentistas
+                            select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dentistas = dentistas.Where(d =>
+                    d.Nome.Contains(searchString) ||
+                    d.Cedula.Contains(searchString) ||
+                    d.Email.Contains(searchString));
+            }
+
+            return View(await dentistas.ToListAsync());
         }
 
         // GET: Dentistas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var dentista = await _context.Dentistas
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (dentista == null)
-            {
                 return NotFound();
-            }
 
             return View(dentista);
         }
@@ -49,8 +59,6 @@ namespace JoseRodriguez.Controllers
         }
 
         // POST: Dentistas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Cedula,Telefone,Email")] Dentista dentista)
@@ -68,29 +76,22 @@ namespace JoseRodriguez.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var dentista = await _context.Dentistas.FindAsync(id);
             if (dentista == null)
-            {
                 return NotFound();
-            }
+
             return View(dentista);
         }
 
         // POST: Dentistas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cedula,Telefone,Email")] Dentista dentista)
         {
             if (id != dentista.Id)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -102,13 +103,9 @@ namespace JoseRodriguez.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!DentistaExists(dentista.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -119,16 +116,12 @@ namespace JoseRodriguez.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var dentista = await _context.Dentistas
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (dentista == null)
-            {
                 return NotFound();
-            }
 
             return View(dentista);
         }
@@ -139,8 +132,12 @@ namespace JoseRodriguez.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var dentista = await _context.Dentistas.FindAsync(id);
-            _context.Dentistas.Remove(dentista);
-            await _context.SaveChangesAsync();
+            if (dentista != null)
+            {
+                _context.Dentistas.Remove(dentista);
+                await _context.SaveChangesAsync();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

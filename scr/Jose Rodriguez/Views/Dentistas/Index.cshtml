@@ -1,53 +1,188 @@
 @model IEnumerable<SeuProjeto.Models.Dentista>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewBag.Title = "Dentistas";
 }
 
-<h1>Index</h1>
+<style scoped>
+    .dentistas-list-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cedula)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    .dentistas-table {
+        background-color: #222;
+        padding: 30px;
+        border-radius: 16px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dentista-card {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .dentista-info {
+        flex: 1 1 300px;
+        min-width: 200px;
+    }
+
+    .dentista-nome {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .dentista-cedula,
+    .dentista-email {
+        font-size: 16px;
+        color: #ccc;
+    }
+
+    .dentista-actions {
+        display: flex;
+        gap: 10px;
+        flex: 0 0 auto;
+    }
+
+    .btn-custom {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+    }
+
+    .btn-edit {
+        background-color: #d6aa6d;
+    }
+
+    .btn-delete {
+        background-color: #e3bfc1;
+        color: black;
+    }
+
+    .btn-create {
+        background-color: #4CAF50;
+        padding: 12px 20px;
+        border-radius: 20px;
+        font-size: 16px;
+        color: white;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .search-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .search-form-wrapper {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .search-form {
+        display: flex;
+        gap: 10px;
+        flex-grow: 1;
+    }
+
+    .search-input {
+        flex: 1;
+        padding: 12px 15px;
+        border-radius: 25px;
+        border: none;
+        background-color: #333;
+        color: white;
+        font-size: 16px;
+    }
+
+        .search-input::placeholder {
+            color: #888;
+        }
+
+    .search-button {
+        background-color: #d6aa6d;
+        padding: 12px 20px;
+        border-radius: 25px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .no-results {
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 18px;
+        background-color: #333;
+        border-radius: 12px;
+        width: 100%;
+    }
+</style>
+
+<div class="dentistas-list-container">
+    <h2>@ViewBag.Title</h2>
+
+    <div class="search-container">
+        <div class="search-form-wrapper">
+            @using (Html.BeginForm("Index", "Dentistas", FormMethod.Get, new { @class = "search-form" }))
+            {
+                <input type="text" name="searchString" class="search-input" placeholder="Pesquisar por nome, cédula ou email..." value="@ViewBag.CurrentFilter" />
+                <button type="submit" class="search-button">Pesquisar</button>
+            }
+
+            <a href="@Url.Action("Create", "Dentistas")" class="btn-create">Cadastrar Novo Dentista</a>
+        </div>
+    </div>
+
+    <div class="dentistas-table">
+        @if (Model.Any())
+        {
+            foreach (var dentista in Model)
+            {
+                <div class="dentista-card">
+                    <div class="dentista-info">
+                        <div class="dentista-nome">@dentista.Nome</div>
+                        <div class="dentista-cedula">Cédula: @dentista.Cedula</div>
+                        <div class="dentista-email">Email: @dentista.Email</div>
+                        <div class="dentista-email">Telefone: @dentista.Telefone</div>
+                    </div>
+
+                    <div class="dentista-actions">
+                        <a href="@Url.Action("Edit", "Dentistas", new { id = dentista.Id })" class="btn-custom btn-edit">Editar</a>
+                        <a href="@Url.Action("Delete", "Dentistas", new { id = dentista.Id })" class="btn-custom btn-delete">Excluir</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="no-results">
+                Nenhum dentista encontrado com os critérios de pesquisa.
+            </div>
+        }
+    </div>
+</div>

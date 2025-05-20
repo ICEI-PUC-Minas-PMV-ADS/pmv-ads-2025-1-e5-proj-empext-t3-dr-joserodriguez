@@ -18,10 +18,19 @@ namespace LoginCadastroMVC.Controllers
             _db = db;
         }
 
-        // GET: patients/Index
-        public async Task<ActionResult> Index()
+        // GET: patients/Index - LISTAGEM E PESQUISA
+        public async Task<ActionResult> Index(string searchString)
         {
-            var patients = await _db.Patients.ToListAsync();
+            ViewBag.CurrentFilter = searchString;
+
+            var patientsQuery = _db.Patients.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                patientsQuery = patientsQuery.Where(p => p.Name.Contains(searchString));
+            }
+
+            var patients = await patientsQuery.ToListAsync();
             return View(patients);
         }
 
@@ -29,13 +38,8 @@ namespace LoginCadastroMVC.Controllers
         // CRUD DE PACIENTES
         // -----------------------------
 
-        // GET: Patient/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
-        // POST: Patient/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Patient patient)
@@ -49,18 +53,14 @@ namespace LoginCadastroMVC.Controllers
             return View(patient);
         }
 
-        // GET: Patient/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
-
             var patient = await _db.Patients.FindAsync(id);
             if (patient == null) return NotFound();
-
             return View(patient);
         }
 
-        // POST: Patient/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Patient patient)
@@ -86,7 +86,6 @@ namespace LoginCadastroMVC.Controllers
             return View(patient);
         }
 
-        // GET: Patient/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -97,7 +96,6 @@ namespace LoginCadastroMVC.Controllers
             return View(patient);
         }
 
-        // POST: Patient/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -115,13 +113,8 @@ namespace LoginCadastroMVC.Controllers
         // AGENDAMENTO / GERENCIAMENTO
         // -----------------------------
 
-        // GET: Patient/Management
-        public IActionResult Management()
-        {
-            return View();
-        }
+        public IActionResult Management() => View();
 
-        // GET: Patient/GetByDate
         [HttpGet]
         public async Task<IActionResult> GetByDate(DateTime date)
         {
@@ -148,7 +141,6 @@ namespace LoginCadastroMVC.Controllers
             return Json(result);
         }
 
-        // GET: Patient/GetByMonth
         [HttpGet]
         public async Task<IActionResult> GetByMonth(string month, string year)
         {
@@ -174,7 +166,6 @@ namespace LoginCadastroMVC.Controllers
             return Json(appointments);
         }
 
-        // GET: Patient/GetById
         [HttpGet]
         public async Task<IActionResult> GetById(int id)
         {
@@ -197,7 +188,6 @@ namespace LoginCadastroMVC.Controllers
             });
         }
 
-        // GET: Patient/GetAllPatients
         [HttpGet]
         public async Task<IActionResult> GetAllPatients()
         {
@@ -212,7 +202,6 @@ namespace LoginCadastroMVC.Controllers
             return Json(patients);
         }
 
-        // GET: Patient/GetAvailableTimes
         [HttpGet]
         public async Task<IActionResult> GetAvailableTimes(DateTime date)
         {
@@ -237,7 +226,6 @@ namespace LoginCadastroMVC.Controllers
             return Json(available);
         }
 
-        // GET: Patient/CheckTimeAvailability
         [HttpGet]
         public async Task<IActionResult> CheckTimeAvailability(DateTime date, string time)
         {
@@ -259,7 +247,6 @@ namespace LoginCadastroMVC.Controllers
             });
         }
 
-        // POST: Patient/Reschedule
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Reschedule(int id, DateTime appointmentDate, string appointmentTime, string? procedure, string? complaint)
@@ -294,6 +281,61 @@ namespace LoginCadastroMVC.Controllers
 
             await _db.SaveChangesAsync();
             return Json(new { success = true, message = "Consulta reagendada com sucesso!" });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ScheduleAppointment(int patientId, DateTime appointmentDate, string appointmentTime, string? procedure, string? complaint)
+        {
+            var patient = await _db.Patients.FindAsync(patientId);
+            if (patient == null)
+            {
+                return Json(new { success = false, message = "Paciente não encontrado." });
+            }
+
+            if (!TimeSpan.TryParse(appointmentTime, out TimeSpan timeSpan))
+            {
+                return Json(new { success = false, message = "Formato de hora inválido." });
+            }
+
+            bool isAvailable = !await _db.Patients
+                .AnyAsync(p => p.AppointmentDate.HasValue &&
+                               p.AppointmentDate.Value.Date == appointmentDate.Date &&
+                               p.AppointmentTime.HasValue &&
+                               p.AppointmentTime.Value == timeSpan);
+
+            if (!isAvailable)
+            {
+                return Json(new { success = false, message = "Horário já ocupado. Escolha outro horário." });
+            }
+
+            patient.AppointmentDate = appointmentDate;
+            patient.AppointmentTime = timeSpan;
+            patient.SpecialtiesString = procedure;
+            patient.Complaint = complaint;
+
+            await _db.SaveChangesAsync();
+            return Json(new { success = true, message = "Consulta agendada com sucesso!" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchPatients(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+                return Json(new List<object>());
+
+            var patients = await _db.Patients
+                .Where(p => p.Name.Contains(query))
+                .Select(p => new
+                {
+                    id = p.ID,
+                    name = p.Name,
+                    email = p.Email,
+                    phone = p.Phone
+                })
+                .ToListAsync();
+
+            return Json(patients);
         }
     }
 }
