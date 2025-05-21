@@ -1,113 +1,44 @@
 @model SeuProjeto.Models.Dentista
-
 @{
     ViewBag.Title = "Editar Dentista";
 }
-
-<style scoped>
-    .container-edit-patient {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-        min-height: 100vh;
-    }
-
-    .profile-pic-edit {
-        flex: 1 1 300px;
-        max-width: 400px;
-        aspect-ratio: 1;
-        border-radius: 0 50% 50% 0;
-        overflow: hidden;
-    }
-
-        .profile-pic-edit img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-    .form-edit-patient {
-        flex: 1 1 300px;
-        max-width: 500px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        padding: 20px;
-    }
-
-    .form-title-edit-patient {
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 12px;
-        color: white;
-    }
-
-    select, input, textarea {
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid white;
-        color: white;
-        font-size: 1rem;
-        padding: 12px 8px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .button-edit-patient {
-        padding: 12px;
-        border: none;
-        border-radius: 20px;
-        font-size: 1rem;
-        cursor: pointer;
-    }
-
-    .save-edit-patient {
-        background-color: #d6aa6d;
-        color: white;
-    }
-
-    .cancel-edit-patient {
-        background-color: #e3bfc1;
-        color: black;
-    }
-
-    .validation-error {
-        color: red;
-        font-size: 14px;
-    }
-</style>
+<link rel="stylesheet" href="~/css/editardentista.css" />
 
 <div class="container-edit-patient">
     <div class="profile-pic-edit">
         <img src="~/img/IMG_0752.jpeg" alt="Foto do Dentista">
     </div>
-
+    
     <form asp-action="Edit">
         <div class="form-edit-patient">
             <div class="form-title-edit-patient">@ViewBag.Title</div>
-
+            
             <input type="hidden" asp-for="Id" />
-
-            <input asp-for="Nome" placeholder="Nome Completo" />
-            <span asp-validation-for="Nome" class="validation-error"></span>
-
-            <input asp-for="Cedula" placeholder="Cédula Profissional" />
-            <span asp-validation-for="Cedula" class="validation-error"></span>
-
-            <input asp-for="Telefone" placeholder="Telefone" />
-            <span asp-validation-for="Telefone" class="validation-error"></span>
-
-            <input asp-for="Email" type="email" placeholder="Email" />
-            <span asp-validation-for="Email" class="validation-error"></span>
-
-            <button type="submit" class="button-edit-patient save-edit-patient">Salvar</button>
-            <button type="button" class="button-edit-patient cancel-edit-patient" onclick="window.location.href='/Dentistas/Index'">Cancelar</button>
+            
+            <div class="form-group">
+                <input asp-for="Nome" placeholder="Nome Completo" />
+                <span asp-validation-for="Nome" class="validation-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <input asp-for="Cedula" placeholder="Cédula Profissional" />
+                <span asp-validation-for="Cedula" class="validation-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <input asp-for="Telefone" placeholder="Telefone" />
+                <span asp-validation-for="Telefone" class="validation-error"></span>
+            </div>
+            
+            <div class="form-group">
+                <input asp-for="Email" type="email" placeholder="Email" />
+                <span asp-validation-for="Email" class="validation-error"></span>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit" class="button-edit-patient save-edit-patient">Salvar</button>
+                <button type="button" class="button-edit-patient cancel-edit-patient" onclick="window.location.href='/Dentistas/Index'">Cancelar</button>
+            </div>
         </div>
     </form>
 </div>

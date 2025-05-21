@@ -1,0 +1,210 @@
+﻿
+.dentistas-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.dentistas-table {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dentista-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.dentista-info {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.dentista-nome {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.dentista-cedula,
+.dentista-email,
+.dentista-telefone {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 3px;
+}
+
+.dentista-actions {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-custom {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+.btn-edit {
+    background-color: #d6aa6d;
+    flex: 1;
+}
+
+.btn-delete {
+    background-color: #e3bfc1;
+    color: black;
+    flex: 1;
+}
+
+.btn-create {
+    background-color: #4CAF50;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.search-container {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.search-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    background-color: #333;
+    color: white;
+    font-size: 15px;
+}
+
+    .search-input::placeholder {
+        color: #888;
+    }
+
+.search-button {
+    background-color: #d6aa6d;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.no-results {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    background-color: #333;
+    border-radius: 12px;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Media queries para diferentes tamanhos de tela */
+@media (min-width: 576px) {
+    .search-form {
+        flex-direction: row;
+    }
+
+    .search-button {
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .dentistas-list-container {
+        padding: 30px 0;
+    }
+
+    .dentista-card {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .dentista-info {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    .dentista-nome {
+        font-size: 20px;
+    }
+
+    .dentista-cedula,
+    .dentista-email,
+    .dentista-telefone {
+        font-size: 16px;
+    }
+
+    .dentista-actions {
+        width: auto;
+        align-items: center;
+    }
+
+    .btn-custom {
+        padding: 10px 16px;
+    }
+
+    .search-form-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .search-form {
+        flex-grow: 1;
+    }
+
+    .btn-create {
+        width: auto;
+        margin-top: 0;
+    }
+}

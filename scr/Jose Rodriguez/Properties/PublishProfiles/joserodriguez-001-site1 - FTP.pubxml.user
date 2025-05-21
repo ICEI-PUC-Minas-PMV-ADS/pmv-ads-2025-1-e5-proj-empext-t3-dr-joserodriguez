@@ -7,5 +7,6 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword />
+    <_PublishTargetUrl>ftp://win1054.site4now.net:21/joserodriguez</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

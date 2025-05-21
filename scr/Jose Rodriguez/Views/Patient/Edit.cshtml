@@ -4,83 +4,7 @@
     ViewBag.Title = "Editar Paciente";
 }
 
-<style scoped>
-    .container-edit-patient {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-        min-height: 100vh;
-    }
-
-    .profile-pic-edit {
-        flex: 1 1 300px;
-        max-width: 400px;
-        aspect-ratio: 1;
-        border-radius: 0 50% 50% 0;
-        overflow: hidden;
-    }
-
-        .profile-pic-edit img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-    .form-edit-patient {
-        flex: 1 1 300px;
-        max-width: 500px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        padding: 20px;
-    }
-
-    .form-title-edit-patient {
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 12px;
-    }
-
-    select, input, textarea {
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid white;
-        color: white;
-        font-size: 1rem;
-        padding: 12px 8px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .button-edit-patient {
-        padding: 12px;
-        border: none;
-        border-radius: 20px;
-        font-size: 1rem;
-        cursor: pointer;
-    }
-
-    .save-edit-patient {
-        background-color: #d6aa6d;
-        color: white;
-    }
-
-    .cancel-edit-patient {
-        background-color: #e3bfc1;
-        color: black;
-    }
-
-    .validation-error {
-        color: red;
-        font-size: 14px;
-    }
-</style>
+<link rel="stylesheet" href="~/css/editarpaciente.css" />
 
 <div class="container-edit-patient">
     <div class="profile-pic-edit">
@@ -95,29 +19,45 @@
         <div class="form-edit-patient">
             <div class="form-title-edit-patient">Alterar Cadastro de Paciente</div>
 
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Nome Completo" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-error" })
+            <div class="input-group">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Nome Completo" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-error" })
+            </div>
 
-            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { placeholder = "Número de Telefone" } })
-            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-error" })
+            <div class="input-group">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { placeholder = "Número de Telefone" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-error" })
+            </div>
 
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "E-mail", type = "email" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-error" })
+            <div class="input-group">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "E-mail", type = "email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-error" })
+            </div>
 
-            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { placeholder = "Data de Nascimento", type = "date" } })
-            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "validation-error" })
+            <div class="input-group">
+                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { placeholder = "Data de Nascimento", type = "date" } })
+                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "validation-error" })
+            </div>
 
-            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { placeholder = "Endereço" } })
-            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "validation-error" })
+            <div class="input-group">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { placeholder = "Endereço" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "validation-error" })
+            </div>
 
-            @Html.TextAreaFor(model => model.Complaint, new { placeholder = "Queixa", rows = 3 })
-            @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "validation-error" })
+            <div class="input-group">
+                @Html.TextAreaFor(model => model.Complaint, new { placeholder = "Queixa", rows = 3 })
+                @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "validation-error" })
+            </div>
 
-            @Html.TextBoxFor(model => model.SpecialtiesString, new { placeholder = "Especialidades" }) 
-            @Html.ValidationMessageFor(model => model.SpecialtiesString, "", new { @class = "validation-error" }) 
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.SpecialtiesString, new { placeholder = "Especialidades" }) 
+                @Html.ValidationMessageFor(model => model.SpecialtiesString, "", new { @class = "validation-error" }) 
+            </div>
 
-            <button type="submit" class="button-edit-patient save-edit-patient">Salvar</button>
-            <button type="button" class="button-edit-patient cancel-edit-patient" onclick="window.location.href='/patients/index'">Cancelar</button>
+            <div class="buttons-container">
+                <button type="submit" class="button-edit-patient save-edit-patient">Salvar</button>
+                <button type="button" class="button-edit-patient cancel-edit-patient" onclick="window.location.href='/patients/index'">Cancelar</button>
+            </div>
         </div>
     }
 </div>

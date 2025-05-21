@@ -5,12 +5,36 @@
       "PackagePath": "staticwebassets\\JoseRodriguez.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\deletardentista.css",
+      "PackagePath": "staticwebassets\\css\\deletardentista.css"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\editardentista.css",
+      "PackagePath": "staticwebassets\\css\\editardentista.css"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\editarpaciente.css",
+      "PackagePath": "staticwebassets\\css\\editarpaciente.css"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\indexdentista.css",
+      "PackagePath": "staticwebassets\\css\\indexdentista.css"
+    },
+    {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },
     {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\management.css",
       "PackagePath": "staticwebassets\\css\\management.css"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\pacienteindex.css",
+      "PackagePath": "staticwebassets\\css\\pacienteindex.css"
     },
     {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\site.css",

@@ -2,155 +2,7 @@
     ViewData["Title"] = "Tela Home";
 }
 
-<style>
-    /* CSS para o body */
-    body {
-        min-height: 100vh;
-        margin: 0;
-        overflow-x: hidden;
-        font-family: Arial, sans-serif;
-    }
-
-    /* Estilo para o vídeo */
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* Proporção 16:9 */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-        margin-bottom: 50px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .video-container iframe, 
-    .video-container video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-        border: none;
-    }
-
-    .service-icon {
-        width: 70px;
-        height: 70px;
-        line-height: 70px;
-        border-radius: 50%;
-        background-color: #d4af37; /* Fundo dourado para os ícones */
-        margin: 0 auto;
-        color: white; /* Cor branca no ícone */
-        font-size: 30px;
-    }
-
-    .card {
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        border: 1px solid #d4af37; /* Borda dourada */
-        background-color: #f7f1d7; /* Fundo dourado claro */
-        color: black;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        text-align: center;
-        height: 100%;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        background-color: #d4af37; /* Fundo dourado quando passar o mouse */
-        color: white; /* Texto branco no hover */
-    }
-
-    .details-content {
-        margin-top: 15px;
-        display: none; /* Inicialmente oculto */
-        padding: 10px;
-        color: black;
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 8px;
-    }
-
-    .saiba-mais {
-        transition: all 0.3s ease;
-        border-color: #d4af37; /* Cor dourada na borda */
-        color: #d4af37; /* Cor dourada no texto */
-    }
-
-    .saiba-mais:hover {
-        background-color: #d4af37; /* Fundo dourado no hover */
-        color: white; /* Texto branco no hover */
-    }
-
-    .highlight-card {
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        border-color: #f39c12;
-    }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 30px;
-        color: white;
-    }
-
-    /* Ajustando a flexibilidade dos cards */
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .card-wrapper {
-        flex: 1 1 300px;
-        max-width: 350px;
-        margin-bottom: 20px;
-    }
-
-    /* Ajustando a aparência das setas */
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        background-color: #d4af37; /* Cor dourada para as setas */
-        border-radius: 50%;
-        padding: 10px;
-    }
-
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 5%;
-        opacity: 0.9;
-    }
-
-    /* Estilo dos botões */
-    .btn-outline-primary {
-        border-color: #d4af37;
-        color: #d4af37;
-    }
-
-    .btn-outline-primary:hover {
-        background-color: #d4af37;
-        color: white;
-    }
-
-    /* Indicadores do carrossel */
-    .carousel-indicators {
-        bottom: -40px;
-    }
-
-    .carousel-indicators button {
-        background-color: #d4af37;
-        height: 10px;
-        width: 10px;
-        border-radius: 50%;
-    }
-
-   
-        
-    }
-</style>
+<link rel="stylesheet" href="~/css/home.css" />
 
 <!-- Seção de Vídeo -->
 <div class="row mb-5">
@@ -335,8 +187,8 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Card 9 (Clareamento Dental) - Adicionado para equilibrar -->
+
+                <!-- Card 9 (Clareamento Dental) -->
                 <div class="card-wrapper">
                     <div class="card">
                         <div class="card-body text-center">
@@ -369,15 +221,57 @@
 </div>
 
 <script>
-    // JavaScript para alternar as informações adicionais ao clicar no "Saiba Mais" e "Saiba Menos"
-    document.addEventListener('DOMContentLoaded', function() {
+    // JavaScript para alternar as informações adicionais e lidar com a responsividade
+    document.addEventListener('DOMContentLoaded', function () {
+        // Função para verificar a largura da tela e ajustar os cards conforme necessário
+        function adjustCardsBasedOnScreenSize() {
+            const screenWidth = window.innerWidth;
+            const carouselItems = document.querySelectorAll('.carousel-item');
+
+            carouselItems.forEach(item => {
+                const cardWrappers = item.querySelectorAll('.card-wrapper');
+
+                if (screenWidth <= 576) {
+                    // Em telas pequenas, mostra apenas o primeiro card
+                    cardWrappers.forEach((card, index) => {
+                        if (index === 0) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                } else if (screenWidth <= 991) {
+                    // Em telas médias, mostra apenas os dois primeiros cards
+                    cardWrappers.forEach((card, index) => {
+                        if (index < 2) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                } else {
+                    // Em telas grandes, mostra todos os cards
+                    cardWrappers.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                }
+            });
+        }
+
+        // Ajusta os cards ao carregar a página
+        adjustCardsBasedOnScreenSize();
+
+        // Ajusta os cards quando a janela é redimensionada
+        window.addEventListener('resize', adjustCardsBasedOnScreenSize);
+
+        // Funcionalidade original para o Saiba Mais/Menos
         document.querySelectorAll('.saiba-mais').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const cardId = this.getAttribute('data-id');
                 const detailsContent = document.getElementById(`details-${cardId}`);
                 const saibaMaisButton = this;
                 const saibaMenosButton = document.querySelector(`.saiba-menos[data-id="${cardId}"]`);
-                
+
                 detailsContent.style.display = 'block';
                 saibaMaisButton.style.display = 'none';
                 saibaMenosButton.style.display = 'inline-block';
@@ -385,23 +279,24 @@
         });
 
         document.querySelectorAll('.saiba-menos').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const cardId = this.getAttribute('data-id');
                 const detailsContent = document.getElementById(`details-${cardId}`);
                 const saibaMaisButton = document.querySelector(`.saiba-mais[data-id="${cardId}"]`);
-                
+
                 detailsContent.style.display = 'none';
                 saibaMaisButton.style.display = 'inline-block';
                 this.style.display = 'none';
             });
         });
 
-        // Adiciona pausa automática do carousel ao passar o mouse
-        document.querySelector('#carouselServicos').addEventListener('mouseenter', function() {
+        // Comportamento do carousel ao passar o mouse
+        const carousel = document.querySelector('#carouselServicos');
+        carousel.addEventListener('mouseenter', function () {
             bootstrap.Carousel.getInstance(this).pause();
         });
 
-        document.querySelector('#carouselServicos').addEventListener('mouseleave', function() {
+        carousel.addEventListener('mouseleave', function () {
             bootstrap.Carousel.getInstance(this).cycle();
         });
     });

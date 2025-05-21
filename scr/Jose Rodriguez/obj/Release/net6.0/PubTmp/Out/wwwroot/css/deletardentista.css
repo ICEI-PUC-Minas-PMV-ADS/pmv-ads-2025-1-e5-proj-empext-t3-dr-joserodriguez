@@ -1,0 +1,141 @@
+﻿
+.delete-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 40px 20px;
+    gap: 30px;
+    color: white;
+    background-color: #333;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.delete-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.delete-subtitle {
+    font-size: 18px;
+    color: #ccc;
+    max-width: 90%;
+}
+
+.dentist-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+    .dentist-info div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .dentist-info span {
+        color: #d6aa6d;
+        font-weight: bold;
+        word-break: break-word;
+    }
+
+.delete-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.btn-custom {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 24px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    min-width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+    .btn-custom:hover {
+        transform: translateY(-2px);
+    }
+
+.btn-delete {
+    background-color: #e74c3c;
+}
+
+    .btn-delete:hover {
+        background-color: #c0392b;
+    }
+
+.btn-cancel {
+    background-color: #e3bfc1;
+    color: black;
+}
+
+    .btn-cancel:hover {
+        background-color: #d0aaac;
+    }
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+    .delete-container {
+        padding: 30px 15px;
+        margin: 30px auto;
+    }
+
+    .delete-title {
+        font-size: 28px;
+    }
+
+    .delete-subtitle {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .delete-container {
+        padding: 25px 15px;
+        margin: 20px auto;
+        width: 95%;
+    }
+
+    .delete-title {
+        font-size: 24px;
+    }
+
+    .delete-subtitle {
+        font-size: 14px;
+    }
+
+    .dentist-info {
+        font-size: 14px;
+    }
+
+    .btn-custom {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .delete-actions {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 240px;
+    }
+}
+
