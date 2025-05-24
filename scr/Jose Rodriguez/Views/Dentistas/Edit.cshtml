@@ -1,48 +1,183 @@
 @model SeuProjeto.Models.Dentista
-@{
-    ViewBag.Title = "Editar Dentista";
-}
-<link rel="stylesheet" href="~/css/editardentista.css" />
 
-<div class="container-edit-patient">
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style scoped>
+    .container-edit-dentist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        min-height: 100vh;
+    }
+
+    .profile-pic-edit {
+        flex: 1 1 300px;
+        max-width: 400px;
+        aspect-ratio: 1;
+        border-radius: 0 50% 50% 0;
+        overflow: hidden;
+    }
+
+        .profile-pic-edit img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .form-edit-dentist {
+        background-color: rgba(255, 255, 255, 0.05);
+        flex: 1 1 300px;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 20px;
+    }
+
+    .form-title-edit-dentist {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    select, input, textarea {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        color: white;
+        font-size: 1rem;
+        padding: 12px 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .buttons-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .button-edit-dentist {
+        padding: 12px;
+        border: none;
+        border-radius: 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        flex: 1;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .save-edit-dentist {
+        background-color: #d6aa6d;
+        color: white;
+    }
+
+    .cancel-edit-dentist {
+        background-color: #e3bfc1;
+        color: black;
+    }
+
+    .validation-error {
+        color: red;
+        font-size: 14px;
+    }
+
+    /* Responsividade */
+    @@media screen and (max-width: 768px) {
+        .container-edit-dentist {
+            flex-direction: column;
+            padding: 15px;
+            gap: 30px;
+        }
+
+        .profile-pic-edit {
+            max-width: 280px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .form-edit-dentist {
+            padding: 15px;
+            max-width: 100%;
+        }
+
+        .form-title-edit-dentist {
+            font-size: 1.7rem;
+        }
+    }
+
+    @@media screen and (max-width: 480px) {
+        .container-edit-dentist {
+            padding: 10px;
+            gap: 20px;
+        }
+
+        .profile-pic-edit {
+            max-width: 200px;
+        }
+
+        .form-title-edit-patient {
+            font-size: 1.5rem;
+        }
+
+        select, input, textarea {
+            font-size: 0.95rem;
+            padding: 10px 6px;
+        }
+
+        .buttons-container {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .button-edit-dentist {
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="container-edit-dentist">
     <div class="profile-pic-edit">
         <img src="~/img/IMG_0752.jpeg" alt="Foto do Dentista">
     </div>
-    
-    <form asp-action="Edit">
-        <div class="form-edit-patient">
-            <div class="form-title-edit-patient">@ViewBag.Title</div>
-            
-            <input type="hidden" asp-for="Id" />
-            
-            <div class="form-group">
-                <input asp-for="Nome" placeholder="Nome Completo" />
-                <span asp-validation-for="Nome" class="validation-error"></span>
-            </div>
-            
-            <div class="form-group">
-                <input asp-for="Cedula" placeholder="C�dula Profissional" />
-                <span asp-validation-for="Cedula" class="validation-error"></span>
-            </div>
-            
-            <div class="form-group">
-                <input asp-for="Telefone" placeholder="Telefone" />
-                <span asp-validation-for="Telefone" class="validation-error"></span>
-            </div>
-            
-            <div class="form-group">
-                <input asp-for="Email" type="email" placeholder="Email" />
-                <span asp-validation-for="Email" class="validation-error"></span>
-            </div>
-            
-            <div class="button-group">
-                <button type="submit" class="button-edit-patient save-edit-patient">Salvar</button>
-                <button type="button" class="button-edit-patient cancel-edit-patient" onclick="window.location.href='/Dentistas/Index'">Cancelar</button>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        //@Html.HiddenFor(model => model.ID)
+
+        <div class="form-edit-dentist">
+            <div class="form-title-edit-dentist">Alterar Cadastro de Dentista</div>
+
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { placeholder = "Nome Completo" } })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "validation-error" })
+
+            @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { placeholder = "Número de Telefone" } })
+            @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "validation-error" })
+
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "E-mail", type = "email" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-error" })
+
+            @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { placeholder = "Cédula"} })
+            @Html.ValidationMessageFor(model => model.Cedula, "", new { @class = "validation-error" })
+
+            <div class="buttons-container">
+                <button type="submit" class="button-edit-dentist save-edit-dentist">Salvar</button>
+                <button type="button" class="button-edit-dentist cancel-edit-dentist" onclick="window.location.href='/dentistas/index'">Cancelar</button>
             </div>
         </div>
-    </form>
+    }
 </div>
 
 @section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

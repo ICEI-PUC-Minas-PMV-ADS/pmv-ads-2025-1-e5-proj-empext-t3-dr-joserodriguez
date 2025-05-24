@@ -1,51 +1,219 @@
 @model IEnumerable<SeuProjeto.Models.Dentista>
 
 @{
-    ViewBag.Title = "Dentistas";
+    ViewData["Title"] = "Dentistas";
 }
 
-<link rel="stylesheet" href="~/css/indexdentista.css" />
 
+<style scoped>
+    .dentist-list-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
 
-<div class="dentistas-list-container">
+    .dentist-table {
+        background-color: #222;
+        padding: 20px;
+        border-radius: 16px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dentist-card {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .dentist-info {
+        flex: 1 1 300px;
+        min-width: 200px;
+    }
+
+    .dentist-name {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .dentist-cedula {
+        font-size: 16px;
+        color: #ccc;
+    }
+
+    .dentist-actions {
+        display: flex;
+        gap: 10px;
+        flex: 0 0 auto;
+    }
+
+    .btn-custom {
+        padding: 8px 14px;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        min-width: 80px;
+    }
+
+    .btn-edit {
+        background-color: #d6aa6d;
+    }
+
+    .btn-delete {
+        background-color: #e3bfc1;
+        color: black;
+    }
+
+    .btn-create {
+        background-color: #4CAF50;
+        padding: 10px 16px;
+        border-radius: 20px;
+        font-size: 16px;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .search-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    .search-form {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .search-input {
+        flex: 1;
+        padding: 10px 15px;
+        border-radius: 25px;
+        border: none;
+        background-color: #333;
+        color: white;
+        font-size: 16px;
+        min-width: 120px;
+    }
+
+    .search-input::placeholder {
+        color: #888;
+    }
+
+    .search-button {
+        background-color: #d6aa6d;
+        padding: 10px 16px;
+        border-radius: 25px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Media queries para responsividade */
+    @@media (max-width: 768px) {
+        .search-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .btn-create {
+            width: 100%;
+        }
+
+        .search-form {
+            width: 100%;
+        }
+
+        .dentist-card {
+            align-items: flex-start;
+        }
+
+        .dentist-actions {
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .btn-custom {
+            flex: 1;
+        }
+
+        .dentist-list-container {
+            padding: 10px;
+        }
+
+        .dentist-table {
+            padding: 15px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .search-form {
+            flex-direction: column;
+        }
+
+        .search-button {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="dentist-list-container">
     <h2>@ViewBag.Title</h2>
 
     <div class="search-container">
-        <div class="search-form-wrapper">
-            @using (Html.BeginForm("Index", "Dentistas", FormMethod.Get, new { @class = "search-form" }))
-            {
-                <input type="text" name="searchString" class="search-input" placeholder="Pesquisar por nome, cédula ou email..." value="@ViewBag.CurrentFilter" />
-                <button type="submit" class="search-button">Pesquisar</button>
-            }
+        @using (Html.BeginForm("Index", "Dentistas", FormMethod.Get, new { @class = "search-form" }))
+        {
+            <input type="text" name="searchString" class="search-input" placeholder="Pesquisar por nome..." value="@ViewBag.CurrentFilter" />
+            <button type="submit" class="search-button">Pesquisar</button>
+        }
 
-            <a href="@Url.Action("Create", "Dentistas")" class="btn-create">Cadastrar Novo Dentista</a>
-        </div>
+        <a href="@Url.Action("Create", "Dentistas")" class="btn-create">Cadastrar Novo Dentista</a>
     </div>
 
-    <div class="dentistas-table">
-        @if (Model.Any())
+    <div class="dentist-table">
+        @foreach (var dentist in Model)
         {
-            foreach (var dentista in Model)
-            {
-                <div class="dentista-card">
-                    <div class="dentista-info">
-                        <div class="dentista-nome">@dentista.Nome</div>
-                        <div class="dentista-cedula">Cédula: @dentista.Cedula</div>
-                        <div class="dentista-email">Email: @dentista.Email</div>
-                        <div class="dentista-telefone">Telefone: @dentista.Telefone</div>
-                    </div>
-
-                    <div class="dentista-actions">
-                        <a href="@Url.Action("Edit", "Dentistas", new { id = dentista.Id })" class="btn-custom btn-edit">Editar</a>
-                        <a href="@Url.Action("Delete", "Dentistas", new { id = dentista.Id })" class="btn-custom btn-delete">Excluir</a>
-                    </div>
+            <div class="dentist-card">
+                <div class="dentist-info">
+                    <div class="dentist-name">@dentist.Nome</div>
+                    <div class="dentist-cedula">@dentist.Cedula</div>
                 </div>
-            }
-        }
-        else
-        {
-            <div class="no-results">
-                Nenhum dentista encontrado com os critérios de pesquisa.
+                <div class="dentist-actions">
+                    <a href="@Url.Action("Edit", "Dentistas", new { id = dentist.Id })" class="btn-custom btn-edit">Editar</a>
+                    <a href="@Url.Action("Delete", "Dentistas", new { id = dentist.Id })" class="btn-custom btn-delete">Excluir</a>
+                </div>
             </div>
         }
     </div>

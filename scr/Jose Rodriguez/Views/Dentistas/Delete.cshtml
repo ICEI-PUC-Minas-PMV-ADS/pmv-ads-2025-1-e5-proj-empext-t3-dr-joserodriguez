@@ -1,7 +1,7 @@
 @model SeuProjeto.Models.Dentista
 
 @{
-    ViewData["Title"] = "Excluir Dentista";
+    ViewData["Title"] = "Delete";
 }
 
 <style scoped>
@@ -36,10 +36,10 @@
         font-size: 18px;
     }
 
-        .dentist-info span {
-            color: #d6aa6d;
-            font-weight: bold;
-        }
+    .dentist-info span {
+        color: #d6aa6d;
+        font-weight: bold;
+    }
 
     .delete-actions {
         display: flex;
@@ -71,16 +71,16 @@
 
 <div class="delete-container">
     <div class="delete-title">Excluir Dentista</div>
-    <div class="delete-subtitle">Tem certeza que deseja excluir este dentista? ApÛs a exclus„o, os dados n„o poder„o ser recuperados.</div>
-
+    <div class="delete-subtitle">Tem certeza que deseja excluir este dentista? Ap√≥s a exclus√£o n√£o ser√° poss√≠vel recuperar os dados do dentista.</div>
+    
     <div class="dentist-info">
         <div>Nome: <span>@Model.Nome</span></div>
-        <div>CÈdula: <span>@Model.Cedula</span></div>
         <div>Email: <span>@Model.Email</span></div>
         <div>Telefone: <span>@Model.Telefone</span></div>
+        <div>C√©dula Profissional: <span>@Model.Cedula</span></div>
     </div>
-
-    <form asp-action="Delete" asp-controller="Dentistas" asp-route-id="@Model.Id" method="post" class="delete-actions">
+    
+    <form asp-action="Delete" class="delete-actions">
         <input type="hidden" asp-for="Id" />
         <button type="submit" class="btn-custom btn-delete">Sim, Excluir</button>
         <a href="@Url.Action("Index", "Dentistas")" class="btn-custom btn-cancel">Cancelar</a>
