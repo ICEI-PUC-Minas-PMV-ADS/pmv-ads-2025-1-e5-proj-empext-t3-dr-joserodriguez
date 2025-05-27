@@ -1,0 +1,42 @@
+@model SeuProjeto.Models.NovaSenhaViewModel
+@{
+    ViewData["Title"] = "Nova Senha";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="text-center">
+        <h2 class="mb-4">Nova Senha</h2>
+        <p class="mb-4">
+            Defina sua nova senha abaixo. Sua conta estará mais segura após essa atualização.
+        </p>
+
+        <form asp-action="NovaSenha" method="post" class="d-flex flex-column align-items-center">
+            <div class="form-group w-100 mb-3">
+                <label asp-for="Email" class="form-label">E-mail</label>
+                <input asp-for="Email" class="form-control bg-dark text-white border-0 rounded-0 border-bottom" readonly />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group w-100 mb-3">
+                <label asp-for="Senha" class="form-label">Senha</label>
+                <input asp-for="Senha" class="form-control bg-dark text-white border-0 rounded-0 border-bottom" type="password" />
+                <span asp-validation-for="Senha" class="text-danger"></span>
+            </div>
+
+            <div class="form-group w-100 mb-4">
+                <label asp-for="ConfirmacaoSenha" class="form-label">Confirmação de Senha</label>
+                <input asp-for="ConfirmacaoSenha" class="form-control bg-dark text-white border-0 rounded-0 border-bottom" type="password" />
+                <span asp-validation-for="ConfirmacaoSenha" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-lg px-5 py-2" style="background-color: #d2b48c; border-radius: 1.5rem; color: white;">
+                Nova senha
+            </button>
+
+            <a href ="/Home/Login" class="d-block mt-3 text-decoration-none" style="color: #d2b48c;">
+                Cancelar
+            </a>
+        </form>
+    </div>
+</div>
