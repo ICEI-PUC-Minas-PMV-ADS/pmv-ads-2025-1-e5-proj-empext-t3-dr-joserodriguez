@@ -12,52 +12,75 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <!-- Marca / logo, se quiser -->
-                <a class="navbar-brand" href="#home">Jose_Rodriguez</a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <!-- Cada link rola até a seção correspondente no Index.cshtml -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #191917;">
+            <div class="container d-flex align-items-center justify-content-between">
+             
+                <a class="navbar-brand d-flex align-items-center" href="#home">
+                    <img src="~/img/logo.png" alt="Logo"
+                         style="max-height: 80px; object-fit: contain; margin-right: 10px;" />
+                </a>
+
+              
+                <button class="navbar-toggler p-1 btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+      
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav gap-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Home")#home">Home</a>
+                            <a class="nav-link text-light" href="@Url.Action("Index", "Home")#home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#antes_depois">Antes e Depois</a>
+                            <a class="nav-link text-light" href="#antes_depois">Antes e Depois</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#historia">História</a>
+                            <a class="nav-link text-light" href="#historia">História</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#depoimentos">Depoimentos</a>
+                            <a class="nav-link text-light" href="#depoimentos">Depoimentos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#location">Localização</a>
+                            <a class="nav-link text-light" href="#location">Localização</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#agendamento">Agendamento</a>
+                        <li class="nav-item d-lg-none">
+                            <a class="nav-link text-light" href="#agendamento">Agendamento</a>
+                        </li>
+                        <li class="nav-item d-lg-none">
+                            <a class="nav-link text-light" href="#privacy">Contato</a>
                         </li>
 
                         @if (Context.Session.GetString("AdminLogado") == "true")
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Painel">Painel Admin</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Admin" asp-action="Painel">Painel Admin</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout">Sair</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
                             </li>
                         }
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#privacy">Privacy</a>
-                        </li>
                     </ul>
+                </div>
+
+            
+                <div class="d-none d-lg-flex align-items-center gap-4 mr-4">
+                    <a href="#privacy" class="btn btn-outline-light rounded-pill px-3 py-1"
+                       style="border-color: #d4af37; color: #d4af37;">
+                        Contato
+                    </a>
+                </div>
+                <div class="d-none d-lg-flex align-items-center gap-2">
+                    <a href="#agendamento" class="btn rounded-pill px-3 py-1"
+                       style="background-color: #d4af37; color: #111; font-weight: 500;">
+                        Marque já a vossa consulta
+                    </a>
                 </div>
             </div>
         </nav>
