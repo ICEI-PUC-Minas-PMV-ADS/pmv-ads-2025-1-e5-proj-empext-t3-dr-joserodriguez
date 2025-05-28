@@ -1,7 +1,7 @@
-@model SeuProjeto.Models.Dentista
+@model LoginCadastroMVC.Models.Dentista
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewBag.Title = "Editar Dentista";
 }
 
 <style scoped>
@@ -167,7 +167,7 @@
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "E-mail", type = "email" } })
             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-error" })
 
-            @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { placeholder = "Cédula"} })
+            @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { placeholder = "Cédula" } })
             @Html.ValidationMessageFor(model => model.Cedula, "", new { @class = "validation-error" })
 
             <div class="buttons-container">
@@ -179,5 +179,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
