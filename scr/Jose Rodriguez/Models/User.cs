@@ -4,17 +4,27 @@ namespace LoginCadastroMVC.Models
 {
     public class User
     {
-        [Key]
         public int Id { get; set; }
 
-        public string? NameUser { get; set; }
+        [Required(ErrorMessage = "O nome é obrigatório")]
+        [StringLength(100, ErrorMessage = "O nome deve ter até 100 caracteres")]
+        public string Nome { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "O e-mail é obrigatório.")]
-        [EmailAddress(ErrorMessage = "Digite um e-mail válido.")]
-        public string Email { get; set; }
+        [Required(ErrorMessage = "O email é obrigatório")]
+        [EmailAddress(ErrorMessage = "Email inválido")]
+        [StringLength(100, ErrorMessage = "O email deve ter até 100 caracteres")]
+        public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "A senha é obrigatória.")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+        [StringLength(20, ErrorMessage = "O telefone deve ter até 20 caracteres")]
+        public string Telefone { get; set; } = string.Empty;
+
+        [StringLength(50, ErrorMessage = "A célula deve ter até 50 caracteres")]
+        public string Cedula { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "A senha é obrigatória")]
+        [StringLength(100, ErrorMessage = "A senha deve ter até 100 caracteres")]
+        public string Password { get; set; } = string.Empty;
+
+        public DateTime DataCriacao { get; set; } = DateTime.Now;
     }
 }
