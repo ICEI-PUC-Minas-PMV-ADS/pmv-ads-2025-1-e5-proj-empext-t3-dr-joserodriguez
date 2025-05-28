@@ -14,7 +14,7 @@ namespace LoginCadastroMVC.Models
         [Required(ErrorMessage = "O nome é obrigatório")]
         [StringLength(100, ErrorMessage = "O nome deve ter até 100 caracteres")]
         [Display(Name = "Nome")]
-        public string? Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "A data de nascimento é obrigatória")]
         [DataType(DataType.Date)]
@@ -24,17 +24,17 @@ namespace LoginCadastroMVC.Models
         [Required(ErrorMessage = "O endereço é obrigatório")]
         [StringLength(200, ErrorMessage = "O endereço deve ter até 200 caracteres")]
         [Display(Name = "Endereço")]
-        public string? Address { get; set; }
+        public string Address { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O email é obrigatório")]
         [EmailAddress(ErrorMessage = "Email inválido")]
         [Display(Name = "Email")]
-        public string? Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O telefone é obrigatório")]
         [Phone(ErrorMessage = "Telefone inválido")]
         [Display(Name = "Telefone")]
-        public string? Phone { get; set; }
+        public string Phone { get; set; } = string.Empty;
 
         [StringLength(500, ErrorMessage = "A queixa deve ter até 500 caracteres")]
         [Display(Name = "Queixa Principal")]
@@ -58,17 +58,30 @@ namespace LoginCadastroMVC.Models
             get => string.Join(",", Specialties ?? new List<SpecialtyEnum>());
             set
             {
-                Specialties = string.IsNullOrEmpty(value)
-                    ? new List<SpecialtyEnum>()
-                    : value.Split(',', StringSplitOptions.RemoveEmptyEntries)
-                          .Select(e => Enum.Parse<SpecialtyEnum>(e))
-                          .ToList();
+                if (string.IsNullOrEmpty(value))
+                {
+                    Specialties = new List<SpecialtyEnum>();
+                }
+                else
+                {
+                    try
+                    {
+                        Specialties = value.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                                          .Select(e => Enum.Parse<SpecialtyEnum>(e.Trim()))
+                                          .ToList();
+                    }
+                    catch
+                    {
+                        Specialties = new List<SpecialtyEnum>();
+                    }
+                }
             }
         }
     }
 
     public enum SpecialtyEnum
     {
+        OdontologiaGeral,
         Ortodontia,
         Endodontia,
         Periodontia,
