@@ -1,54 +1,70 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using LoginCadastroMVC.Models; // Altere para o namespace correto
+using LoginCadastroMVC.Models;
 
-namespace SeuProjeto.Models // Altere para o namespace correto
+namespace SeuProjeto.Models
 {
     public class ApplicationDbContext : DbContext
     {
-        // Construtor que configura a string de conexão
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
 
-        // DbSet para a entidade Patient
-        public DbSet<Patient> Patients { get; set; }
-
-        // DbSet para a entidade User
-        public DbSet<User> Users { get; set; }
-
-        // ✅ DbSet para a entidade Dentista
-        public DbSet<Dentista> Dentistas { get; set; } // Adicionando o DbSet para Dentista
-
-        public DbSet<Agendamento> Agendamentos { get; set; }
+        public DbSet<Patient> Patients { get; set; } = null!;
+        public DbSet<Agendamento> Agendamentos { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Dentista> Dentistas { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Inserindo dados iniciais para a tabela User (Exemplo)
-            modelBuilder.Entity<User>().HasData(
-                new User
-                {
-                    Id = 1,
-                    NameUser = "Dr. José Rodriguez",
-                    Email = "Consultoriodontovip@gmail.com",
-                    Password = "odontovipJR294"
-                }
-            );
+            // Configurações para Patient
+            modelBuilder.Entity<Patient>(entity =>
+            {
+                entity.HasKey(e => e.ID);
+                entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Email).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Phone).HasMaxLength(20).IsRequired();
+                entity.Property(e => e.Address).HasMaxLength(200).IsRequired();
+                entity.Property(e => e.Complaint).HasMaxLength(500);
+                entity.Property(e => e.SpecialtiesString).HasMaxLength(200);
+            });
 
-            // Inserindo dados iniciais para a tabela Dentista (Exemplo)
-            modelBuilder.Entity<Dentista>().HasData(
-                new Dentista
-                {
-                    Id = 1,
-                    Nome = "Dr. Maria Silva",
-                    Cedula = "123456",
-                    Telefone = "(11) 98765-4321",
-                    Email = "maria.silva@odontovip.com"
-                }
-            );
+            // Configurações para Agendamento
+            modelBuilder.Entity<Agendamento>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Nome).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Email).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Telefone).HasMaxLength(20).IsRequired();
+                entity.Property(e => e.Especialidade).HasMaxLength(50).IsRequired();
+                entity.Property(e => e.Hora).HasMaxLength(5).IsRequired();
+                entity.Property(e => e.Mensagem).HasMaxLength(500);
+                entity.Property(e => e.DataCriacao).HasDefaultValueSql("GETDATE()");
+            });
+
+            // Configurações para User
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Nome).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Email).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Telefone).HasMaxLength(20);
+                entity.Property(e => e.Cedula).HasMaxLength(50);
+                entity.Property(e => e.Password).HasMaxLength(100).IsRequired();
+            });
+
+            // Configurações para Dentista
+            modelBuilder.Entity<Dentista>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Nome).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Email).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.Telefone).HasMaxLength(20);
+                entity.Property(e => e.Cedula).HasMaxLength(50);
+                entity.Property(e => e.CRO).HasMaxLength(20);
+                entity.Property(e => e.Especialidade).HasMaxLength(100);
+            });
         }
     }
 }
-
