@@ -523,6 +523,44 @@
     <td>A mensagem não é enviada para o e-mail.</td>
   </tr>
 </table>
+#### Caso de Teste de Insucesso
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-012<br>Pagina inicial Responsiva.</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Verifica se a pagina esta Responsiva.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável pelo código</strong></td>
+    <td width="430">Todos integrantes</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Mayra Rodriguez</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Insucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RFN-03</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Acessar a página "HOME".<br>
+      2.
+      </td>
+  </tr>
+   
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>Algumas partes estao responsivas ja outras nao</td>
+  </tr>
+</table>
 
 
 # Evidências de Testes de Software
@@ -939,3 +977,19 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
     <td colspan="6" align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez/blob/main/documentos/img/teste-cruzado-agendamento.jpg"></td>
   </tr>
   </table>
+
+# Testes Cruzados – Responsividade da Página
+
+> **Observação:** Todos os integrantes participaram do teste cruzado. Nesta verificação, não considerei a parte que desenvolvi (vídeo + informações sobre o tratamento), apenas as demais seções da página.
+
+## 🧪 Teste Cruzado – Responsividade da Página Inicial CT-014
+
+| **Item**                          | **Descrição**                                                                 |
+|----------------------------------|-------------------------------------------------------------------------------|
+| Link do vídeo mostrando a falha  | [Assistir no YouTube](https://www.youtube.com/watch?v=2DmM4yQaOhM)           |
+| Responsável pelo Teste           |Mayra Rodriguez                                                           |
+| Data do Teste                    | 28/05/2025                                                                    |
+| Comentário                       | > **Observação:** Todos os integrantes participaram do teste cruzado. Nesta verificação, não considerei a parte que desenvolvi (vídeo + informações sobre o tratamento), apenas as demais seções da página.
+ |
+
+
