@@ -35,7 +35,7 @@ namespace LoginCadastroMVC.Controllers
 
             // Criar sessão de admin
             HttpContext.Session.SetString("AdminLogado", "true");
-            HttpContext.Session.SetString("AdminNome", user.NameUser);
+            HttpContext.Session.SetString("AdminNome", user.Nome);
             HttpContext.Session.SetString("AdminEmail", user.Email);
 
             TempData["LoginSucess"] = "Login realizado com sucesso!";
