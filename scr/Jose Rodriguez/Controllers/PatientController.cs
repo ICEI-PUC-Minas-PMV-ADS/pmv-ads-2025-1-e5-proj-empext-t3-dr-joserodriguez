@@ -19,7 +19,7 @@ namespace LoginCadastroMVC.Controllers
         }
 
         // GET: patients/Index - LISTAGEM E PESQUISA
-        public async Task<ActionResult> Index(string searchString)
+        public async Task<ActionResult> Index(string? searchString)
         {
             ViewBag.CurrentFilter = searchString;
 
@@ -35,11 +35,13 @@ namespace LoginCadastroMVC.Controllers
         }
 
         // -----------------------------
-        // CRUD DE PACIENTES
+        // NOVA ÁREA DE TRIAGEM DE AGENDAMENTOS
         // -----------------------------
 
+        // GET: Patient/Create - Agora é a área de triagem dos agendamentos
         public IActionResult Create() => View();
 
+        // Método para criar paciente a partir de agendamento confirmado
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Patient patient)
@@ -48,10 +50,15 @@ namespace LoginCadastroMVC.Controllers
             {
                 _db.Add(patient);
                 await _db.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                TempData["SuccessMessage"] = "Paciente cadastrado com sucesso!";
+                return RedirectToAction("Management");
             }
             return View(patient);
         }
+
+        // -----------------------------
+        // CRUD DE PACIENTES (Management)
+        // -----------------------------
 
         public async Task<IActionResult> Edit(int? id)
         {
@@ -81,7 +88,7 @@ namespace LoginCadastroMVC.Controllers
                     else
                         throw;
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Management));
             }
             return View(patient);
         }
@@ -96,7 +103,33 @@ namespace LoginCadastroMVC.Controllers
             return View(patient);
         }
 
-        [HttpPost, ActionName("Delete")]
+        // NOVO: Método Delete via AJAX para uso no Management
+        [HttpPost]
+        [Route("patients/DeleteAjax")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var patient = await _db.Patients.FindAsync(id);
+                if (patient == null)
+                {
+                    return Json(new { success = false, message = "Paciente não encontrado." });
+                }
+
+                // Remover paciente (libera o horário)
+                _db.Patients.Remove(patient);
+                await _db.SaveChangesAsync();
+
+                return Json(new { success = true, message = "Consulta excluída com sucesso! Horário liberado." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = $"Erro ao excluir consulta: {ex.Message}" });
+            }
+        }
+
+        [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -106,11 +139,11 @@ namespace LoginCadastroMVC.Controllers
                 _db.Patients.Remove(patient);
                 await _db.SaveChangesAsync();
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Management));
         }
 
         // -----------------------------
-        // AGENDAMENTO / GERENCIAMENTO
+        // GERENCIAMENTO DE PACIENTES (Management)
         // -----------------------------
 
         public IActionResult Management() => View();
@@ -206,19 +239,32 @@ namespace LoginCadastroMVC.Controllers
         public async Task<IActionResult> GetAvailableTimes(DateTime date)
         {
             var allTimeSlots = new List<TimeSpan>();
-            for (int hour = 8; hour < 18; hour++)
+            for (int hour = 10; hour < 19; hour++) // 10h às 18h30
             {
                 allTimeSlots.Add(new TimeSpan(hour, 0, 0));
-                allTimeSlots.Add(new TimeSpan(hour, 30, 0));
+                if (hour != 12) // Pular 12:30 (horário de almoço)
+                {
+                    allTimeSlots.Add(new TimeSpan(hour, 30, 0));
+                }
             }
 
-            var booked = await _db.Patients
+            // Verificar horários ocupados nos Pacientes
+            var bookedInPatients = await _db.Patients
                 .Where(p => p.AppointmentDate.HasValue && p.AppointmentDate.Value.Date == date.Date && p.AppointmentTime.HasValue)
                 .Select(p => p.AppointmentTime.Value)
                 .ToListAsync();
 
+            // Verificar horários ocupados nos Agendamentos
+            var bookedInAgendamentos = await _db.Agendamentos
+                .Where(a => a.Data.Date == date.Date)
+                .Select(a => TimeSpan.Parse(a.Hora))
+                .ToListAsync();
+
+            // Combinar todos os horários ocupados
+            var allBooked = bookedInPatients.Concat(bookedInAgendamentos).Distinct().ToList();
+
             var available = allTimeSlots
-                .Where(t => !booked.Contains(t))
+                .Where(t => !allBooked.Contains(t))
                 .OrderBy(t => t)
                 .Select(t => t.ToString(@"hh\:mm"))
                 .ToList();
@@ -234,11 +280,18 @@ namespace LoginCadastroMVC.Controllers
                 return Json(new { isAvailable = false, message = "Formato de hora inválido." });
             }
 
-            bool isAvailable = !await _db.Patients
+            // Verificar se está ocupado em Pacientes
+            bool occupiedInPatients = await _db.Patients
                 .AnyAsync(p => p.AppointmentDate.HasValue &&
                                p.AppointmentDate.Value.Date == date.Date &&
                                p.AppointmentTime.HasValue &&
                                p.AppointmentTime.Value == timeSpan);
+
+            // Verificar se está ocupado em Agendamentos
+            bool occupiedInAgendamentos = await _db.Agendamentos
+                .AnyAsync(a => a.Data.Date == date.Date && a.Hora == time);
+
+            bool isAvailable = !occupiedInPatients && !occupiedInAgendamentos;
 
             return Json(new
             {
@@ -248,6 +301,7 @@ namespace LoginCadastroMVC.Controllers
         }
 
         [HttpPost]
+        [Route("patients/Reschedule")] // Rota específica para o JavaScript
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Reschedule(int id, DateTime appointmentDate, string appointmentTime, string? procedure, string? complaint)
         {
@@ -262,12 +316,15 @@ namespace LoginCadastroMVC.Controllers
                 return Json(new { success = false, message = "Formato de hora inválido." });
             }
 
+            // Verificar disponibilidade (excluindo o próprio agendamento)
             bool isAvailable = !await _db.Patients
                 .AnyAsync(p => p.ID != id &&
                                p.AppointmentDate.HasValue &&
                                p.AppointmentDate.Value.Date == appointmentDate.Date &&
                                p.AppointmentTime.HasValue &&
-                               p.AppointmentTime.Value == timeSpan);
+                               p.AppointmentTime.Value == timeSpan) &&
+                !await _db.Agendamentos
+                .AnyAsync(a => a.Data.Date == appointmentDate.Date && a.Hora == appointmentTime);
 
             if (!isAvailable)
             {
@@ -285,7 +342,7 @@ namespace LoginCadastroMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ScheduleAppointment(int patientId, DateTime appointmentDate, string appointmentTime, string? procedure, string? complaint)
+        public async Task<IActionResult> CreateAppointment(int patientId, DateTime appointmentDate, string appointmentTime, string? procedure, string? complaint)
         {
             var patient = await _db.Patients.FindAsync(patientId);
             if (patient == null)
@@ -298,11 +355,14 @@ namespace LoginCadastroMVC.Controllers
                 return Json(new { success = false, message = "Formato de hora inválido." });
             }
 
+            // Verificar disponibilidade
             bool isAvailable = !await _db.Patients
                 .AnyAsync(p => p.AppointmentDate.HasValue &&
                                p.AppointmentDate.Value.Date == appointmentDate.Date &&
                                p.AppointmentTime.HasValue &&
-                               p.AppointmentTime.Value == timeSpan);
+                               p.AppointmentTime.Value == timeSpan) &&
+                !await _db.Agendamentos
+                .AnyAsync(a => a.Data.Date == appointmentDate.Date && a.Hora == appointmentTime);
 
             if (!isAvailable)
             {
@@ -319,7 +379,7 @@ namespace LoginCadastroMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SearchPatients(string query)
+        public async Task<IActionResult> SearchPatients(string? query)
         {
             if (string.IsNullOrWhiteSpace(query))
                 return Json(new List<object>());
