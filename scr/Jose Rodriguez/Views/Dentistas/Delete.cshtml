@@ -1,7 +1,6 @@
-@model SeuProjeto.Models.Dentista
-
+@model LoginCadastroMVC.Models.Dentista
 @{
-    ViewData["Title"] = "Delete";
+    ViewBag.Title = "Excluir Dentista";
 }
 
 <style scoped>
@@ -36,10 +35,10 @@
         font-size: 18px;
     }
 
-    .dentist-info span {
-        color: #d6aa6d;
-        font-weight: bold;
-    }
+        .dentist-info span {
+            color: #d6aa6d;
+            font-weight: bold;
+        }
 
     .delete-actions {
         display: flex;
@@ -72,14 +71,14 @@
 <div class="delete-container">
     <div class="delete-title">Excluir Dentista</div>
     <div class="delete-subtitle">Tem certeza que deseja excluir este dentista? Após a exclusão não será possível recuperar os dados do dentista.</div>
-    
+
     <div class="dentist-info">
         <div>Nome: <span>@Model.Nome</span></div>
         <div>Email: <span>@Model.Email</span></div>
         <div>Telefone: <span>@Model.Telefone</span></div>
         <div>Cédula Profissional: <span>@Model.Cedula</span></div>
     </div>
-    
+
     <form asp-action="Delete" class="delete-actions">
         <input type="hidden" asp-for="Id" />
         <button type="submit" class="btn-custom btn-delete">Sim, Excluir</button>
