@@ -523,18 +523,18 @@
     <td>A mensagem não é enviada para o e-mail.</td>
   </tr>
 </table>
-#### Caso de Teste de Insucesso
+#### Caso de Teste de Sucesso
 <table>
   <tr>
-    <th colspan="2" width="1000">CT-012<br>Pagina inicial Responsiva.</th>
+    <th colspan="2" width="1000">CT-013<br>Pagina inicial Responsiva.</th>
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
-    <td>Verifica se a pagina esta Responsiva.</td>
+    <td>Bloquear datas de acordo com os agendamentos</td>
   </tr>
   <tr>
     <td><strong>Responsável pelo código</strong></td>
-    <td width="430">Todos integrantes</td>
+    <td width="430">Giovanni</td>
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
@@ -542,7 +542,7 @@
   </tr>
  <tr>
     <td><strong>Tipo do Teste</strong></td>
-    <td width="430">Insucesso</td>
+    <td width="430">Sucesso</td>
   </tr> 
   <tr>
     <td><strong>Requisitos associados</strong></td>
@@ -552,13 +552,17 @@
     <td><strong>Passos</strong></td>
     <td>
       1. Acessar a página "HOME".<br>
-      2.
+      2. Acessar quero fazer minha consulta
+      3. Fazer o Login
+      4.Agendar paciente
+      5.Confirmar ou cancelar
+    
       </td>
   </tr>
    
     <tr>
     <td><strong>Critérios de êxito</strong></td>
-    <td>Algumas partes estao responsivas ja outras nao</td>
+    <td>tudo funcionando</td>
   </tr>
 </table>
 
@@ -959,6 +963,8 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
   </tr>
 </table>
 
+
+</table>
 # Testes Cruzados - Agendamento X Gerenciamento 
 ## (Geovanne e Mayra)
 
@@ -982,14 +988,14 @@ Agora quando deletamos o paciente, o erro de não encontrar o método/página fo
 
 > **Observação:** Todos os integrantes participaram do teste cruzado. Nesta verificação, não considerei a parte que desenvolvi (vídeo + informações sobre o tratamento), apenas as demais seções da página.
 
-## 🧪 Teste Cruzado – Responsividade da Página Inicial CT-014
+
+ |
+## 🧪 Teste Cruzado – Agendamento e datas ficando indisponiveis de acordo com os agendamentos  CT-014
 
 | **Item**                          | **Descrição**                                                                 |
 |----------------------------------|-------------------------------------------------------------------------------|
-| Link do vídeo mostrando a falha  | [Assistir no YouTube](https://www.youtube.com/watch?v=2DmM4yQaOhM)           |
+| Link do vídeo mostrando a falha  | [Assistir no YouTube](https://youtu.be/jhiVF9OYTkc)           |
 | Responsável pelo Teste           |Mayra Rodriguez                                                           |
-| Data do Teste                    | 28/05/2025                                                                    |
-| Comentário                       | > **Observação:** Todos os integrantes participaram do teste cruzado. Nesta verificação, não considerei a parte que desenvolvi (vídeo + informações sobre o tratamento), apenas as demais seções da página.
- |
-
+| Data do Teste                    | 31/05/2025                                                                    |
+| Comentário                       | Giovanni que foi o respossavel por essa parte, e tudo esta funcionando de acordo com o solicitado
 
