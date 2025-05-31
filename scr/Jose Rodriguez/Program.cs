@@ -1,20 +1,20 @@
-using Microsoft.EntityFrameworkCore;
-using SeuProjeto.Models; // Verifique se este È o namespace correto
-using SeuProjeto.Services; // Se vocÍ estiver usando um serviÁo de email
+Ôªøusing Microsoft.EntityFrameworkCore;
+using SeuProjeto.Models; // Verifique se este √© o namespace correto
+using SeuProjeto.Services; // Se voc√™ estiver usando um servi√ßo de email
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adiciona o serviÁo de DbContext e configura a conex„o com o banco de dados
+// Adiciona o servi√ßo de DbContext e configura a conex√£o com o banco de dados
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Adiciona os serviÁos MVC (controladores e visualizaÁıes)
+// Adiciona os servi√ßos MVC (controladores e visualiza√ß√µes)
 builder.Services.AddControllersWithViews();
 
-// Registro do serviÁo EmailService (caso vocÍ precise injetar no seu controlador)
+// Registro do servi√ßo EmailService (caso voc√™ precise injetar no seu controlador)
 builder.Services.AddScoped<EmailService>();
 
-// ADICIONE ESTAS LINHAS PARA SESS√O
+// ADICIONE ESTAS LINHAS PARA SESS√ÉO
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -25,7 +25,7 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-// Configura o pipeline de requisiÁ„o HTTP
+// Configura o pipeline de requisi√ß√£o HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();  // Exibe erros detalhados no ambiente de desenvolvimento
@@ -33,18 +33,22 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts(); // HSTS È configurado para seguranÁa adicional
+    app.UseHsts(); // HSTS √© configurado para seguran√ßa adicional
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(); // Permite servir arquivos est·ticos (CSS, JS, imagens, etc.)
-
+app.UseStaticFiles(); // Permite servir arquivos est√°ticos (CSS, JS, imagens, etc.)
 app.UseRouting();
 
-// ADICIONE ESTA LINHA PARA USAR SESS√O
+// ADICIONE ESTA LINHA PARA USAR SESS√ÉO
 app.UseSession();
+app.UseAuthorization(); // Ativa a autoriza√ß√£o para seguran√ßa das rotas
 
-app.UseAuthorization(); // Ativa a autorizaÁ„o para seguranÁa das rotas
+// ‚≠ê ROTA ESPEC√çFICA PARA LOGIN - ADICIONE ESTA ANTES DAS OUTRAS ROTAS
+app.MapControllerRoute(
+    name: "login",
+    pattern: "Login/{action=Login}/{id?}",
+    defaults: new { controller = "Login", action = "Login" });
 
 // Rota personalizada para pacientes
 app.MapControllerRoute(
@@ -55,13 +59,13 @@ app.MapControllerRoute(
 // Rota personalizada para o AgendamentosController
 app.MapControllerRoute(
     name: "agendamentos",  // Rota para o AgendamentosController
-    pattern: "Agendamentos/{action=Index}/{id?}",  // Definindo o padr„o de rota
-    defaults: new { controller = "Agendamentos", action = "Index" });  // Controller e aÁ„o padr„o
+    pattern: "Agendamentos/{action=Index}/{id?}",  // Definindo o padr√£o de rota
+    defaults: new { controller = "Agendamentos", action = "Index" });  // Controller e a√ß√£o padr√£o
 
-// Rota padr„o para o HomeController
+// Rota padr√£o para o HomeController
 app.MapControllerRoute(
-    name: "default",  // Rota padr„o
+    name: "default",  // Rota padr√£o
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Inicia a aplicaÁ„o
+// Inicia a aplica√ß√£o
 app.Run();
