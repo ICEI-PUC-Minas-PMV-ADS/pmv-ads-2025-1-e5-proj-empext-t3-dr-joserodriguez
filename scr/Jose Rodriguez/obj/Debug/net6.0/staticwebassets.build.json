@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MspILk2H71PJRAOpJR/Opq+2XFOUdrEjFCzmr0/CBWc=",
+  "Hash": "oxccoCqO1syVw8MzZemrz+Jwq/cz1cqTAVU7JVfUhjg=",
   "Source": "JoseRodriguez",
   "BasePath": "_content/JoseRodriguez",
   "Mode": "Default",
@@ -205,6 +205,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\pacienteindex.css"
+    },
+    {
+      "Identity": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\responsive-styles.css",
+      "SourceId": "JoseRodriguez",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\",
+      "BasePath": "_content/JoseRodriguez",
+      "RelativePath": "css/responsive-styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\responsive-styles.css"
     },
     {
       "Identity": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\site.css",
@@ -528,6 +547,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\IMG_1030-before.png"
+    },
+    {
+      "Identity": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\logo.png",
+      "SourceId": "JoseRodriguez",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\",
+      "BasePath": "_content/JoseRodriguez",
+      "RelativePath": "img/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo.png"
     },
     {
       "Identity": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\pessoa1.png",

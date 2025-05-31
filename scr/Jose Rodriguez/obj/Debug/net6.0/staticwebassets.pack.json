@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\css\\pacienteindex.css"
     },
     {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\responsive-styles.css",
+      "PackagePath": "staticwebassets\\css\\responsive-styles.css"
+    },
+    {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -103,6 +107,10 @@
     {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\home.mp4",
       "PackagePath": "staticwebassets\\img\\home.mp4"
+    },
+    {
+      "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
     },
     {
       "Id": "C:\\Users\\josem\\Music\\pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez\\scr\\Jose Rodriguez\\wwwroot\\img\\pessoa1.png",
