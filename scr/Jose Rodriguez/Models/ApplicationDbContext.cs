@@ -65,6 +65,32 @@ namespace SeuProjeto.Models
                 entity.Property(e => e.CRO).HasMaxLength(20);
                 entity.Property(e => e.Especialidade).HasMaxLength(100);
             });
+
+            // ✅ SEED DATA - Adicionando usuário padrão para login
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    Nome = "Dr. José Rodriguez",
+                    Email = "consultoriodontovip@gmail.com",
+                    Password = "odontovipJR294",
+                    Telefone = "",
+                    Cedula = "",
+                    DataCriacao = new DateTime(2024, 1, 1) // Data fixa para o seed
+                }
+            );
+
+            // ✅ SEED DATA - Adicionando dentista exemplo (opcional)
+            modelBuilder.Entity<Dentista>().HasData(
+                new Dentista
+                {
+                    Id = 1,
+                    Nome = "Dr. Maria Silva",
+                    Email = "maria.silva@odontovip.com",
+                    Telefone = "(11) 98765-4321",
+                    Cedula = "123456"
+                }
+            );
         }
     }
 }
