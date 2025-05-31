@@ -74,6 +74,12 @@ Funcionalidade acessível apenas para os profissionais da clínica, onde é poss
 - Atualizar os dados de cadastro
 - Alterar a senha de acesso
 
+### ⚙️ Tela Principal do Painel
+
+![Painel Administrativo](img/PI_painel.PNG) 
+
+---
+
 ### 📆 Gerenciamento da Agenda
 
 Nesta seção, dentistas e recepcionistas podem **gerenciar todos os agendamentos** da clínica de forma prática e organizada.
@@ -83,11 +89,41 @@ Nesta seção, dentistas e recepcionistas podem **gerenciar todos os agendamento
 
 ---
 
-### 👤 Alterar Cadastro do Dentista
+### 👤 Lista de Pacientes
+
+![Painel Administrativo](img/PI_listapacientes.PNG) 
+
+---
+
+### 👤 Alterar Cadastro de Paciente
+
+![Painel Administrativo](img/PI_editpaciente.PNG) 
+
+---
+
+### ❌ Remover Paciente
+
+![Painel Administrativo](img/PI_deletpaciente.PNG) 
+
+---
+
+### 👤 Lista de Dentistas
+
+![Painel Administrativo](img/PI_listadentistas.PNG) 
+
+---
+
+### 👤 Alterar Cadastro de Dentista
 
 Funcionalidade para **atualização de dados do profissional**, como nome, especialidade, e-mail e demais informações relevantes.
 
 ![Alterar Cadastro](img/Alterar.png)
+
+---
+
+### ❌ Remover Dentista
+
+![Painel Administrativo](img/PI_deletedentista.PNG) 
 
 ---
 
