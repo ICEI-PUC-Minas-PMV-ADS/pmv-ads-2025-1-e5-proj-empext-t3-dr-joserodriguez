@@ -1,29 +1,23 @@
 message: Please cite this software using these metadata.
-title:
+title: Sistema de Gestão de Atendimento - Clínica Dr. José Rodriguez
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - name-suffix: Professor
+  - family-names: Oliveira
+    given-names: Arthur
+  - family-names: Sousa Santana
+    given-names: Bianca Cristina
+  - family-names: do Monte Ribeiro
+    given-names: Geovanne
+  - family-names: Vitoriana Machado Rodriguez
+    given-names: Mayra Gabriella
+  - family-names: Gervazio
+    given-names: Peterson Alves
+  - name-suffix: José Wilson da Costa
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Costa
+    given-names: José Wilson
 keywords:
-  - 
-  - 
-repository-code: 
+  - gestão de pacientes
+  - sistema web clínico
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez
 version: 1.0.0
-date-released: 2023-10-31
+date-released: 2025-06-15
