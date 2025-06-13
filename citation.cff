@@ -13,11 +13,9 @@ authors:
     given-names: Peterson Alves
   - name-suffix: José Wilson da Costa
     affiliation: PUC Minas
-    family-names: Costa
-    given-names: José Wilson
 keywords:
   - gestão de pacientes
   - sistema web clínico
 repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e5-proj-empext-t3-dr-joserodriguez
 version: 1.0.0
-date-released: 2025-06-15
+date-released: 2025-06-26
